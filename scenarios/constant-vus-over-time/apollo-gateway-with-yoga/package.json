@@ -1,0 +1,16 @@
+{
+  "name": "apollo-gateway-js-with-yoga",
+  "scripts": {
+    "compose-supergraph": "tsx compose-supergraph.ts",
+    "start": "tsx index.ts"
+  },
+  "dependencies": {
+    "tsx": "3.12.6",
+    "typescript": "5.0.4",
+    "graphql": "16.6.0",
+    "@envelop/apollo-federation": "3.0.6",
+    "graphql-yoga": "3.9.1",
+    "@apollo/gateway": "2.4.1",
+    "@apollo/composition": "2.4.1"
+  }
+}

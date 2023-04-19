@@ -1,0 +1,19 @@
+{
+    "name": "constant-vus-over-time",
+    "description": "This scenario runs 4 servics and a GraphQL gatway with Federation spec, and runs a heavy query. It's being executed with a constant amount of VUs over a fixed amount of time. It measure things like memory usage, CPU usage, average RPS. It also includes a summary of the entire execution, and metrics information about HTTP execution times.",
+    "scripts": {
+      "compose-supergraph": "tsx compose-supergraph.ts",
+      "generate-report": "tsx generate-report.ts"
+    },
+    "dependencies": {
+      "tablemark": "3.0.0",
+      "tsx": "3.12.6",
+      "typescript": "5.0.4",
+      "graphql": "16.6.0",
+      "@apollo/composition": "2.4.1"
+    },
+    "devDependencies": {
+        "@types/node": "18.16.0"
+    }
+  }
+  

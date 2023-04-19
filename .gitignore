@@ -4,5 +4,11 @@ build
 dist
 out
 results
-test_results.json
-summary.json
+k6_metrics.json
+k6_summary.json
+k6_summary.txt
+rps.json
+summary.md
+engine.bin
+*.png
+result.md

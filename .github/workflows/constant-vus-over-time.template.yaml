@@ -1,0 +1,49 @@
+on:
+  workflow_call:
+    inputs:
+      scenarioDir:
+        type: string
+        required: true
+      gateway: 
+        type: string
+        required: true
+      vu: 
+        type: number
+        required: true
+      time: 
+        type: string
+        required: true
+
+jobs:
+  test:
+    runs-on: 
+      group: benchmark-runners
+    timeout-minutes: 10
+    name: benchmark
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: Setup K6
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6=0.43.1
+
+      - name: run benchmark (${{ inputs.vu }} VUs over ${{ inputs.time }})
+        timeout-minutes: 10
+        working-directory: ${{ inputs.scenarioDir }} 
+        run: ./run.sh ${{ inputs.gateway }}
+        env:
+          BENCH_VUS: ${{ inputs.vu }}
+          BENCH_OVER_TIME: ${{ inputs.time }}
+
+      - uses: actions/upload-artifact@v3
+        with: 
+          name: ${{ inputs.gateway }}
+          path: |
+            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/rps.json
+            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.json
+            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.txt
+            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/*.png

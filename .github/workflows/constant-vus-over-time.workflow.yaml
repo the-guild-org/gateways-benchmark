@@ -1,0 +1,55 @@
+name: constant-vus-over-time
+on:
+  pull_request: {}
+
+jobs:
+  benchmark:
+    strategy:
+      matrix:
+        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius]
+    uses: ./.github/workflows/constant-vus-over-time.template.yaml
+    name: ${{ matrix.directory }}
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: 50
+      time: 30s
+      scenarioDir: scenarios/constant-vus-over-time
+
+  report:
+    runs-on: ubuntu-latest
+    needs: benchmark
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: download artifacts
+        id: download
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: |
+            **/yarn.lock
+      
+      - name: install dependencies
+        run: yarn install
+        working-directory: scenarios/constant-vus-over-time
+
+      - name: generate reports
+        run: yarn generate-report ${{ steps.download.outputs.download-path }} 
+        working-directory: scenarios/constant-vus-over-time
+        env:
+          CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
+          CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
+
+      - name: publish report
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: scenarios/constant-vus-over-time/result.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.githubToken }}
