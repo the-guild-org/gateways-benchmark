@@ -1,0 +1,8 @@
+temp
+node_modules
+build
+dist
+out
+results
+test_results.json
+summary.json

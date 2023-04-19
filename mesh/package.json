@@ -1,0 +1,14 @@
+{
+  "name": "mesh-gateway",
+  "scripts": {
+    "start": "graphql-mesh dev"
+  },
+  "dependencies": {
+    "graphql": "16.6.0",
+    "tslib": "2.5.0",
+    "@graphql-mesh/cli": "0.82.33",
+    "@graphql-mesh/config": "10.1.16",
+    "@graphql-mesh/graphql": "0.34.17",
+    "@graphql-mesh/transform-federation": "0.11.17"
+  }
+}
