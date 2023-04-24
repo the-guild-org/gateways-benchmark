@@ -69,7 +69,6 @@ async function generateReport(artifactsRootPath: string) {
       }
 
       const txtSummaryFilePath = join(fullPath, "./k6_summary.txt");
-      const rpsFilePath = join(fullPath, "./rps.json");
 
       let overviewImageUrl = "";
       let httpImageUrl = "";
@@ -95,13 +94,14 @@ async function generateReport(artifactsRootPath: string) {
         ]);
       }
 
+      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath).toString());
+
       return {
         name: dirName,
         path: fullPath,
-        jsonSummary: JSON.parse(readFileSync(jsonSummaryFilePath).toString()),
+        jsonSummary,
         txtSummary: readFileSync(txtSummaryFilePath).toString(),
-        rps: JSON.parse(readFileSync(rpsFilePath).toString()).data.result[0]
-          .value[1],
+        rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
         overviewImageUrl,
         httpImageUrl,
       };

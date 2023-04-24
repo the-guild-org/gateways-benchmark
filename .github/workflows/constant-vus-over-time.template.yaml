@@ -47,7 +47,6 @@ jobs:
         with: 
           name: ${{ inputs.gateway }}
           path: |
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/rps.json
             ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.json
             ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.txt
             ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/*.png

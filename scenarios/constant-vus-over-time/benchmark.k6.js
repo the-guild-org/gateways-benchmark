@@ -11,7 +11,7 @@ new Rate(expectedResult);
 
 export const options = {
   vus: __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 100,
-  duration: __ENV.BENCH_OVER_TIME || 100,
+  duration: __ENV.BENCH_OVER_TIME || '30s',
   thresholds: {
     [noErrors]: ["rate==1"],
     [expectedResult]: ["rate==1"],

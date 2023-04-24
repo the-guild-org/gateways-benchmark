@@ -10,7 +10,6 @@ export BENCH_OVER_TIME=60s
 # - Measure estimated request duration, handling, HTTP information, failed responses count, and average RPS  
 
 # Outputs:
-# - rps.json - RPS metrics in JSON format (exported from Prom)
 # - k6_summary.json - Summary of the K6 test in JSON format
 # - k6_summary.txt - Summary of the K6 test in TXT format
 # - overview.png - Grafana dashboard screenshot (memory, cpu, overview of k6) 
@@ -33,8 +32,6 @@ k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMA
 sleep 2
 
 export END_TIME="$(date +%s)"
-
-curl "http://localhost:9090/api/v1/query?query=irate(k6_http_reqs_total\[1m\])&time=$END_TIME" > ./$1/rps.json
 
 rm -rf ./$1/overview.png || echo ""
 
