@@ -94,13 +94,13 @@ async function generateReport(artifactsRootPath: string) {
         ]);
       }
 
-      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath).toString());
+      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, 'utf8'));
 
       return {
         name: dirName,
         path: fullPath,
         jsonSummary,
-        txtSummary: readFileSync(txtSummaryFilePath).toString(),
+        txtSummary: readFileSync(txtSummaryFilePath, 'utf8'),
         rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
         overviewImageUrl,
         httpImageUrl,
