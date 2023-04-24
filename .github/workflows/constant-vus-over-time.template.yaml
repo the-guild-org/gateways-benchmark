@@ -21,6 +21,10 @@ jobs:
     timeout-minutes: 10
     name: benchmark
     steps:
+      - name: adjust os 
+        run: |
+          ulimit -n 10000
+
       - name: checkout
         uses: actions/checkout@v3
         
