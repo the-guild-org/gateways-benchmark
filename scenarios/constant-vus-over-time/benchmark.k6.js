@@ -42,7 +42,6 @@ export default function () {
     }
     
     query TestQuery {
-      __typename
       users {
         ...User
         reviews {
@@ -118,7 +117,7 @@ export default function () {
         !!json.data &&
         typeof json.data === "object" &&
         !Array.isArray(json.data) &&
-        !!json.data.__typename
+        !!json.data.users
       );
     },
   });

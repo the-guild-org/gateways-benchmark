@@ -14,9 +14,9 @@ const resolvers = {
     },
     shippingEstimate(object) {
       // free for expensive items
-      if (object.price > 1000) return 0;
+      if (object.price && object.price > 1000) return 0;
       // estimate is based on weight
-      return object.weight * 0.5;
+      return object.weight ? object.weight * 0.5 : 0;
     },
   },
 };
