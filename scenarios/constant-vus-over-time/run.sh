@@ -33,6 +33,8 @@ sleep 2
 
 export END_TIME="$(date +%s)"
 
+docker logs gateway-benchmark-gateway-1 > ./$1/gateway_log.txt
+
 rm -rf ./$1/overview.png || echo ""
 
 npx --quiet capture-website-cli "http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output ./$1/overview.png --width 1200 --height 740
