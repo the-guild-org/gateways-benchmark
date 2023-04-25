@@ -7,7 +7,7 @@
     "start": "tsx index.ts"
   },
   "dependencies": {
-    "@apollo/subgraph": "2.4.1",
+    "@apollo/subgraph": "2.4.2",
     "graphql-yoga": "3.9.1",
     "graphql": "16.6.0",
     "tsx": "3.12.6",
