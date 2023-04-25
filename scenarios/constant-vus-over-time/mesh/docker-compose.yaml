@@ -10,7 +10,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ./mesh
+      context: ${BASE_DIR:-.}/mesh
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 

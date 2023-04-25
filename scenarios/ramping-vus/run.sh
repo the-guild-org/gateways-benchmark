@@ -1,6 +1,10 @@
 #/bin/sh
 set -e
 
+# needed because we are taking containers from another directory, and Docker can be stupid sometimes
+
+export BASE_DIR=$( realpath ../constant-vus-over-time )
+
 docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml up -d --wait --force-recreate
 
 if [[ -z "${CI}" ]]; then
