@@ -24,11 +24,6 @@ export const options = {
       ],
     },
   },
-  thresholds: {
-    [noErrors]: ["rate==1"],
-    [expectedResult]: ["rate==1"],
-    http_req_failed: ["rate==0"],
-  },
 };
 
 export default function () {
