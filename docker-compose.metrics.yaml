@@ -53,3 +53,5 @@ services:
     privileged: true
     devices:
       - /dev/kmsg:/dev/kmsg
+    logging:
+      driver: none

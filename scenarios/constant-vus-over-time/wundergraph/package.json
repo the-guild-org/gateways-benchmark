@@ -1,0 +1,19 @@
+{
+  "name": "wundergraph",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn wundergraph",
+    "wundergraph": "wunderctl up --logs",
+    "build:wundergraph": "wunderctl generate",
+    "build": "npm run build:wundergraph"
+  },
+  "dependencies": {
+    "@wundergraph/sdk": "0.146.1",
+    "graphql": "16.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.16.0",
+    "typescript": "5.0.4"
+  }
+}

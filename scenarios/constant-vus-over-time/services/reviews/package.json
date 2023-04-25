@@ -1,0 +1,19 @@
+{
+  "name": "service-reviews",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "dependencies": {
+    "@apollo/subgraph": "2.4.1",
+    "graphql-yoga": "3.9.1",
+    "graphql": "16.6.0",
+    "tsx": "3.12.6",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.11"
+  }
+}

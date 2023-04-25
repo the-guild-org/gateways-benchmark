@@ -1,0 +1,13 @@
+{
+  "name": "mercurius",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "dependencies": {
+    "tsx": "3.12.6",
+    "typescript": "5.0.4",
+    "graphql": "16.6.0",
+    "fastify": "4.15.0",
+    "@mercuriusjs/gateway": "1.2.0"
+  }
+}

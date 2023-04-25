@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: ghcr.io/apollographql/router:v1.15.1
+    networks:
+      - test
+    ports:
+      - "0.0.0.0:4000:4000"
+    depends_on:
+      accounts: 
+        condition: service_healthy
+      inventory:
+        condition: service_healthy
+      products:
+        condition: service_healthy
+      reviews:
+        condition: service_healthy
+    volumes:
+      - type: bind
+        source: scenarios/constant-vus-over-time/apollo-router/supergraph.graphql
+        target: /dist/schema/local.graphql
+      - type: bind
+        source: scenarios/constant-vus-over-time/apollo-router/config.yaml
+        target: /dist/config/router.yaml
+    healthcheck:
+        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4000/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
+    command: ["-c", "config/router.yaml", "-s", "schema/local.graphql"]
+networks:
+  test:
+    name: test

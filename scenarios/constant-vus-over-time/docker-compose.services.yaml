@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  accounts:
+    image: service/accounts
+    networks:
+      - test
+    ports:
+      - 4001:4001
+    environment:
+      PORT: 4001
+    build:
+      context: ./services/accounts
+      dockerfile: ../Dockerfile
+    healthcheck:
+        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4001/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
+  inventory:
+    image: service/inventory
+    networks:
+      - test
+    ports:
+      - 4002:4002
+    environment:
+      PORT: 4002
+    build:
+      context: ./services/inventory
+      dockerfile: ../Dockerfile
+    healthcheck:
+        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4002/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
+  products:
+    image: service/products
+    networks:
+      - test
+    ports:
+      - 4003:4003
+    environment:
+      PORT: 4003
+    build:
+      context: ./services/products
+      dockerfile: ../Dockerfile
+    healthcheck:
+        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4003/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
+  reviews:
+    image: service/reviews
+    networks:
+      - test
+    ports:
+      - 4004:4004
+    environment:
+      PORT: 4004
+    build:
+      context: ./services/reviews
+      dockerfile: ../Dockerfile
+    healthcheck:
+        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4004/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
+networks:
+  test:
+    name: test
