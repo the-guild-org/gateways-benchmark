@@ -4,7 +4,7 @@ This repository is a collection is different scenarios and tests performed on di
 
 This goals of this repo:
 
-1. Provide a transparent, accurate and descriptive benchmark testing for different tools:
+1. **Provide a transparent, accurate and descriptive benchmark testing for different tools:**
 
     ➡️ All tests are running in Docker containers, with the same configuration.
 
@@ -16,7 +16,7 @@ This goals of this repo:
 
     ➡️ We are using a dedicated GitHub Actions runners, with `concurrency=1` to make sure tests are running as standalone. 
 
-2. Always be up to date:
+2. **Always be up to date:**
 
     ➡️ This allows tools to improve over time.
 
@@ -26,10 +26,11 @@ This goals of this repo:
 
     ➡️ [Renovate](https://github.com/renovatebot/renovate) keeps all dependencies up-to-date.
 
-3. Execute different scenarios that tries to measure real-life cases 
+3. **Various scenarios**
 
     ➡️ We are trying to create real-life scenarios based on [our experience and our customers](the-guild.dev). 
 
+    - Each scenario has differnt setup and measure different stats.
 
 # Scenarios 
 
