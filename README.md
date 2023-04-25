@@ -30,7 +30,7 @@ This goals of this repo:
 
     ➡️ We are trying to create real-life scenarios based on [our experience and our customers](the-guild.dev). 
 
-    - Each scenario has differnt setup and measure different stats.
+    ➡️ Each scenario has differnt setup and measure different stats.
 
 # Scenarios 
 

@@ -70,4 +70,4 @@ jobs:
         with:
           add: scenarios/constant-vus-over-time/README.md
           message: 'Update results for scenario: constant-vus-over-time'
-          pull: '--rebase'
+          pull: '--rebase --autostash'

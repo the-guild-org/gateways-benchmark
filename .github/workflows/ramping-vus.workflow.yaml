@@ -70,4 +70,4 @@ jobs:
         with:
           add: scenarios/ramping-vus/README.md
           message: 'Update results for scenario: ramping-vus'
-          pull: '--rebase'
+          pull: '--rebase --autostash'
