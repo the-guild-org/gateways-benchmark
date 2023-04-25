@@ -55,6 +55,10 @@ async function generateReport(artifactsRootPath: string) {
     )}`
   );
 
+  if (foundDirectories.length === 0) {
+    throw new Error("No directories found to generate report from!");
+  }
+
   const reportsData = await Promise.all(
     foundDirectories.map(async (dirName) => {
       const fullPath = join(artifactsRootPath, dirName);
@@ -104,6 +108,8 @@ async function generateReport(artifactsRootPath: string) {
         rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
         overviewImageUrl,
         httpImageUrl,
+        vus: jsonSummary.vus,
+        time: jsonSummary.time,
       };
     })
   );
@@ -115,6 +121,8 @@ async function generateReport(artifactsRootPath: string) {
     "## Overview for scenario: `constant-vus-over-time`",
     NEWLINE,
     pkgJson.description,
+    NEWLINE,
+    `This scenario was trying to reach ${validReportsData[0].vus} concurrent VUs over ${validReportsData[0].time}`,
     NEWLINE,
     "### Comparison",
     NEWLINE,

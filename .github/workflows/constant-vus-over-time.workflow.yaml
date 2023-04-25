@@ -54,6 +54,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
         with:
+          header: constant-vus-over-time
           path: scenarios/constant-vus-over-time/result.md
         env:
           GITHUB_TOKEN: ${{ secrets.githubToken }}

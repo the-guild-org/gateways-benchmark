@@ -9,9 +9,12 @@ const expectedResult = `expected_result`;
 new Rate(noErrors);
 new Rate(expectedResult);
 
+const vus = __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 100;
+const time = __ENV.BENCH_OVER_TIME || "30s";
+
 export const options = {
-  vus: __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 100,
-  duration: __ENV.BENCH_OVER_TIME || '30s',
+  vus: vus,
+  duration: time,
   thresholds: {
     [noErrors]: ["rate==1"],
     [expectedResult]: ["rate==1"],
@@ -129,7 +132,7 @@ export function handleSummary(data) {
   };
 
   if (__ENV.SUMMARY_PATH) {
-    out[`${__ENV.SUMMARY_PATH}/k6_summary.json`] = JSON.stringify(data);
+    out[`${__ENV.SUMMARY_PATH}/k6_summary.json`] = JSON.stringify(Object.assign(data, { vus, time}));
     out[`${__ENV.SUMMARY_PATH}/k6_summary.txt`] = textSummary(data, {
       indent: " ",
       enableColors: false,

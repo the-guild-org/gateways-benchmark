@@ -14,8 +14,8 @@ jobs:
     name: ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
-      vu: 100
-      time: 40s
+      vu: 200
+      time: 60s
       scenarioDir: scenarios/ramping-vus
 
   report:
@@ -54,6 +54,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
         with:
+          header: ramping-vus
           path: scenarios/ramping-vus/result.md
         env:
           GITHUB_TOKEN: ${{ secrets.githubToken }}
