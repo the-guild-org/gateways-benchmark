@@ -14,7 +14,7 @@ jobs:
     name: ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
-      vu: 200
+      vu: 1000
       time: 60s
       scenarioDir: scenarios/ramping-vus
 

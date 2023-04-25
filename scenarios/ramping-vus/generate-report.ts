@@ -118,7 +118,7 @@ async function generateReport(artifactsRootPath: string) {
     .sort((a, b) => a.p95_duration - b.p95_duration);
 
   const markdownLines: string[] = [
-    "## Overview for scenario: `constant-vus-over-time`",
+    "## Overview for scenario: `ramping-vus`",
     NEWLINE,
     pkgJson.description,
     NEWLINE,
