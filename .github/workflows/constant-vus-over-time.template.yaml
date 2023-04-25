@@ -16,8 +16,9 @@ on:
 
 jobs:
   test:
-    runs-on: 
-      group: benchmark-runners
+    runs-on: ubuntu-latest
+    # runs-on: 
+    #   group: benchmark-runners
     timeout-minutes: 10
     name: benchmark
     steps:

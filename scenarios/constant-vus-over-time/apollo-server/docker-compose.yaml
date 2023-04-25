@@ -10,7 +10,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ./apollo-server
+      context: ${BASE_DIR:-.}/apollo-server
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 

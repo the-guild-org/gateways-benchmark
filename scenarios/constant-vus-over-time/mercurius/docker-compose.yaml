@@ -10,7 +10,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ./mercurius
+      context: ${BASE_DIR:-.}/mercurius
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 

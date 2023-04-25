@@ -9,16 +9,23 @@ const expectedResult = `expected_result`;
 new Rate(noErrors);
 new Rate(expectedResult);
 
-const vus = __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 100;
+const vus = __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 500;
 const time = __ENV.BENCH_OVER_TIME || "30s";
 
 export const options = {
-  vus: vus,
-  duration: time,
-  thresholds: {
-    [noErrors]: ["rate==1"],
-    [expectedResult]: ["rate==1"],
-    http_req_failed: ["rate==0"],
+  scenarios: {
+    test: {
+      executor: "ramping-vus",
+      startVUs: 50,
+      stages: [
+        {
+          duration: time,
+          target: vus,
+        },
+        { duration: "5s", target: 50 },
+        { duration: "5s", target: 0 },
+      ],
+    },
   },
 };
 
@@ -90,18 +97,31 @@ export default function () {
     },
   };
 
-  const res = http.post(__ENV.GATEWAY_ENDPOINT || "http://localhost:4000/graphql", payload, params);
-  
+  const res = http.post(
+    __ENV.GATEWAY_ENDPOINT || "http://localhost:4000/graphql",
+    payload,
+    params
+  );
+
   if (res.status !== 200) {
-    console.log(`‼️ Failed to run HTTP request:`, res)
+    console.log(`‼️ Failed to run HTTP request:`, res);
   }
 
-  if (res.status === 200 && res.body && res.body.errors && res.body.errors.length > 0) {
-    console.log(`‼️ Got GraphQL errors:`, res.body.errors)
+  if (
+    res.status === 200 &&
+    res.body &&
+    res.body.errors &&
+    res.body.errors.length > 0
+  ) {
+    console.log(`‼️ Got GraphQL errors:`, res.body.errors);
+  }
+
+  if (res.body === null) {
+    console.log(`‼️ Got null body:`, res);
   }
 
   check(res, {
-    'response code was 200': (res) => res.status == 200,
+    "response code was 200": (res) => res.status == 200,
     [noErrors]: (resp) => {
       const json = resp.json();
       return (
@@ -128,7 +148,7 @@ export default function () {
 
 export function handleSummary(data) {
   const out = {
-    'stdout': textSummary(data, { indent: ' ', enableColors: true })
+    stdout: textSummary(data, { indent: " ", enableColors: true }),
   };
 
   if (__ENV.SUMMARY_PATH) {
@@ -138,7 +158,6 @@ export function handleSummary(data) {
       enableColors: false,
     });
   }
-
 
   return out;
 }

@@ -10,7 +10,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ./apollo-gateway-with-yoga
+      context: ${BASE_DIR:-.}/apollo-gateway-with-yoga
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 
