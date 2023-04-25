@@ -15,7 +15,7 @@ jobs:
     with:
       gateway: ${{ matrix.directory }}
       vu: 100
-      time: 60s
+      time: 30s
       scenarioDir: scenarios/constant-vus-over-time
 
   report:
