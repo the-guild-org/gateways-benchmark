@@ -1,4 +1,4 @@
-name: constant-vus-over-time
+name: ramping-vus
 on:
   pull_request: {}
   push:
@@ -14,9 +14,9 @@ jobs:
     name: ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
-      vu: 100
-      time: 30s
-      scenarioDir: scenarios/constant-vus-over-time
+      vu: 1000
+      time: 40s
+      scenarioDir: scenarios/ramping-vus
 
   report:
     runs-on: ubuntu-latest
@@ -41,11 +41,11 @@ jobs:
       
       - name: install dependencies
         run: yarn install
-        working-directory: scenarios/constant-vus-over-time
+        working-directory: scenarios/ramping-vus
 
       - name: generate report
         run: yarn generate-report ${{ steps.download.outputs.download-path }} 
-        working-directory: scenarios/constant-vus-over-time
+        working-directory: scenarios/ramping-vus
         env:
           CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
           CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
@@ -54,19 +54,19 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
         with:
-          path: scenarios/constant-vus-over-time/result.md
+          path: scenarios/ramping-vus/result.md
         env:
           GITHUB_TOKEN: ${{ secrets.githubToken }}
 
       - name: copy report
         if: github.event_name == 'push'
         run: |
-          cp scenarios/constant-vus-over-time/result.md scenarios/constant-vus-over-time/README.md
+          cp scenarios/ramping-vus/result.md scenarios/ramping-vus/README.md
 
       - name: publish report
         uses: EndBug/add-and-commit@v9
         if: github.event_name == 'push'
         with:
-          add: scenarios/constant-vus-over-time/README.md
-          message: 'Update results for scenario: constant-vus-over-time'
+          add: scenarios/ramping-vus/README.md
+          message: 'Update results for scenario: ramping-vus'
           pull: '--rebase'

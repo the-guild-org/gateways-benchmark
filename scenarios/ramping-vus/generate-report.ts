@@ -77,8 +77,6 @@ async function generateReport(artifactsRootPath: string) {
         console.warn(
           `Could not find CF_IMAGES_LINK or CF_IMAGES_TOKEN in env! Skipping...`
         );
-        overviewImageUrl = "**INVALID CLOUDFLARE IMAGES LINK**";
-        httpImageUrl = "**INVALID CLOUDFLARE IMAGES LINK**";
       } else {
         const overviewImageFilePath = join(fullPath, "./overview.png");
         const httpImageFilePath = join(fullPath, "./http.png");
@@ -102,6 +100,7 @@ async function generateReport(artifactsRootPath: string) {
         jsonSummary,
         txtSummary: readFileSync(txtSummaryFilePath, 'utf8'),
         rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
+        p95_duration: Math.floor(jsonSummary.metrics.http_req_duration.values["p(95)"]),
         overviewImageUrl,
         httpImageUrl,
       };
@@ -109,7 +108,7 @@ async function generateReport(artifactsRootPath: string) {
   );
   const validReportsData = reportsData
     .filter(notEmpty)
-    .sort((a, b) => b.rps - a.rps);
+    .sort((a, b) => a.p95_duration - b.p95_duration);
 
   const markdownLines: string[] = [
     "## Overview for scenario: `constant-vus-over-time`",
@@ -121,20 +120,26 @@ async function generateReport(artifactsRootPath: string) {
     tablemark(
       validReportsData.map((v) => ({
         gw: v.name,
+        p95_duration: `${v.p95_duration}ms`,
         rps: Math.round(v.rps),
         requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
         duration: `avg: ${Math.round(
           v.jsonSummary.metrics.http_req_duration.values.avg
         )}ms, p95: ${
           Math.round(v.jsonSummary.metrics.http_req_duration.values["p(95)"])
+        }ms, max: ${
+          Math.round(v.jsonSummary.metrics.http_req_duration.values.max)
+        }ms, med: ${
+          Math.round(v.jsonSummary.metrics.http_req_duration.values.med)
         }ms`,
       })),
       {
         columns: [
           { name: "Gateway" },
-          { name: "RPS ⬇️", align: "center" },
+          { name: "duration(p95)⬇️", align: "center" },
+          { name: "RPS", align: "center" },
           { name: "Requests", align: "center" },
-          { name: "Duration", align: "center" },
+          { name: "Durations", align: "center" },
         ],
       }
     ),
@@ -153,11 +158,11 @@ async function generateReport(artifactsRootPath: string) {
             NEWLINE,
             "**Performance Overview**", 
             NEWLINE,
-            `<img src="${info.overviewImageUrl}" alt="Performance Overview" />`,
+            info.overviewImageUrl ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />` : '**no-image-available**',
             NEWLINE,
             "**HTTP Overview**", 
             NEWLINE,
-            `<img src="${info.httpImageUrl}" alt="HTTP Overview" />`,
+            info.httpImageUrl ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />` : '**no-image-available**',
             NEWLINE,
           ].join("\n")
         )
