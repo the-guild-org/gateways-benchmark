@@ -17,7 +17,7 @@ export const options = {
       stages: [
         {
           duration: __ENV.BENCH_OVER_TIME || "30s",
-          target: __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 1000,
+          target: __ENV.BENCH_VUS ? parseInt(__ENV.BENCH_VUS) : 500,
         },
         { duration: "5s", target: 50 },
         { duration: "5s", target: 0 },
