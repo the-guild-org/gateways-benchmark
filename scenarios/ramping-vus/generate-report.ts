@@ -122,7 +122,7 @@ async function generateReport(artifactsRootPath: string) {
     NEWLINE,
     pkgJson.description,
     NEWLINE,
-    `This scenario was running ${validReportsData[0].vus} VUs over ${validReportsData[0].time}`,
+    `This scenario was trying to reach ${validReportsData[0].vus} concurrent VUs over ${validReportsData[0].time}`,
     NEWLINE,
     "### Comparison",
     NEWLINE,
