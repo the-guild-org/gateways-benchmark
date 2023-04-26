@@ -11,6 +11,6 @@
     "@graphql-tools/federation": "0.0.1"
   },
   "devDependencies": {
-    "@types/node": "18.16.0"
+    "@types/node": "18.16.1"
   }
 }
