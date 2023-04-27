@@ -5,6 +5,11 @@ import { parse } from "graphql";
 import { typeDefs } from "./typedefs";
 
 const resolvers = {
+  User: {
+    __resolveReference(user, context) {
+      return { ...user, ...context.users.find((u) => u.id === user.id) };
+    },
+  },
   Query: {
     me(_root, _args, context) {
       return context.users[0];

@@ -9,7 +9,7 @@ jobs:
   benchmark:
     strategy:
       matrix:
-        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph, stitching-federation-with-yoga]
+        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph]
     uses: ./.github/workflows/constant-vus-over-time.template.yaml
     name: ${{ matrix.directory }}
     with:

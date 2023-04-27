@@ -6,11 +6,20 @@ import { typeDefs } from "./typedefs";
 
 const resolvers = {
   Review: {
+    __resolveReference(review) {
+      return {
+        ...review,
+        ...reviews.find((r) => r.id === review.id),
+      };
+    },
     author(review) {
       return { __typename: "User", id: review.authorID };
     },
   },
   User: {
+    __resolveReference(user) {
+      return { ...user, ...usernames.find((u) => u.id === user.id) };
+    },
     reviews(user) {
       return reviews.filter((review) => review.authorID === user.id);
     },
