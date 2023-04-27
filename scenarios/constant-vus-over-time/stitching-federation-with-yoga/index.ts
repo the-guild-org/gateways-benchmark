@@ -2,8 +2,8 @@ import { createServer } from "node:http";
 import { createYoga } from "graphql-yoga";
 import { getStitchedSchemaWithUrls } from "@graphql-tools/federation";
 
-async function main() {
-  const schema = await getStitchedSchemaWithUrls([
+function main() {
+  const schema = getStitchedSchemaWithUrls([
     {
       endpoint: "http://accounts:4001/graphql",
     },
