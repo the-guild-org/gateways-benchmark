@@ -584,19 +584,19 @@
     fast-url-parser "^1.1.3"
     tslib "^2.3.1"
 
-"@wundergraph/protobuf@^0.108.0":
-  version "0.108.0"
-  resolved "https://registry.yarnpkg.com/@wundergraph/protobuf/-/protobuf-0.108.0.tgz#9fcdd0f06ee238905cbc532d445ad5f4d9b4f800"
-  integrity sha512-rCI2cN37wYXKgk8gxKRr1FjPNRP8RDlyhiWoQd/IJ1Z+mEg8sWDkqoFx2hf8gG+WVr1MdHRvmolAw3eomdGtTw==
+"@wundergraph/protobuf@^0.109.0":
+  version "0.109.0"
+  resolved "https://registry.yarnpkg.com/@wundergraph/protobuf/-/protobuf-0.109.0.tgz#8ec8909f28c97fd9049890ff8dae580de90d1950"
+  integrity sha512-BMytxI6txSKnuTpFqYW7R7b/FeOF04I95fIs4ZQedOxdN/EeERUjMfUxs75RmKl5NFmVCMItvi17MeNKwVIgTQ==
   dependencies:
     long "^5.2.0"
     protobufjs "^6.11.2"
     ts-proto "^1.112.1"
 
-"@wundergraph/sdk@0.146.1":
-  version "0.146.1"
-  resolved "https://registry.yarnpkg.com/@wundergraph/sdk/-/sdk-0.146.1.tgz#037f2b3f993429c859116a5a5d866f4337b5d517"
-  integrity sha512-A90gaHjx7Nyq7br6KFu+1ndD/qgY9p1t004uT8fRfEt2V7XrHS6AV9AK2mjvUTPWM7NlwpgHDdQQXgkyTwBHXA==
+"@wundergraph/sdk@0.148.2":
+  version "0.148.2"
+  resolved "https://registry.yarnpkg.com/@wundergraph/sdk/-/sdk-0.148.2.tgz#25f4265a647796a2dcef1d58da63ad1d39a9eb88"
+  integrity sha512-Wrka4KjTsASSNSg8zRQW3aQmQntDNlQBMg2JsCB0B7RqlxSJ3NsI8FqQEhtfF0bQ8zzHb+0Um+lIXUUGr8WHOA==
   dependencies:
     "@fastify/formbody" "^7.3.0"
     "@graphql-mesh/cross-helpers" "^0.3.4"
@@ -609,8 +609,8 @@
     "@prisma/generator-helper" "^3.9.2"
     "@web-std/fetch" "^4.1.0"
     "@whatwg-node/fetch" "^0.8.4"
-    "@wundergraph/protobuf" "^0.108.0"
-    "@wundergraph/wunderctl" "^0.143.0"
+    "@wundergraph/protobuf" "^0.109.0"
+    "@wundergraph/wunderctl" "^0.145.2"
     axios "^0.26.1"
     axios-retry "^3.3.1"
     close-with-grace "^1.1.0"
@@ -622,6 +622,7 @@
     graphql "^16.6.0"
     graphql-helix "^1.13.0"
     handlebars "^4.7.7"
+    https-proxy-agent "^5.0.1"
     js-yaml "^4.1.0"
     json-schema "^0.4.0"
     json-schema-to-typescript "^11.0.3"
@@ -632,7 +633,6 @@
     pino "^8.11.0"
     pino-pretty "^10.0.0"
     postman-collection "^4.1.1"
-    prettier "^2.7.1"
     protobufjs "^6.11.2"
     swagger2openapi "^7.0.8"
     terminate "^2.5.0"
@@ -643,16 +643,16 @@
     zod "^3.20.2"
     zod-to-json-schema "^3.20.2"
 
-"@wundergraph/wunderctl@^0.143.0":
-  version "0.143.1"
-  resolved "https://registry.yarnpkg.com/@wundergraph/wunderctl/-/wunderctl-0.143.1.tgz#6f2476c236a486be46258bb2371585f25665f8ad"
-  integrity sha512-9a1IeLSlx59xN2xWdrm/FBkeGobhgc8SnnmSqZSCXlnCUrpLalE/vHL8Ely4hm5gIpFzk2PIQlTGG1MQwt9TeA==
+"@wundergraph/wunderctl@^0.145.2":
+  version "0.145.2"
+  resolved "https://registry.yarnpkg.com/@wundergraph/wunderctl/-/wunderctl-0.145.2.tgz#58bdac33b5c87d22dbd032d186a85fa5a7d4959f"
+  integrity sha512-VwHXJZ3aPD5r1Hd3V60BL7FTJlsgsaPabEPzF/ALWel/6QEG7x1D+sb9gpYDYqOrUYBoU0NtxAqvOGGlg7ODJg==
   dependencies:
     axios "^0.26.1"
     debug "^4.3.4"
     execa "5.1.1"
     rimraf "^3.0.2"
-    tar "^6.1.11"
+    tar "^6.1.13"
 
 "@zxing/text-encoding@0.9.0":
   version "0.9.0"
@@ -680,6 +680,13 @@ acorn@^8.4.1:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
   integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
+
+agent-base@6:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"
+  integrity sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==
+  dependencies:
+    debug "4"
 
 ajv-formats@2.1.1, ajv-formats@^2.1.1:
   version "2.1.1"
@@ -1011,7 +1018,7 @@ dayjs@1.11.7:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
   integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
 
-debug@4.3.4, debug@^4.0.0, debug@^4.3.4:
+debug@4, debug@4.3.4, debug@^4.0.0, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
@@ -1479,6 +1486,14 @@ http2-client@^1.2.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/http2-client/-/http2-client-1.3.5.tgz#20c9dc909e3cc98284dd20af2432c524086df181"
   integrity sha512-EC2utToWl4RKfs5zd36Mxq7nzHHBuomZboI0yYL6Y0RmBgT7Sgkq4rQ0ezFTYoIsSs7Tm9SJe+o2FcAg6GBhGA==
+
+https-proxy-agent@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz#c59ef224a04fe8b754f3db0063a25ea30d0005d6"
+  integrity sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==
+  dependencies:
+    agent-base "6"
+    debug "4"
 
 human-signals@^2.1.0:
   version "2.1.0"
@@ -2132,7 +2147,7 @@ postman-url-encoder@3.0.5:
   dependencies:
     punycode "^2.1.1"
 
-prettier@^2.6.2, prettier@^2.7.1:
+prettier@^2.6.2:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
@@ -2528,7 +2543,7 @@ swagger2openapi@^7.0.8:
     yaml "^1.10.0"
     yargs "^17.0.1"
 
-tar@^6.1.11:
+tar@^6.1.13:
   version "6.1.13"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.13.tgz#46e22529000f612180601a6fe0680e7da508847b"
   integrity sha512-jdIBIN6LTIe2jqzay/2vtYLlBHa3JF42ot3h1dW8Q0PaAG4v8rm0cvpVePtau5C6OKXGGcgO9q2AMNSWxiLqKw==
