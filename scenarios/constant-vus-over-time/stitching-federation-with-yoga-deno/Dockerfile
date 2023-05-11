@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine
+FROM denoland/deno:alpine-1.33.2
 
 RUN apk --no-cache add curl
 
