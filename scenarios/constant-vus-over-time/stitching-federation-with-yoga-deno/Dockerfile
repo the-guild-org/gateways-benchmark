@@ -1,7 +1,5 @@
 FROM denoland/deno:1.10.3
 
-RUN apk --no-cache add curl
-
 RUN addgroup -S gw && adduser -S gw -G gw
 
 WORKDIR /home/gw
