@@ -12,8 +12,8 @@ USER deno
 
 ADD . .
 
-ENV PORT 4000
-
 RUN deno cache index.ts
+
+ENV PORT 4000
 
 CMD ["run", "--unstable", "--allow-net", "--allow-env", "--no-check", "index.ts"]
