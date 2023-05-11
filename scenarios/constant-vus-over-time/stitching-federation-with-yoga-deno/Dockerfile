@@ -7,7 +7,7 @@ RUN addgroup -S gw && adduser -S gw -G gw
 WORKDIR /home/gw
 COPY index.ts ./
 
-RUN deno cache main.ts
+RUN deno cache index.ts
 ENV PORT 4000
 
 EXPOSE 4000
