@@ -20,8 +20,11 @@ async function main() {
 
   const yoga = createYoga({ schema });
   const port = process.env.PORT ? parseInt(Deno.env.get('PORT')) : 4000;
-  return serve(yoga, {
+  serve(yoga, {
     port,
+    onListen() {
+      console.info(`Server is running on http://localhost:${port}/graphql`);
+    }
   })
 }
 
