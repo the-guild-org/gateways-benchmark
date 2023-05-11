@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph, stitching-federation-with-yoga, stitching-federation-with-yoga-deno]
+        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph, stitching-federation-with-yoga, stitching-federation-with-yoga-deno, stitching-federation-with-yoga-bun]
     uses: ./.github/workflows/constant-vus-over-time.template.yaml
     name: ${{ matrix.directory }}
     with:
