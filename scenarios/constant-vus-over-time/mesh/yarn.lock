@@ -926,9 +926,9 @@
     ws "8.13.0"
 
 "@graphql-tools/executor-http@^0.1.7":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/executor-http/-/executor-http-0.1.9.tgz#ddd74ef376b4a2ed59c622acbcca068890854a30"
-  integrity sha512-tNzMt5qc1ptlHKfpSv9wVBVKCZ7gks6Yb/JcYJluxZIT4qRV+TtOFjpptfBU63usgrGVOVcGjzWc/mt7KhmmpQ==
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/executor-http/-/executor-http-0.1.10.tgz#faf48e18e62a925796c9653c2f50cf2095bc8e6f"
+  integrity sha512-hnAfbKv0/lb9s31LhWzawQ5hghBfHS+gYWtqxME6Rl0Aufq9GltiiLBcl7OVVOnkLF0KhwgbYP1mB5VKmgTGpg==
   dependencies:
     "@graphql-tools/utils" "^9.2.1"
     "@repeaterjs/repeater" "^3.0.4"
@@ -1907,9 +1907,9 @@ fbjs@^3.0.0:
     ua-parser-js "^0.7.30"
 
 fets@^0.1.1:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/fets/-/fets-0.1.4.tgz#f07b4b7d7c1ebd5d218e1d4dfa025fc71f3baf76"
-  integrity sha512-xGyKf/spFh8rgiy/I0h/Ab798Vj3mcKF5ociCuPkRUbbPYXVgf8f0fLwi40TkLJzFPEfW5W75J04poMysyLK9Q==
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/fets/-/fets-0.1.5.tgz#da509e868d2b51fee534f7c7100586e5802eee54"
+  integrity sha512-mL/ya591WOgCP1yBBPbp8E37nynj8QQF6iQCUVl0aHDL80BZ9SOL4BcKBy0dnKdC+clnnAkMm05KB9hsj4m4jQ==
   dependencies:
     "@ardatan/fast-json-stringify" "^0.0.6"
     "@whatwg-node/cookie-store" "^0.0.1"
