@@ -19,7 +19,8 @@ async function main() {
   ]);
 
   const yoga = createYoga({ schema });
-  const port = process.env.PORT ? parseInt(Deno.env.get('PORT')) : 4000;
+  const portEnv = Deno.env.get('PORT');
+  const port = portEnv ? parseInt(portEnv) : 4000;
   serve(yoga, {
     port,
     onListen() {
