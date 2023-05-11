@@ -11,6 +11,8 @@ COPY config ./
 RUN yarn install --production
 ENV PORT 4000
 
+RUN yarn build
+
 EXPOSE 4000
 ENV CONFIG_PATH "/config"
 ENV NODE_DEV production
