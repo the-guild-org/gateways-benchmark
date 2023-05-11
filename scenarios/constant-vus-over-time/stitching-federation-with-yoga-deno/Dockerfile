@@ -4,15 +4,16 @@ RUN apk --no-cache add curl
 
 RUN addgroup -S gw && adduser -S gw -G gw
 
-WORKDIR /home/gw
-COPY index.ts ./
-
-RUN deno cache index.ts
-ENV PORT 4000
-
 EXPOSE 4000
 
-USER gw
-WORKDIR /home/gw
+WORKDIR /home/deno
 
-CMD deno run --unstable --allow-net --allow-env --no-check index.ts
+USER deno
+
+ADD . .
+
+ENV PORT 4000
+
+RUN deno cache index.ts
+
+CMD ["run", "--unstable", "--allow-net", "--allow-env", "--no-check", "index.ts"]
