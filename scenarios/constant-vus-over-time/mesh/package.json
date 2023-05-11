@@ -1,8 +1,7 @@
 {
   "name": "mesh-gateway",
   "scripts": {
-    "build": "graphql-mesh build",
-    "start": "graphql-mesh start --fork"
+    "start": "graphql-mesh dev --fork"
   },
   "dependencies": {
     "graphql": "16.6.0",
