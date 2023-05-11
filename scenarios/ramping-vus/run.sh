@@ -5,6 +5,13 @@ set -e
 
 export BASE_DIR=$( realpath ../constant-vus-over-time )
 
+on_error(){
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml ps
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml logs
+}
+ 
+trap 'on_error' ERR
+
 docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml up -d --wait --force-recreate
 
 if [[ -z "${CI}" ]]; then

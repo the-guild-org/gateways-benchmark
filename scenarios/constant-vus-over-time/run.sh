@@ -15,6 +15,13 @@ export BENCH_OVER_TIME=60s
 # - overview.png - Grafana dashboard screenshot (memory, cpu, overview of k6) 
 # - http.png - HTTP results breakdown 
 
+on_error(){
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml ps
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml logs
+}
+ 
+trap 'on_error' ERR
+
 docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml up -d --wait --force-recreate
 
 if [[ -z "${CI}" ]]; then
