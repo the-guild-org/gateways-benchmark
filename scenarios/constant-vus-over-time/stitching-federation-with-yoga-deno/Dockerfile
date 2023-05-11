@@ -1,4 +1,6 @@
-FROM denoland/deno:1.10.3
+FROM denoland/deno:alpine
+
+RUN apk --no-cache add curl
 
 RUN addgroup -S gw && adduser -S gw -G gw
 
