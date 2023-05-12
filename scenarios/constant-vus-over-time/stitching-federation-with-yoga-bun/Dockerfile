@@ -1,4 +1,4 @@
-FROM oven/bun
+FROM oven/bun:canary
 
 COPY index.ts ./
 COPY package.json yarn.lock ./
