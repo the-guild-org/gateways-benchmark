@@ -6,7 +6,7 @@
   "dependencies": {
     "graphql": "16.6.0",
     "tslib": "2.5.0",
-    "@graphql-mesh/cli": "0.82.35",
+    "@graphql-mesh/cli": "0.82.36-alpha-20230512122129-6abcc6e9e",
     "@graphql-mesh/graphql": "0.93.1"
   }
 }
