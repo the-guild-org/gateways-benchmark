@@ -22,6 +22,7 @@ async function main() {
     port,
     fetch: yoga,
   });
+  console.info('Server is running on http://localhost:4000/graphql');
 }
 
 main().catch(console.error);
