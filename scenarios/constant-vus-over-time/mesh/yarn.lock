@@ -713,10 +713,10 @@
   dependencies:
     localforage "1.10.0"
 
-"@graphql-mesh/cli@0.82.36-alpha-20230512122129-6abcc6e9e":
-  version "0.82.36-alpha-20230512122129-6abcc6e9e"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.82.36-alpha-20230512122129-6abcc6e9e.tgz#5cb93e5877665a3bcf437e0688c707713b9d8fd3"
-  integrity sha512-DnbkrXkFp8Ej1WE7Nvi9ldlj93kHVTNTnrvvWl0PlMTz5VPVmwzhYpxpvXBdeAkvVWOiVdzb0Wwvph15IwORXw==
+"@graphql-mesh/cli@0.82.36-alpha-20230512125628-f943232ed":
+  version "0.82.36-alpha-20230512125628-f943232ed"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.82.36-alpha-20230512125628-f943232ed.tgz#9fa2bd9808256b802166ebc408857b84a5e3bbb5"
+  integrity sha512-SIgwkdqxa4f9zFp71kj2n6UvpNP6mboytp767XolVR4/dfrKOdWrluKU0DhjPTBDaUeC1hhX6Ai/31SdZftqhQ==
   dependencies:
     "@graphql-codegen/core" "^3.1.0"
     "@graphql-codegen/typed-document-node" "^4.0.1"
