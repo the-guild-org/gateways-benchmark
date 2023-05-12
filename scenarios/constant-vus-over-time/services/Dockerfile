@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:20-alpine
 
 RUN apk --no-cache add curl
 
@@ -9,7 +9,7 @@ COPY . ./
 
 RUN yarn install --production
 
-ENV NODE_DEV production
+ENV NODE_ENV production
 ENV PORT 3000
 EXPOSE 3000
 

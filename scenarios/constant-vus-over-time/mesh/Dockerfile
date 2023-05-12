@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:20-alpine
 
 RUN apk --no-cache add curl
 
@@ -13,7 +13,7 @@ ENV PORT 4000
 
 EXPOSE 4000
 ENV CONFIG_PATH "/config"
-ENV NODE_DEV production
+ENV NODE_ENV production
 
 USER gw
 WORKDIR /home/gw

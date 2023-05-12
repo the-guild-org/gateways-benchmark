@@ -1,4 +1,3 @@
-import { createServer } from "node:http";
 import { createYoga } from "graphql-yoga";
 import { getStitchedSchemaWithUrls } from "@graphql-tools/federation";
 
@@ -17,15 +16,12 @@ async function main() {
       endpoint: "http://inventory:4002/graphql",
     },
   ]);
-
   const yoga = createYoga({ schema });
-  const server = createServer(yoga);
   const port = process.env.PORT ? parseInt(process.env.PORT) : 4000;
   Bun.serve({
     port,
     fetch: yoga,
   });
-  console.info(`Server is running on http://localhost:${port}/graphql`);
 }
 
 main().catch(console.error);

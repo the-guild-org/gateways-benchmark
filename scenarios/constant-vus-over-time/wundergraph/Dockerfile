@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:20-alpine
 
 RUN apk --no-cache add curl
 
@@ -10,7 +10,7 @@ RUN yarn install
 
 
 ENV CONFIG_PATH "/config"
-ENV NODE_DEV production
+ENV NODE_ENV production
 ENV WG_NODE_HOST 0.0.0.0
 ENV WG_NODE_PORT 4000
 
