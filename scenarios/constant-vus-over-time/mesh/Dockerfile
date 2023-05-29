@@ -1,6 +1,8 @@
 FROM node:19-alpine
 
 RUN apk --no-cache add curl
+RUN apk add --no-cache libc6-compat 
+RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
 
 RUN addgroup -S gw && adduser -S gw -G gw
 
@@ -13,7 +15,7 @@ ENV PORT 4000
 
 EXPOSE 4000
 ENV CONFIG_PATH "/config"
-ENV NODE_DEV production
+ENV NODE_ENV production
 
 USER gw
 WORKDIR /home/gw

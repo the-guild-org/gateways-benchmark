@@ -16,7 +16,9 @@ const resolvers = {
       // free for expensive items
       if (object.price && object.price > 1000) return 0;
       // estimate is based on weight
-      return object.weight ? object.weight * 0.5 : 0;
+      const estimate = object.weight ? object.weight * 0.5 : 0;
+      if (!isNaN(estimate)) return estimate;
+      return 0;
     },
   },
 };

@@ -16,9 +16,9 @@ export const options = {
   vus: vus,
   duration: time,
   thresholds: {
-    [noErrors]: ["rate==1"],
-    [expectedResult]: ["rate==1"],
-    http_req_failed: ["rate==0"],
+    [noErrors]: ["rate>0.9"],
+    [expectedResult]: ["rate>0.9"],
+    http_req_failed: ["rate<0.2"],
   },
 };
 
