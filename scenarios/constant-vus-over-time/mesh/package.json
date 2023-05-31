@@ -1,12 +1,16 @@
 {
   "name": "mesh-gateway",
   "scripts": {
-    "start": "graphql-mesh dev"
+    "start": "ALIEN_UWS=1 graphql-mesh dev"
   },
   "dependencies": {
     "graphql": "16.6.0",
     "tslib": "2.5.0",
     "@graphql-mesh/cli": "0.83.0-alpha-20230531132950-d28a5c739",
     "@graphql-mesh/graphql": "0.94.0-alpha-20230531132950-d28a5c739"
+  },
+  "resolutions": {
+    "@whatwg-node/fetch": "0.9.1-alpha-20230531143520-481e7fa",
+    "@whatwg-node/node-fetch": "0.5.0-alpha-20230531143520-481e7fa"
   }
 }
