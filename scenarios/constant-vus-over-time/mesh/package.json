@@ -1,7 +1,7 @@
 {
   "name": "mesh-gateway",
   "scripts": {
-    "start": "ALIEN_UWS=1 graphql-mesh dev"
+    "start": "graphql-mesh dev"
   },
   "dependencies": {
     "graphql": "16.6.0",
