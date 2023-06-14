@@ -1,9 +1,9 @@
-FROM node:19-alpine
+FROM node:20-alpine
 
 RUN apk --no-cache add curl
 
 WORKDIR /home/gw
-COPY package.json yarn.lock ./
+COPY package.json ./
 COPY .wundergraph .graphqlrc.yaml tsconfig.json ./
 
 RUN yarn install

@@ -13,3 +13,4 @@ engine.bin
 *.png
 result.md
 gateway_log.txt
+yarn.lock

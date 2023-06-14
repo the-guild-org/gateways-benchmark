@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:20-alpine
 
 RUN apk --no-cache add curl
 
@@ -6,7 +6,7 @@ RUN addgroup -S gw && adduser -S gw -G gw
 
 WORKDIR /home/gw
 COPY supergraph.graphql index.ts ./
-COPY package.json yarn.lock ./
+COPY package.json ./
 
 RUN yarn install --production
 ENV PORT 4000
