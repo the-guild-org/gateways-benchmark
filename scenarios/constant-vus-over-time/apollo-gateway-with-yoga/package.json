@@ -11,6 +11,7 @@
     "@envelop/apollo-federation": "^4.0.0",
     "graphql-yoga": "^4.0.1",
     "@apollo/gateway": "^2.4.9",
-    "@apollo/composition": "^2.4.9"
+    "@apollo/composition": "^2.4.9",
+    "uWebSockets": "uNetworking/uWebSockets.js#v20.30.0"
   }
 }
