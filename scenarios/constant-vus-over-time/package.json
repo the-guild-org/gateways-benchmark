@@ -9,7 +9,7 @@
       "tablemark": "3.0.0",
       "tsx": "3.12.6",
       "typescript": "5.0.4",
-      "graphql": "16.6.0",
+      "graphql": "^16.7.1",
       "@apollo/composition": "2.4.2"
     },
     "devDependencies": {

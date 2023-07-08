@@ -6,7 +6,7 @@
   "dependencies": {
     "tsx": "3.12.6",
     "typescript": "5.0.4",
-    "graphql": "16.6.0",
+    "graphql": "^16.7.1",
     "@apollo/server": "4.7.0",
     "@apollo/gateway": "2.4.2",
     "@apollo/composition": "2.4.2"

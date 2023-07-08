@@ -7,11 +7,11 @@
     "start": "tsx index.ts"
   },
   "dependencies": {
-    "@apollo/subgraph": "2.4.2",
-    "graphql-yoga": "3.9.1",
-    "graphql": "16.6.0",
-    "tsx": "3.12.6",
-    "typescript": "5.0.4"
+    "@apollo/subgraph": "^2.4.9",
+    "graphql-yoga": "^4.0.3",
+    "graphql": "^16.7.1",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
     "@types/node": "18.16.1"
