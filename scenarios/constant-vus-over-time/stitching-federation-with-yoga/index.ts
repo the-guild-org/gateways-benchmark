@@ -1,6 +1,6 @@
-import { createServer } from "node:http";
 import { createYoga } from "graphql-yoga";
 import { getStitchedSchemaWithUrls } from "@graphql-tools/federation";
+import { App } from 'uWebSockets'
 
 async function main() {
   const schema = await getStitchedSchemaWithUrls([
@@ -19,10 +19,10 @@ async function main() {
   ]);
 
   const yoga = createYoga({ schema });
-  const server = createServer(yoga);
+  const server = App().any("/*", yoga);
   const port = process.env.PORT ? parseInt(process.env.PORT) : 4000;
 
-  server.listen(port, () => {
+  server.listen('0.0.0.0', port, () => {
     console.info(`Server is running on http://localhost:${port}/graphql`);
   });
 }

@@ -8,11 +8,11 @@
     "dependencies": {
       "tablemark": "3.0.0",
       "tsx": "3.12.6",
-      "typescript": "5.0.4",
-      "graphql": "16.6.0"
+      "typescript": "^5.1.6",
+      "graphql": "^16.7.1"
     },
     "devDependencies": {
-        "@types/node": "18.16.1"
+        "@types/node": "^20.4.1"
     }
   }
   

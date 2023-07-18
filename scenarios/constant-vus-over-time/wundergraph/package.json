@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@wundergraph/sdk": "0.148.2",
-    "graphql": "16.6.0"
+    "graphql": "^16.7.1"
   },
   "devDependencies": {
-    "@types/node": "18.16.1",
+    "@types/node": "^20.4.1",
     "typescript": "5.0.4"
   }
 }

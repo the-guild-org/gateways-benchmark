@@ -5,12 +5,13 @@
   },
   "dependencies": {
     "tsx": "3.12.6",
-    "typescript": "5.0.4",
-    "graphql": "16.6.0",
-    "graphql-yoga": "3.9.1",
-    "@graphql-tools/federation": "0.0.3"
+    "typescript": "^5.1.6",
+    "graphql": "^16.7.1",
+    "graphql-yoga": "^4.0.1",
+    "@graphql-tools/federation": "^1.0.0",
+    "uWebSockets": "uNetworking/uWebSockets.js#v20.30.0"
   },
   "devDependencies": {
-    "@types/node": "18.16.1"
+    "@types/node": "^20.4.1"
   }
 }
