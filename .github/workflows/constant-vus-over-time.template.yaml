@@ -19,7 +19,7 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ fromJSON(inputs.runner) }}
+    runs-on: ${{ startsWith(inputs.runner, '{') && fromJSON(inputs.runner) || inputs.runner }}
     timeout-minutes: 10
     name: benchmark
     steps:
