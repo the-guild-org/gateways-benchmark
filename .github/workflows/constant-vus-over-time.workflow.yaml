@@ -6,7 +6,22 @@ on:
       - 'main'
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.step1.outputs.runner }}
+    steps:
+      - name: decide on runner
+        id: step1
+        run: |
+          if [ ${{ github.event_name == 'pull_request' }} ]; then
+            echo "runner=ubuntu-latest" >> $GITHUB_OUTPUT
+          else
+            echo 'runner={"group": "benchmark-runners"}' >> $GITHUB_OUTPUT
+          fi
+          
   benchmark:
+    needs: [setup]
     strategy:
       fail-fast: false
       matrix:
@@ -18,7 +33,7 @@ jobs:
       vu: 100
       time: 30s
       scenarioDir: scenarios/constant-vus-over-time
-      stableRunner: ${{ github.event_name != 'pull_request' }}
+      runner: ${{ needs.setup.outputs.runner }}
 
   report:
     runs-on: ubuntu-latest
