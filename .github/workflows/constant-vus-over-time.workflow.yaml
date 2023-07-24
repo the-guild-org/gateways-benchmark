@@ -18,6 +18,7 @@ jobs:
       vu: 100
       time: 30s
       scenarioDir: scenarios/constant-vus-over-time
+      stableRunner: ${{ github.event_name != 'pull_request' }}
 
   report:
     runs-on: ubuntu-latest

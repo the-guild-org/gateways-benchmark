@@ -18,6 +18,7 @@ jobs:
       vu: 1000
       time: 60s
       scenarioDir: scenarios/ramping-vus
+      stableRunner: ${{ github.event_name != 'pull_request' }}
 
   report:
     runs-on: ubuntu-latest
