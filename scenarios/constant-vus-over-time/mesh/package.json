@@ -5,8 +5,8 @@
   },
   "dependencies": {
     "graphql": "^16.7.1",
-    "@graphql-mesh/cli": "^0.85.1",
-    "@graphql-mesh/graphql": "^0.94.4",
+    "@graphql-mesh/cli": "^0.85.4",
+    "@graphql-mesh/graphql": "^0.94.6",
     "node-libcurl": "^3.0.0"
   }
 }
