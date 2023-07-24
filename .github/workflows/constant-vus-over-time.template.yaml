@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      runner:
+        type: string
+        required: true
       scenarioDir:
         type: string
         required: true
@@ -16,9 +19,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    # runs-on: 
-    #   group: benchmark-runners
+    runs-on: ${{ startsWith(inputs.runner, '{') && fromJSON(inputs.runner) || inputs.runner }}
     timeout-minutes: 10
     name: benchmark
     steps:
