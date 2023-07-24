@@ -1,8 +1,8 @@
 on:
   workflow_call:
     inputs:
-      stableRunner:
-        type: boolean
+      runner:
+        type: string
         required: true
       scenarioDir:
         type: string
@@ -18,23 +18,8 @@ on:
         required: true
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      runner: ${{ steps.step1.outputs.runner }}
-    steps:
-      - name: decide on runner
-        id: step1
-        run: |
-          if [ ${{ github.event_name == 'pull_request' }} ]; then
-            echo "runner=ubuntu-latest" >> $GITHUB_OUTPUT
-          else
-            echo 'runner={"group": "benchmark-runners"}' >> $GITHUB_OUTPUT
-          fi
-
   test:
-    needs: [setup]
-    runs-on: ${{ needs.setup.outputs.runner }}
+    runs-on: ${{ inputs.runner }}
     timeout-minutes: 10
     name: benchmark
     steps:
