@@ -10,7 +10,7 @@
     "@apollo/subgraph": "^2.4.9",
     "graphql-yoga": "^4.0.1",
     "graphql": "^16.7.1",
-    "tsx": "3.12.6",
+    "tsx": "3.12.7",
     "typescript": "5.0.4"
   },
   "devDependencies": {
