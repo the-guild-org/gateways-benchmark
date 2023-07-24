@@ -19,7 +19,7 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ inputs.runner }}
+    runs-on: ${{ fromJSON(inputs.runner) }}
     timeout-minutes: 10
     name: benchmark
     steps:
