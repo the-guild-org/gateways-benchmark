@@ -34,14 +34,14 @@ This goals of this repo:
 
 # Scenarios 
 
-## `constant-vus-over-time`
+## `fed-v1-constant-vus-over-time`
 
-[Latest Results](./scenarios/constant-vus-over-time/README.md)
+[Latest Results](./scenarios/fed-v1-constant-vus-over-time/README.md)
 
 This scenario runs the following:
 
 1. 4 GraphQL subgraphs in dedicated services 
-2. A GraphQL gateway compatible with the Apollo Federation spec
+2. A GraphQL gateway compatible with the Apollo Federation v1 spec
 3. Constant rate of VUs over fixed time span
 
 This measures the following:
@@ -52,10 +52,11 @@ This measures the following:
 5. RAM usage during the entire execution
 6. HTTP layer timings
 
+> This scenario uses Federation v1 spec with all gateways that supports this kind of specification (not all gateways supports v2 spec).
 
-## `ramping-vus`
+## `fed-v1-ramping-vus`
 
-[Latest Results](./scenarios/ramping-vus/README.md)
+[Latest Results](./scenarios/fed-v1-ramping-vus/README.md)
 
 This scenario runs the following:
 
@@ -70,3 +71,5 @@ This measures the following:
 4. CPU usage during the entire execution
 5. RAM usage during the entire execution
 6. HTTP layer timings
+
+> This scenario uses Federation v1 spec with all gateways that supports this kind of specification (not all gateways supports v2 spec).

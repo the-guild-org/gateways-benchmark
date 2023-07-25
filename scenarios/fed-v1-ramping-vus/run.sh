@@ -3,19 +3,19 @@ set -e
 
 # needed because we are taking containers from another directory, and Docker can be stupid sometimes
 
-export BASE_DIR=$( realpath ../constant-vus-over-time )
+export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
 
 on_error(){
-    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml ps
-    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml logs
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml logs
 }
  
 trap 'on_error' ERR
 
-docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml up -d --wait --force-recreate
+docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml up -d --wait --force-recreate
 
 if [[ -z "${CI}" ]]; then
-    trap "docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml down && exit 0" INT
+    trap "docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml down && exit 0" INT
 fi
 
 export K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write

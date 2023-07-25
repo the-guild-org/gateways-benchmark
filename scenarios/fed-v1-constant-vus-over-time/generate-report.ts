@@ -118,7 +118,7 @@ async function generateReport(artifactsRootPath: string) {
     .sort((a, b) => b.rps - a.rps);
 
   const markdownLines: string[] = [
-    "## Overview for scenario: `constant-vus-over-time`",
+    "## Overview for scenario: `fed-v1-constant-vus-over-time`",
     NEWLINE,
     pkgJson.description,
     NEWLINE,
