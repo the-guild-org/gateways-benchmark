@@ -3,7 +3,7 @@
     "description": "This scenario runs 4 subgraphs and a GraphQL gateway with Federation v1 spec, and runs a heavy query. All subgraphs have an intentional delay on replying, and this creates additional pressure on the gateway's memory. We are running a heavy load of concurrent VUs to measure response time and other stats, during stress. It measure things like memory usage, CPU usage, response times.",
     "scripts": {
       "compose-supergraph": "tsx compose-supergraph.ts",
-      "generate-report": "tsx ../fed-v1-constant-vus-over-time/generate-report.ts"
+      "generate-report": "tsx generate-report.ts"
     },
     "dependencies": {
       "tablemark": "3.0.0",
