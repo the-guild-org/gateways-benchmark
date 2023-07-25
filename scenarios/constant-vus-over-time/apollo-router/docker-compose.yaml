@@ -2,11 +2,13 @@ version: '3.8'
 
 services:
   gateway:
-    image: ghcr.io/apollographql/router:v1.15.1
+    image: ghcr.io/apollographql/router:v1.25.0
     networks:
       - test
     ports:
       - "0.0.0.0:4000:4000"
+    environment:
+      APOLLO_ROUTER_LISTEN_ADDRESS: "0.0.0.0:4000"
     depends_on:
       accounts: 
         condition: service_healthy
@@ -24,7 +26,7 @@ services:
         source: scenarios/constant-vus-over-time/apollo-router/config.yaml
         target: /dist/config/router.yaml
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4000/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://127.0.0.1:8088/health?ready", "temp"]
         interval: 3s
         timeout: 5s
         retries: 10
