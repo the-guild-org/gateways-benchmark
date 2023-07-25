@@ -1,4 +1,4 @@
-name: fed-v1-ramping-vus
+name: fed-v1-constants-vus-subgraphs-delay
 on:
   pull_request: {}
   push:
@@ -14,14 +14,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph, stitching-federation-with-yoga, stitching-federation-with-yoga-deno, stitching-federation-with-yoga-bun]
+        directory: [mesh, apollo-server, apollo-router, mercurius, wundergraph]
     uses: ./.github/workflows/benchmark.template.yaml
     name: ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
-      vu: 1000
-      time: 60s
-      scenarioDir: scenarios/fed-v1-ramping-vus
+      vu: 100
+      time: 30s
+      scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay
       runner: ${{ needs.setup.outputs.runner }}
 
   report:
@@ -29,4 +29,4 @@ jobs:
     uses: ./.github/workflows/report.template.yaml
     secrets: inherit
     with:
-      scenarioDir: scenarios/fed-v1-ramping-vus
+      scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay

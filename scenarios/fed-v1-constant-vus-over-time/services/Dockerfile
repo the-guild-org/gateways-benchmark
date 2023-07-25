@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 RUN apk --no-cache add curl
 
-RUN addgroup -S mesh && adduser -S mesh -G mesh
+RUN addgroup -S subgraph && adduser -S subgraph -G subgraph
 
 WORKDIR /home/service
 COPY . ./
@@ -13,7 +13,7 @@ ENV NODE_ENV production
 ENV PORT 3000
 EXPOSE 3000
 
-USER mesh
+USER subgraph
 WORKDIR /home/service
 
 CMD yarn start

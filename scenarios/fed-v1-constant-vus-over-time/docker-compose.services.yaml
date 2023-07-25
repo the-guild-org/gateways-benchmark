@@ -9,6 +9,7 @@ services:
       - 4001:4001
     environment:
       PORT: 4001
+      SUBGRAPH_DELAY_MS: ${ACCOUNTS_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/accounts
       dockerfile: ../Dockerfile
@@ -25,6 +26,7 @@ services:
       - 4002:4002
     environment:
       PORT: 4002
+      SUBGRAPH_DELAY_MS: ${INVENTORY_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/inventory
       dockerfile: ../Dockerfile
@@ -41,6 +43,7 @@ services:
       - 4003:4003
     environment:
       PORT: 4003
+      SUBGRAPH_DELAY_MS: ${PRODUCTS_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/products
       dockerfile: ../Dockerfile
@@ -57,6 +60,7 @@ services:
       - 4004:4004
     environment:
       PORT: 4004
+      SUBGRAPH_DELAY_MS: ${REVIEWS_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/reviews
       dockerfile: ../Dockerfile
