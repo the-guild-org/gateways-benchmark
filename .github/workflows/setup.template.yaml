@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+    outputs:
+      runner:
+        value: ${{ jobs.setup.outputs.runner }}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      runner: ${{ steps.step1.outputs.runner }}
+    name: setup
+    steps:
+      - name: decide on runner
+        id: step1
+        run: |
+          if [ ${{ github.event_name == 'pull_request' }} ]; then
+            echo "runner=ubuntu-latest" >> $GITHUB_OUTPUT
+          else
+            echo 'runner={"group": "benchmark-runners"}' >> $GITHUB_OUTPUT
+          fi

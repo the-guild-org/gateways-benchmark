@@ -81,6 +81,8 @@ async function generateReport(artifactsRootPath: string) {
         console.warn(
           `Could not find CF_IMAGES_LINK or CF_IMAGES_TOKEN in env! Skipping...`
         );
+        overviewImageUrl = "**INVALID CLOUDFLARE IMAGES LINK**";
+        httpImageUrl = "**INVALID CLOUDFLARE IMAGES LINK**";
       } else {
         const overviewImageFilePath = join(fullPath, "./overview.png");
         const httpImageFilePath = join(fullPath, "./http.png");
@@ -104,7 +106,6 @@ async function generateReport(artifactsRootPath: string) {
         jsonSummary,
         txtSummary: readFileSync(txtSummaryFilePath, 'utf8'),
         rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
-        p95_duration: Math.floor(jsonSummary.metrics.http_req_duration.values["p(95)"]),
         overviewImageUrl,
         httpImageUrl,
         vus: jsonSummary.vus,
@@ -112,43 +113,36 @@ async function generateReport(artifactsRootPath: string) {
       };
     })
   );
-
   const validReportsData = reportsData
     .filter(notEmpty)
-    .sort((a, b) => a.p95_duration - b.p95_duration);
+    .sort((a, b) => b.rps - a.rps);
 
   const markdownLines: string[] = [
-    "## Overview for scenario: `ramping-vus`",
+    "## Overview for scenario: `fed-v1-constant-vus-over-time`",
     NEWLINE,
     pkgJson.description,
     NEWLINE,
-    `This scenario was trying to reach ${validReportsData[0].vus} concurrent VUs over ${validReportsData[0].time}`,
+    `This scenario was running ${validReportsData[0].vus} VUs over ${validReportsData[0].time}`,
     NEWLINE,
     "### Comparison",
     NEWLINE,
     tablemark(
       validReportsData.map((v) => ({
         gw: v.name,
-        p95_duration: `${v.p95_duration}ms`,
         rps: Math.round(v.rps),
         requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
         duration: `avg: ${Math.round(
           v.jsonSummary.metrics.http_req_duration.values.avg
         )}ms, p95: ${
           Math.round(v.jsonSummary.metrics.http_req_duration.values["p(95)"])
-        }ms, max: ${
-          Math.round(v.jsonSummary.metrics.http_req_duration.values.max)
-        }ms, med: ${
-          Math.round(v.jsonSummary.metrics.http_req_duration.values.med)
         }ms`,
       })),
       {
         columns: [
           { name: "Gateway" },
-          { name: "duration(p95)⬇️", align: "center" },
-          { name: "RPS", align: "center" },
+          { name: "RPS ⬇️", align: "center" },
           { name: "Requests", align: "center" },
-          { name: "Durations", align: "center" },
+          { name: "Duration", align: "center" },
         ],
       }
     ),
@@ -167,11 +161,11 @@ async function generateReport(artifactsRootPath: string) {
             NEWLINE,
             "**Performance Overview**", 
             NEWLINE,
-            info.overviewImageUrl ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />` : '**no-image-available**',
+            `<img src="${info.overviewImageUrl}" alt="Performance Overview" />`,
             NEWLINE,
             "**HTTP Overview**", 
             NEWLINE,
-            info.httpImageUrl ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />` : '**no-image-available**',
+            `<img src="${info.httpImageUrl}" alt="HTTP Overview" />`,
             NEWLINE,
           ].join("\n")
         )

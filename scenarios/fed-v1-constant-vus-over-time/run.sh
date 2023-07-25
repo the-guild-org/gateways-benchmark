@@ -1,6 +1,8 @@
 #/bin/sh
 set -e
 
+export BASE_DIR=$( realpath ./ )
+
 export BENCH_VUS=100
 export BENCH_OVER_TIME=60s
 
@@ -16,8 +18,8 @@ export BENCH_OVER_TIME=60s
 # - http.png - HTTP results breakdown 
 
 on_error(){
-    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml ps
-    docker compose  -f ../../docker-compose.metrics.yaml  -f ../constant-vus-over-time/docker-compose.services.yaml -f ../constant-vus-over-time/$1/docker-compose.yaml logs
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
+    docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml logs
 }
  
 trap 'on_error' ERR
