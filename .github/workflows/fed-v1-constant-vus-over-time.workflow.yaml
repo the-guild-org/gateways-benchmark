@@ -27,5 +27,6 @@ jobs:
   report:
     needs: benchmark
     uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
     with:
       scenarioDir: scenarios/fed-v1-constant-vus-over-time
