@@ -118,7 +118,7 @@ async function generateReport(artifactsRootPath: string) {
     .sort((a, b) => b.rps - a.rps);
 
   const markdownLines: string[] = [
-    `## Overview for scenario: \`${process.env.SCENARIO_TITLE}\``,
+    `## Overview for: \`${process.env.SCENARIO_TITLE}\``,
     NEWLINE,
     pkgJson.description,
     NEWLINE,
