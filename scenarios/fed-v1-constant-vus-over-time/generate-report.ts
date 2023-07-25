@@ -81,8 +81,6 @@ async function generateReport(artifactsRootPath: string) {
         console.warn(
           `Could not find CF_IMAGES_LINK or CF_IMAGES_TOKEN in env! Skipping...`
         );
-        overviewImageUrl = "**INVALID CLOUDFLARE IMAGES LINK**";
-        httpImageUrl = "**INVALID CLOUDFLARE IMAGES LINK**";
       } else {
         const overviewImageFilePath = join(fullPath, "./overview.png");
         const httpImageFilePath = join(fullPath, "./http.png");
@@ -161,11 +159,11 @@ async function generateReport(artifactsRootPath: string) {
             NEWLINE,
             "**Performance Overview**", 
             NEWLINE,
-            `<img src="${info.overviewImageUrl}" alt="Performance Overview" />`,
+            info.overviewImageUrl ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />` : '**no-image-available**',
             NEWLINE,
             "**HTTP Overview**", 
             NEWLINE,
-            `<img src="${info.httpImageUrl}" alt="HTTP Overview" />`,
+            info.httpImageUrl ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />` : '**no-image-available**',
             NEWLINE,
           ].join("\n")
         )
