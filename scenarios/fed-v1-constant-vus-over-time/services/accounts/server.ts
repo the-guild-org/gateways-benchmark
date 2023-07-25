@@ -28,22 +28,30 @@ const yoga = createYoga({
     typeDefs: parse(typeDefs),
     resolvers,
   }),
-  context: () => ({
-    users: [
-      {
-        id: "1",
-        name: "Ada Lovelace",
-        birthDate: "1815-12-10",
-        username: "@ada",
-      },
-      {
-        id: "2",
-        name: "Alan Turing",
-        birthDate: "1912-06-23",
-        username: "@complete",
-      },
-    ],
-  }),
+  context: async () => {
+    if (process.env.SUBGRAPH_DELAY_MS) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, parseInt(process.env.SUBGRAPH_DELAY_MS!))
+      );
+    }
+
+    return {
+      users: [
+        {
+          id: "1",
+          name: "Ada Lovelace",
+          birthDate: "1815-12-10",
+          username: "@ada",
+        },
+        {
+          id: "2",
+          name: "Alan Turing",
+          birthDate: "1912-06-23",
+          username: "@complete",
+        },
+      ],
+    };
+  },
 });
 const server = createServer(yoga);
 const port = process.env.PORT ? parseInt(process.env.PORT) : 9871;

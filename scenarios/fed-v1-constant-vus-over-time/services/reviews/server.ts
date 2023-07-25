@@ -43,6 +43,13 @@ const yoga = createYoga({
     typeDefs: parse(typeDefs),
     resolvers,
   }),
+  context: async () => {
+    if (process.env.SUBGRAPH_DELAY_MS) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, parseInt(process.env.SUBGRAPH_DELAY_MS!))
+      );
+    }
+  },
 });
 const server = createServer(yoga);
 const port = process.env.PORT ? parseInt(process.env.PORT) : 9874;

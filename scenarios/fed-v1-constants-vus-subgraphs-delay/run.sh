@@ -1,20 +1,16 @@
 #/bin/sh
 set -e
 
-export BASE_DIR=$( realpath ./ )
+export ACCOUNTS_SUBGRAPH_DELAY_MS=250
+export INVENTORY_SUBGRAPH_DELAY_MS=100
+export PRODUCTS_SUBGRAPH_DELAY_MS=600
+export REVIEWS_SUBGRAPH_DELAY_MS=450
+
+# needed because we are taking containers from another directory, and Docker can be stupid sometimes
+
+export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
 export BENCH_VUS=100
 export BENCH_OVER_TIME=60s
-
-# This scenario does the following:
-# - Runs the services and the gateway specified 
-# - Runs constant rate of VUs (defined in BENCH_VUS) over specific time (defined in BENCH_OVER_TIME)
-# - Measure estimated request duration, handling, HTTP information, failed responses count, and average RPS  
-
-# Outputs:
-# - k6_summary.json - Summary of the K6 test in JSON format
-# - k6_summary.txt - Summary of the K6 test in TXT format
-# - overview.png - Grafana dashboard screenshot (memory, cpu, overview of k6) 
-# - http.png - HTTP results breakdown 
 
 on_error(){
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
@@ -23,10 +19,10 @@ on_error(){
  
 trap 'on_error' ERR
 
-docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml up -d --wait --force-recreate
+docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml up -d --wait --force-recreate
 
 if [[ -z "${CI}" ]]; then
-    trap "docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml down && exit 0" INT
+    trap "docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml down && exit 0" INT
 fi
 
 export K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write
@@ -35,9 +31,13 @@ export K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true
 
 export START_TIME="$(date +%s)"
 
-k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMARY_PATH="./$1" benchmark.k6.js
+mkdir ./$1 || echo ""
 
-sleep 2
+k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMARY_PATH="./$1" ../fed-v1-constant-vus-over-time/benchmark.k6.js
+
+# sleep for longer, to allow us to measure the cooldown period and see if RAM/CPU usage drops
+
+sleep 10
 
 export END_TIME="$(date +%s)"
 

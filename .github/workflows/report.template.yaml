@@ -32,6 +32,7 @@ jobs:
         run: yarn generate-report ${{ steps.download.outputs.download-path }} 
         working-directory: ${{ inputs.scenarioDir }}
         env:
+          SCENARIO_TITLE: ${{ inputs.scenarioDir }}
           CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
           CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
 
