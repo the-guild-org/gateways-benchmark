@@ -1,6 +1,8 @@
 #/bin/sh
 set -e
 
+export BASE_DIR=$( realpath ./ )
+
 export BENCH_VUS=100
 export BENCH_OVER_TIME=60s
 
