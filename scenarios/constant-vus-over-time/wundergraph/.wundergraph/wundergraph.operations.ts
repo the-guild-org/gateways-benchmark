@@ -1,7 +1,6 @@
 import { configureWunderGraphOperations } from '@wundergraph/sdk';
-import type { OperationsConfiguration } from './generated/wundergraph.operations';
 
-export default configureWunderGraphOperations<OperationsConfiguration>({
+export default configureWunderGraphOperations({
 	operations: {
 		defaultConfig: {
 			authentication: {
@@ -18,6 +17,7 @@ export default configureWunderGraphOperations<OperationsConfiguration>({
 			},
 			liveQuery: {
 				enable: false,
+				pollingIntervalSeconds: 0,
 			},
 		}),
 		mutations: (config) => ({
