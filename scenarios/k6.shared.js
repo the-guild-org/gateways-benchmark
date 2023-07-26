@@ -70,13 +70,13 @@ const graphqlRequest = {
   },
 };
 
-export function handleBenchmarkSummary(data) {
+export function handleBenchmarkSummary(data, additionalContext = {}) {
   const out = {
     'stdout': textSummary(data, { indent: ' ', enableColors: true })
   };
 
   if (__ENV.SUMMARY_PATH) {
-    out[`${__ENV.SUMMARY_PATH}/k6_summary.json`] = JSON.stringify(Object.assign(data, { vus, time}));
+    out[`${__ENV.SUMMARY_PATH}/k6_summary.json`] = JSON.stringify(Object.assign(data, additionalContext));
     out[`${__ENV.SUMMARY_PATH}/k6_summary.txt`] = textSummary(data, {
       indent: " ",
       enableColors: false,

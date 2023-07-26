@@ -25,5 +25,5 @@ export default function() {
 }
 
 export function handleSummary(data) {
-  return handleBenchmarkSummary(data);
+  return handleBenchmarkSummary(data, { vus, time });
 }
