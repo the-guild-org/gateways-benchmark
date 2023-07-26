@@ -2,7 +2,9 @@ import { createServer } from "node:http";
 import { createYoga } from "graphql-yoga";
 import { buildSubgraphSchema } from "@apollo/subgraph";
 import { parse } from "graphql";
-import { typeDefs } from "./typedefs";
+import { readFileSync } from "node:fs";
+
+const typeDefs = readFileSync("./schema.graphql", "utf8");
 
 const resolvers = {
   User: {
