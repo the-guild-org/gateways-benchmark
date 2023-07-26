@@ -6,7 +6,7 @@ on:
       - 'main'
 
 concurrency:
-  group: ${{ github.ref }}
+  group: fed-v1-constants-vus-subgraphs-delay-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

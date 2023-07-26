@@ -6,7 +6,7 @@ on:
       - 'main'
 
 concurrency:
-  group: ${{ github.ref }}
+  group: fed-v1-ramping-vus-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
