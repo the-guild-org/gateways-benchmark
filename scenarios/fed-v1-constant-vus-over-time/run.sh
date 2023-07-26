@@ -35,7 +35,7 @@ export K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true
 
 export START_TIME="$(date +%s)"
 
-k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMARY_PATH="./$1" benchmark.k6.js
+k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMARY_PATH="$BASE_DIR/$1" benchmark.k6.js
 
 sleep 2
 
