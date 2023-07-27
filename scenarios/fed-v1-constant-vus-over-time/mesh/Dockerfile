@@ -11,6 +11,7 @@ RUN addgroup -S gw && adduser -S gw -G gw
 WORKDIR /home/gw
 COPY package.json ./
 COPY config ./
+COPY supergraph.graphql ./
 
 RUN yarn install --production
 ENV PORT 4000
