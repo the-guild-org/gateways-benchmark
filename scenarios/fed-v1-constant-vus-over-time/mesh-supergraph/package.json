@@ -1,12 +1,12 @@
 {
-  "name": "mesh-gateway",
+  "name": "mesh-supergraph-gateway",
   "scripts": {
     "start": "graphql-mesh dev"
   },
   "dependencies": {
     "graphql": "^16.7.1",
     "@graphql-mesh/cli": "0.85.6-alpha-20230728075942-6d4cf202c",
-    "@graphql-mesh/graphql": "0.94.7-alpha-20230728075942-6d4cf202c",
+    "@graphql-mesh/supergraph": "0.0.1-alpha-20230728075942-6d4cf202c",
     "node-libcurl": "^3.0.0"
   }
 }
