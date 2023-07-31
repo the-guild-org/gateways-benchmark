@@ -10,7 +10,7 @@
     "node-libcurl": "^3.0.0"
   },
   "resolutions": {
-    "@graphql-tools/federation": "1.1.2-alpha-20230731170202-c4b7f020"
+    "@graphql-tools/federation": "1.1.2-alpha-20230731171336-ab421d5e"
   }
 }
  
