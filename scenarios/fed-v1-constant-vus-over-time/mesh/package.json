@@ -8,5 +8,8 @@
     "@graphql-mesh/cli": "0.86.1-alpha-20230731152904-10c8c4c18",
     "@graphql-mesh/graphql": "0.95.1-alpha-20230731152904-10c8c4c18",
     "node-libcurl": "^3.0.0"
+  },
+  "resolutions": {
+    "@graphql-tools/federation": "1.1.2-alpha-20230731170202-c4b7f020"
   }
 }
