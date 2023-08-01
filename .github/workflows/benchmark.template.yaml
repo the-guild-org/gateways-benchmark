@@ -20,7 +20,6 @@ on:
 jobs:
   test:
     runs-on: ${{ startsWith(inputs.runner, '{') && fromJSON(inputs.runner) || inputs.runner }}
-    timeout-minutes: 10
     name: benchmark
     steps:
       - name: adjust os 
@@ -38,7 +37,7 @@ jobs:
           sudo apt-get install k6=0.43.1
 
       - name: run benchmark (${{ inputs.vu }} VUs over ${{ inputs.time }})
-        timeout-minutes: 10
+        timeout-minutes: 15
         working-directory: ${{ inputs.scenarioDir }} 
         run: ./run.sh ${{ inputs.gateway }}
         env:
