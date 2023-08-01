@@ -1,5 +1,5 @@
 {
-  "name": "apollo-gateway-js-with-yoga",
+  "name": "apollo-gateway-js-with-yoga-uws",
   "scripts": {
     "compose-supergraph": "tsx compose-supergraph.ts",
     "start": "tsx index.ts"
@@ -11,6 +11,7 @@
     "@envelop/apollo-federation": "^4.0.0",
     "graphql-yoga": "^4.0.1",
     "@apollo/gateway": "^2.4.9",
-    "@apollo/composition": "^2.4.9"
+    "@apollo/composition": "^2.4.9",
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.30.0"
   }
 }

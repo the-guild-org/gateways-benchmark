@@ -1,5 +1,5 @@
 {
-  "name": "stitching-federation-with-yoga",
+  "name": "stitching-federation-with-yoga-uws",
   "scripts": {
     "start": "tsx index.ts"
   },
@@ -8,7 +8,8 @@
     "typescript": "^5.1.6",
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.1",
-    "@graphql-tools/federation": "^1.1.2"
+    "@graphql-tools/federation": "^1.1.2",
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.30.0"
   },
   "devDependencies": {
     "@types/node": "^20.4.1"
