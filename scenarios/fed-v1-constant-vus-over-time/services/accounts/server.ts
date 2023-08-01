@@ -23,15 +23,28 @@ const resolvers = {
   },
 };
 
+const delay: (() => number) | null = process.env.SUBGRAPH_DELAY_MS
+  ? () => {
+      if (process.env.SUBGRAPH_DELAY_MS.includes("~")) {
+        const [min, max] = process.env.SUBGRAPH_DELAY_MS.split("~").map((n) =>
+          parseInt(n, 10)
+        );
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      return parseInt(process.env.SUBGRAPH_DELAY_MS);
+    }
+  : null;
+
 const yoga = createYoga({
   schema: buildSubgraphSchema({
     typeDefs: parse(typeDefs),
     resolvers,
   }),
   context: async () => {
-    if (process.env.SUBGRAPH_DELAY_MS) {
+    if (delay) {
       await new Promise((resolve) =>
-        setTimeout(resolve, parseInt(process.env.SUBGRAPH_DELAY_MS!))
+        setTimeout(resolve, delay())
       );
     }
 
