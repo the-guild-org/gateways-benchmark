@@ -1,10 +1,10 @@
 #/bin/sh
 set -e
 
-export ACCOUNTS_SUBGRAPH_DELAY_MS=250
-export INVENTORY_SUBGRAPH_DELAY_MS=100
-export PRODUCTS_SUBGRAPH_DELAY_MS=600
-export REVIEWS_SUBGRAPH_DELAY_MS=450
+export ACCOUNTS_SUBGRAPH_DELAY_MS="100~130"
+export INVENTORY_SUBGRAPH_DELAY_MS="100~120"
+export PRODUCTS_SUBGRAPH_DELAY_MS="300~400"
+export REVIEWS_SUBGRAPH_DELAY_MS="50~100"
 
 # needed because we are taking containers from another directory, and Docker can be stupid sometimes
 
