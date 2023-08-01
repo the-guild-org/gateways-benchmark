@@ -9,8 +9,6 @@ export REVIEWS_SUBGRAPH_DELAY_MS=450
 # needed because we are taking containers from another directory, and Docker can be stupid sometimes
 
 export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
-export BENCH_VUS=100
-export BENCH_OVER_TIME=60s
 
 on_error(){
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
