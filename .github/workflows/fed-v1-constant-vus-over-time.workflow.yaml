@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: [mesh, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph, stitching-federation-with-yoga, stitching-federation-with-yoga-deno, stitching-federation-with-yoga-bun]
+        directory: [mesh, mesh-supergraph, apollo-server, apollo-gateway-with-yoga, apollo-router, mercurius, wundergraph, stitching-federation-with-yoga, stitching-federation-with-yoga-deno, stitching-federation-with-yoga-bun]
     uses: ./.github/workflows/benchmark.template.yaml
     name: ${{ matrix.directory }}
     with:
