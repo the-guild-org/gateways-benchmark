@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   gateway:
-    image: gateway/mesh-supergraph
+    image: gateway/stitching-federation-with-yoga-uws
     networks:
       - test
     ports:
@@ -10,7 +10,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ${BASE_DIR:-.}/mesh-supergraph
+      context: ${BASE_DIR:-.}/stitching-federation-with-yoga-uws
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 
@@ -23,10 +23,9 @@ services:
         condition: service_healthy
     healthcheck:
         test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4000/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
-        interval: 8s
+        interval: 3s
         timeout: 5s
-        retries: 5
-
+        retries: 10
 networks:
   test:
     name: test
