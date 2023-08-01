@@ -31,7 +31,7 @@ export START_TIME="$(date +%s)"
 
 mkdir ./$1 || echo ""
 
-k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMARY_PATH="./$1" ../fed-v1-constant-vus-over-time/benchmark.k6.js
+k6 --out=experimental-prometheus-rw --out json=./$1/k6_metrics.json run -e SUMMARY_PATH="./$1" ../fed-v1-constant-vus-over-time/benchmark.k6.js || echo "maybe something is wronge with k6, but we'll continue with the stats collection"
 
 # sleep for longer, to allow us to measure the cooldown period and see if RAM/CPU usage drops
 
