@@ -23,8 +23,8 @@ jobs:
     name: ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
-      vu: 100
-      time: 30s
+      vu: ${{ github.event_name == 'pull_request' && 100 || 500 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '300s' }}
       scenarioDir: scenarios/fed-v1-constant-vus-over-time
       runner: ${{ needs.setup.outputs.runner }}
 
