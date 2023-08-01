@@ -5,12 +5,9 @@
   },
   "dependencies": {
     "graphql": "^16.7.1",
-    "@graphql-mesh/cli": "0.86.1-alpha-20230731152904-10c8c4c18",
-    "@graphql-mesh/supergraph": "0.0.1-alpha-20230731152904-10c8c4c18",
+    "@graphql-mesh/cli": "^0.86.1",
+    "@graphql-mesh/supergraph": "^0.0.1",
     "node-libcurl": "^3.0.0"
-  },
-  "resolutions": {
-    "@graphql-tools/federation": "1.1.2-alpha-20230731171336-ab421d5e"
   }
 }
  
