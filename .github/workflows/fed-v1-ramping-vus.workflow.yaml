@@ -23,7 +23,7 @@ jobs:
     name: ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 1000 || 3000 }}
+      vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
       scenarioDir: scenarios/fed-v1-ramping-vus
       runner: ${{ needs.setup.outputs.runner }}
