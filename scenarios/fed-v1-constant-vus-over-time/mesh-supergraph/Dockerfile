@@ -15,6 +15,7 @@ COPY supergraph.graphql ./
 
 RUN yarn install --production
 ENV PORT 4000
+ENV NODE_ENV production
 
 EXPOSE 4000
 ENV CONFIG_PATH "/config"

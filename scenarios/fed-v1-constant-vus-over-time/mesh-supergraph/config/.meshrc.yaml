@@ -3,6 +3,3 @@ sources:
     handler:
       supergraph:
         source: ./supergraph.graphql
-
-serve:
-  fork: true

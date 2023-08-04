@@ -15,6 +15,3 @@ sources:
     handler:
       graphql:
         endpoint: http://reviews:4004/graphql
-
-serve:
-  fork: true
