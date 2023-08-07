@@ -32,7 +32,7 @@ This goals of this repo:
 
     ➡️ Each scenario has differnt setup and measure different stats.
 
-# Scenarios 
+# Scenarios
 
 ## `fed-v1-constant-vus-over-time`
 
