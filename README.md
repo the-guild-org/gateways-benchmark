@@ -45,6 +45,7 @@ This scenario runs the following:
 3. Constant rate of VUs over fixed time span
 
 This measures the following:
+
 1. RPS (requests per second) rate 
 2. Request duration (average, p95)
 3. Request failures (count)
