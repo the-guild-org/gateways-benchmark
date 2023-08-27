@@ -3,10 +3,14 @@ version: '3.8'
 services:
   gateway:
     image: gateway/wundergraph
+    container_name: gateway
     networks:
       - test
     ports:
       - "0.0.0.0:4000:4000"
+    environment:
+      # Added because we want to ensure 1 cpu is used, to make the comparison fair
+      GOMAXPROCS: 1
     build:
       context: ${BASE_DIR:-.}/wundergraph
       dockerfile: ./Dockerfile
@@ -24,7 +28,10 @@ services:
         interval: 8s
         timeout: 5s
         retries: 5
-
+    mem_limit: "1g"
+    mem_reservation: "512m"
+    cpus: "1"
+    cpuset: "1"
 networks:
   test:
     name: test

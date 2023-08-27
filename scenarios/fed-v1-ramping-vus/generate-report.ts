@@ -76,6 +76,7 @@ async function generateReport(artifactsRootPath: string) {
 
       let overviewImageUrl = "";
       let httpImageUrl = "";
+      let containersImageUrl = "";
 
       if (!CF_IMAGES_LINK || !CF_IMAGES_TOKEN) {
         console.warn(
@@ -84,7 +85,8 @@ async function generateReport(artifactsRootPath: string) {
       } else {
         const overviewImageFilePath = join(fullPath, "./overview.png");
         const httpImageFilePath = join(fullPath, "./http.png");
-        [overviewImageUrl, httpImageUrl] = await Promise.all([
+        const containersFilePath = join(fullPath, "./containers.png");
+        [overviewImageUrl, httpImageUrl, containersImageUrl] = await Promise.all([
           uploadImageToCloudflare(
             `${GITHUB_RUN_ID}-overview.png`,
             overviewImageFilePath
@@ -92,6 +94,10 @@ async function generateReport(artifactsRootPath: string) {
           uploadImageToCloudflare(
             `${GITHUB_RUN_ID}-http.png`,
             httpImageFilePath
+          ),
+          uploadImageToCloudflare(
+            `${GITHUB_RUN_ID}-http.png`,
+            containersFilePath
           ),
         ]);
       }
@@ -107,6 +113,7 @@ async function generateReport(artifactsRootPath: string) {
         p95_duration: Math.floor(jsonSummary.metrics.http_req_duration.values["p(95)"]),
         overviewImageUrl,
         httpImageUrl,
+        containersImageUrl,
         vus: jsonSummary.vus,
         time: jsonSummary.time,
       };
@@ -168,6 +175,10 @@ async function generateReport(artifactsRootPath: string) {
             "**Performance Overview**", 
             NEWLINE,
             info.overviewImageUrl ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />` : '**no-image-available**',
+            NEWLINE,
+            "**Subgraphs Overview**", 
+            NEWLINE,
+            info.containersImageUrl ? `<img src="${info.containersImageUrl}" alt="Subgraphs Overview" />` : '**no-image-available**',
             NEWLINE,
             "**HTTP Overview**", 
             NEWLINE,

@@ -3,6 +3,7 @@ version: '3.8'
 services:
   gateway:
     image: gateway/stitching-federation-with-yoga-bun
+    container_name: gateway
     networks:
       - test
     ports:
@@ -26,6 +27,10 @@ services:
         interval: 3s
         timeout: 5s
         retries: 10
+    mem_limit: "1g"
+    mem_reservation: "512m"
+    cpus: "1"
+    cpuset: "1"
 networks:
   test:
     name: test

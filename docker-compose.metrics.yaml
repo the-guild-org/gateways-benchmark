@@ -50,6 +50,7 @@ services:
       - test
     restart: unless-stopped
     container_name: cadvisor
+    command: --enable_metrics=cpu,cpuLoad,sched,process,resctrl,memory,cpuset,advtcp,network,tcp,perf_event
     privileged: true
     devices:
       - /dev/kmsg:/dev/kmsg
