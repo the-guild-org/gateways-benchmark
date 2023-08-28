@@ -1,15 +1,14 @@
 {
   "name": "stitching-federation-with-yoga-uws",
+  "type": "module",
   "scripts": {
-    "start": "tsx index.ts"
+    "start": "node index.js"
   },
   "dependencies": {
-    "tsx": "3.12.7",
-    "typescript": "^5.1.6",
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.1",
     "@graphql-tools/federation": "^1.1.2",
-    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.30.0"
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.31.0"
   },
   "devDependencies": {
     "@types/node": "^20.4.1"

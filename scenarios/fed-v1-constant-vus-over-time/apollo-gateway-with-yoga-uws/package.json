@@ -1,8 +1,9 @@
 {
   "name": "apollo-gateway-js-with-yoga-uws",
+  "type": "module",
   "scripts": {
     "compose-supergraph": "tsx compose-supergraph.ts",
-    "start": "tsx index.ts"
+    "start": "node index.js"
   },
   "dependencies": {
     "tsx": "^3.12.7",
@@ -12,6 +13,6 @@
     "graphql-yoga": "^4.0.1",
     "@apollo/gateway": "^2.4.9",
     "@apollo/composition": "^2.4.9",
-    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.30.0"
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.31.0"
   }
 }
