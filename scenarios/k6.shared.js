@@ -122,19 +122,19 @@ function checkResponseStructure(x) {
     if (obj == null) {
       return false;
     }
-      for (var key in structure) {
-        if (
-          !obj.hasOwnProperty(key) ||
-          typeof obj[key] !== typeof structure[key]
-        ) {
+    for (var key in structure) {
+      if (
+        !obj.hasOwnProperty(key) ||
+        typeof obj[key] !== typeof structure[key]
+      ) {
+        return false;
+      }
+      if (typeof structure[key] === "object" && structure[key] !== null) {
+        if (!checkRecursive(obj[key], structure[key])) {
           return false;
         }
-        if (typeof structure[key] === "object" && structure[key] !== null) {
-          if (!checkRecursive(obj[key], structure[key])) {
-            return false;
-          }
-        }
       }
+    }
     return true;
   }
 
