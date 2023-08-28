@@ -119,16 +119,18 @@ export function makeGraphQLRequest() {
 
 function checkResponseStructure(x) {
   function checkRecursive(obj, structure) {
-    for (var key in structure) {
-      if (
-        !obj.hasOwnProperty(key) ||
-        typeof obj[key] !== typeof structure[key]
-      ) {
-        return false;
-      }
-      if (typeof structure[key] === "object" && structure[key] !== null) {
-        if (!checkRecursive(obj[key], structure[key])) {
+    if (obj != null) {
+      for (var key in structure) {
+        if (
+          !obj.hasOwnProperty(key) ||
+          typeof obj[key] !== typeof structure[key]
+        ) {
           return false;
+        }
+        if (typeof structure[key] === "object" && structure[key] !== null) {
+          if (!checkRecursive(obj[key], structure[key])) {
+            return false;
+          }
         }
       }
     }
