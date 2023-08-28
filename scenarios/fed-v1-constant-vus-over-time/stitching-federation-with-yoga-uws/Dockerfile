@@ -9,7 +9,7 @@ RUN ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
 RUN addgroup -S gw && adduser -S gw -G gw
 
 WORKDIR /home/gw
-COPY index.ts ./
+COPY index.js ./
 COPY package.json ./
 
 RUN yarn install --production

@@ -119,6 +119,9 @@ export function makeGraphQLRequest() {
 
 function checkResponseStructure(x) {
   function checkRecursive(obj, structure) {
+    if (obj == null) {
+      return false;
+    }
     for (var key in structure) {
       if (
         !obj.hasOwnProperty(key) ||
