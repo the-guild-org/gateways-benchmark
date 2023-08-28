@@ -1,0 +1,14 @@
+{
+  "name": "apollo-gateway-with-yoga-bun",
+  "dependencies": {
+    "@types/node": "^20.4.5",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "graphql": "^16.7.1",
+    "@envelop/apollo-federation": "^4.0.0",
+    "graphql-yoga": "^4.0.1",
+    "@apollo/gateway": "^2.4.9",
+    "@apollo/composition": "^2.4.9",
+    "bun-types": "^0.7.1"
+  }
+}

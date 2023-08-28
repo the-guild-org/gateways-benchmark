@@ -1,7 +1,7 @@
 import { createBuiltMeshHTTPHandler } from './.mesh'
 
 const server = Bun.serve({
-    port: process.env.PORT ? parseInt(process.env.PORT) : 4000,
+    port: Bun.env.PORT ? parseInt(Bun.env.PORT) : 4000,
     fetch: createBuiltMeshHTTPHandler(),
 })
 
