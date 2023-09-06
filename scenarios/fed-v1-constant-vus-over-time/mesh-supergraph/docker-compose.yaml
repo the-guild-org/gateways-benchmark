@@ -27,10 +27,6 @@ services:
         interval: 8s
         timeout: 5s
         retries: 5
-    mem_limit: "3g"
-    mem_reservation: "1024m"
-    cpus: "2"
-    cpuset: "2"
 networks:
   test:
     name: test

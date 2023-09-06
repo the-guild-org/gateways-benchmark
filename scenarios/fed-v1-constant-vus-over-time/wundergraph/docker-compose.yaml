@@ -8,9 +8,6 @@ services:
       - test
     ports:
       - "0.0.0.0:4000:4000"
-    environment:
-      # Added because we want to ensure 2 cpu is used, to make the comparison fair
-      GOMAXPROCS: 2
     build:
       context: ${BASE_DIR:-.}/wundergraph
       dockerfile: ./Dockerfile
@@ -28,10 +25,6 @@ services:
         interval: 8s
         timeout: 5s
         retries: 5
-    mem_limit: "3g"
-    mem_reservation: "1024m"
-    cpus: "2"
-    cpuset: "2"
 networks:
   test:
     name: test
