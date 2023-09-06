@@ -27,10 +27,10 @@ services:
         interval: 3s
         timeout: 5s
         retries: 10
-    mem_limit: "1g"
-    mem_reservation: "512m"
-    cpus: "1"
-    cpuset: "1"
+    mem_limit: "3g"
+    mem_reservation: "1024m"
+    cpus: "2"
+    cpuset: "2"
 networks:
   test:
     name: test
