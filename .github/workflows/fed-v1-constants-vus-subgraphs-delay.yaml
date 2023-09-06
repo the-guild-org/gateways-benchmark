@@ -20,7 +20,7 @@ jobs:
       matrix:
         directory: 
           - mesh
-          # - mesh-bun
+          - mesh-bun
           - mesh-supergraph
           - apollo-server
           - apollo-server-node16
