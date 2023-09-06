@@ -11,7 +11,7 @@ jobs:
     name: report for ${{ inputs.scenarioDir }} 
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: download artifacts
         id: download
