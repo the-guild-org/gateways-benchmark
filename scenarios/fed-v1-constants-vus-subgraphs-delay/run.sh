@@ -16,6 +16,7 @@ export REVIEWS_SUBGRAPH_DELAY_MS="20-150"
 export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
 
 on_error(){
+    cd $BASE_DIR
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml logs
 }

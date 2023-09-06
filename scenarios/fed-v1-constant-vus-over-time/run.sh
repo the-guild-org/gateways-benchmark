@@ -20,6 +20,7 @@ export BASE_DIR=$( realpath ./ )
 # - http.png - HTTP results breakdown 
 
 on_error(){
+    cd $BASE_DIR
     docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml ps
     docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml logs
 }
