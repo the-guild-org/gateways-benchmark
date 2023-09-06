@@ -21,11 +21,11 @@ jobs:
         directory: 
           - mesh
           - mesh-supergraph
-          # - mesh-bun
+          - mesh-bun
           - apollo-server
           - apollo-server-node16
           - apollo-gateway-with-yoga
-          # - apollo-gateway-with-yoga-uws
+          - apollo-gateway-with-yoga-uws
           - apollo-gateway-with-yoga-bun
           - apollo-router
           - mercurius
