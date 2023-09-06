@@ -13,24 +13,65 @@ use axum::{
 use rand::Rng;
 use std::env::var;
 
+#[macro_use]
+extern crate lazy_static;
+
 async fn graphiql() -> impl IntoResponse {
     response::Html(GraphiQLSource::build().endpoint("/graphql").finish())
 }
 
-#[derive(SimpleObject)]
+lazy_static! {
+    static ref USERS: Vec<User> = vec![
+        User {
+            id: ID("1".to_string()),
+            name: Some("Uri Goldshtein".to_string()),
+            username: Some("urigo".to_string()),
+            birthday: Some(1234567890),
+        },
+        User {
+            id: ID("2".to_string()),
+            name: Some("Dotan Simha".to_string()),
+            username: Some("dotansimha".to_string()),
+            birthday: Some(1234567890),
+        },
+        User {
+            id: ID("3".to_string()),
+            name: Some("Kamil Kisiela".to_string()),
+            username: Some("kamilkisiela".to_string()),
+            birthday: Some(1234567890),
+        },
+        User {
+            id: ID("4".to_string()),
+            name: Some("Arda Tanrikulu".to_string()),
+            username: Some("ardatan".to_string()),
+            birthday: Some(1234567890),
+        },
+        User {
+            id: ID("5".to_string()),
+            name: Some("Gil Gardosh".to_string()),
+            username: Some("gilgardosh".to_string()),
+            birthday: Some(1234567890),
+        },
+        User {
+            id: ID("6".to_string()),
+            name: Some("Laurin Quast".to_string()),
+            username: Some("laurin".to_string()),
+            birthday: Some(1234567890),
+        }
+    ];
+}
+
+#[derive(SimpleObject, Clone)]
 struct User {
     id: ID,
     name: Option<String>,
     username: Option<String>,
+    birthday: Option<i32>,
 }
 
 impl User {
     fn me() -> User {
-        User {
-            id: "1234".into(),
-            name: Some("Me".to_string()),
-            username: Some("me".to_string()),
-        }
+        USERS[0].clone()
     }
 }
 
@@ -43,45 +84,16 @@ impl Query {
     }
 
     async fn user(&self, id: ID) -> Option<User> {
-        let name = format!("User {}", id.as_str());
-        let username = format!("user-{}", id.as_str());
-        Some(User {
-            id,
-            name: Some(name),
-            username: Some(username),
-        })
+        USERS.iter().find(|user| user.id == id).cloned()
     }
 
     async fn users(&self) -> Option<Vec<Option<User>>> {
-        Some(
-            vec![1, 2, 3, 4, 5, 6, 7, 8, 9]
-                .iter()
-                .map(|id| {
-                    let name = format!("User {}", id);
-                    let username = format!("user-{}", id);
-                    Some(User {
-                        id: id.into(),
-                        name: Some(name),
-                        username: Some(username),
-                    })
-                })
-                .collect(),
-        )
+        Some(USERS.iter().map(|user| Some(user.clone())).collect())
     }
 
     #[graphql(entity)]
     async fn find_user_by_id(&self, id: ID) -> User {
-        if id == "1234" {
-            User::me()
-        } else {
-            let name = format!("User {}", id.as_str());
-            let username = format!("user-{}", id.as_str());
-            User {
-                id,
-                name: Some(name),
-                username: Some(username),
-            }
-        }
+        USERS.iter().find(|user| user.id == id).cloned().unwrap()
     }
 }
 
