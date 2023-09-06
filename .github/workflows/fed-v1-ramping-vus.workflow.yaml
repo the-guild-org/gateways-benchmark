@@ -33,7 +33,7 @@ jobs:
           - stitching-federation-with-yoga
           - stitching-federation-with-yoga-uws
           - stitching-federation-with-yoga-deno
-          - stitching-federation-with-yoga-bun]
+          - stitching-federation-with-yoga-bun
     uses: ./.github/workflows/benchmark.template.yaml
     name: ${{ matrix.directory }}
     with:
