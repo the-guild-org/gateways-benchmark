@@ -84,5 +84,6 @@ type User
   id: ID!
   name: String @join__field(graph: ACCOUNTS)
   username: String @join__field(graph: ACCOUNTS) @join__field(graph: REVIEWS, external: true)
+  birthday: Int @join__field(graph: ACCOUNTS)
   reviews: [Review] @join__field(graph: REVIEWS)
 }

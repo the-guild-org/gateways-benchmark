@@ -1,6 +1,6 @@
 use async_graphql::{
-    http::GraphiQLSource, EmptyMutation, EmptySubscription, Object, SDLExportOptions, Schema,
-    SimpleObject, ID,
+    http::GraphiQLSource, ComplexObject, EmptyMutation, EmptySubscription, Object,
+    SDLExportOptions, Schema, SimpleObject, ID,
 };
 use async_graphql_axum::GraphQL;
 use axum::{
@@ -10,15 +10,74 @@ use axum::{
     routing::get,
     Router, Server,
 };
+use lazy_static::lazy_static;
 use rand::Rng;
 use std::env::var;
 
 async fn graphiql() -> impl IntoResponse {
     response::Html(GraphiQLSource::build().endpoint("/graphql").finish())
 }
+lazy_static! {
+    static ref INVENTORY: Vec<Product> = vec![
+        Product {
+            upc: "1".to_string(),
+            in_stock: Some(true),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "2".to_string(),
+            in_stock: Some(false),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "3".to_string(),
+            in_stock: Some(false),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "4".to_string(),
+            in_stock: Some(false),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "5".to_string(),
+            in_stock: Some(true),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "6".to_string(),
+            in_stock: Some(true),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "7".to_string(),
+            in_stock: Some(true),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "8".to_string(),
+            in_stock: Some(false),
+            price: None,
+            weight: None,
+        },
+        Product {
+            upc: "9".to_string(),
+            in_stock: Some(true),
+            price: None,
+            weight: None,
+        }
+    ];
+}
 
-#[derive(SimpleObject)]
-#[graphql(extends)]
+#[derive(SimpleObject, Clone)]
+#[graphql(extends, complex)]
 struct Product {
     #[graphql(external)]
     upc: String,
@@ -27,8 +86,24 @@ struct Product {
     #[graphql(external)]
     price: Option<i64>,
     in_stock: Option<bool>,
+}
+
+#[ComplexObject]
+impl Product {
     #[graphql(requires = "price weight")]
-    shipping_estimate: Option<i64>,
+    pub async fn shipping_estimate(&self) -> Option<i64> {
+        if let Some(price) = self.price {
+            if price > 1000 {
+                return Some(0);
+            }
+
+            if let Some(weight) = self.weight {
+                return Some(weight / 2);
+            }
+        }
+
+        None
+    }
 }
 
 struct Query;
@@ -37,13 +112,11 @@ struct Query;
 impl Query {
     #[graphql(entity)]
     async fn find_product_by_id(&self, upc: ID) -> Product {
-        Product {
-            upc: upc.to_string(),
-            in_stock: Some(true),
-            price: Some(10),
-            shipping_estimate: Some(20),
-            weight: Some(30),
-        }
+        INVENTORY
+            .iter()
+            .find(|product| product.upc == upc.to_string())
+            .unwrap()
+            .clone()
     }
 }
 
