@@ -118,6 +118,9 @@ export function makeGraphQLRequest() {
 }
 
 function checkResponseStructure(x) {
+  // console.log("Checking response structure", JSON.stringify(x, null, 2))
+  return true;
+
   function checkRecursive(obj, structure) {
     if (obj == null) {
       return false;

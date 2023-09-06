@@ -73,8 +73,8 @@ type Review
 {
   id: ID!
   body: String
-  author: User @join__field(graph: REVIEWS, provides: "username")
   product: Product
+  author: User @join__field(graph: REVIEWS, provides: "username")
 }
 
 type User

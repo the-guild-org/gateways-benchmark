@@ -92,7 +92,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "10.1.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -107,7 +107,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{instance=~\"$host\",name=~\"$container\",name=~\".+\",name=~\"gateway-benchmark-.+\"}[5m])) by (name) *100",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[5m])) by (name) *100",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}}",
@@ -210,7 +210,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "10.1.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -225,7 +225,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(container_memory_rss{instance=~\"$host\",name=~\"$container\",name=~\".+\",name=~\"gateway-benchmark-.+\"}) by (name)",
+          "expr": "sum(container_memory_rss{instance=~\"$host\",name=~\"$container\",name=~\".+\"}) by (name)",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}}",
@@ -302,7 +302,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "10.1.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -317,7 +317,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(container_memory_cache{instance=~\"$host\",name=~\"$container\",name=~\".+\",name=~\"gateway-benchmark-.+\"}) by (name)",
+          "expr": "sum(container_memory_cache{instance=~\"$host\",name=~\"$container\",name=~\".+\"}) by (name)",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}}",
@@ -527,7 +527,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_transmit_bytes_total{instance=~\"$host\",name=~\"$container\",name=~\".+\",name=~\"gateway-benchmark-.+\"}[5m])) by (name)",
+          "expr": "sum(rate(container_network_transmit_bytes_total{instance=~\"$host\",name=~\"$container\",name=~\".+\"}[5m])) by (name)",
           "interval": "",
           "legendFormat": "{{name}}",
           "range": true,
@@ -612,8 +612,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -751,7 +750,7 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -783,8 +782,12 @@
         "allValue": ".*",
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -794,7 +797,7 @@
         "hide": 0,
         "includeAll": true,
         "label": "Container",
-        "multi": false,
+        "multi": true,
         "name": "container",
         "options": [],
         "query": {

@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   gateway:
-    image: ghcr.io/apollographql/router:v1.28.1
+    image: ghcr.io/apollographql/router:v1.29.1
+    container_name: gateway
     networks:
       - test
     ports:
@@ -31,6 +32,10 @@ services:
         timeout: 5s
         retries: 10
     command: ["-c", "config/router.yaml", "-s", "schema/local.graphql"]
+    mem_limit: "1g"
+    mem_reservation: "512m"
+    cpus: "1"
+    cpuset: "1"
 networks:
   test:
     name: test

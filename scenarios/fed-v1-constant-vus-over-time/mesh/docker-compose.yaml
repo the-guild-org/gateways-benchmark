@@ -3,6 +3,7 @@ version: '3.8'
 services:
   gateway:
     image: gateway/mesh
+    container_name: gateway
     networks:
       - test
     ports:
@@ -26,7 +27,10 @@ services:
         interval: 8s
         timeout: 5s
         retries: 5
-
+    mem_limit: "1g"
+    mem_reservation: "512m"
+    cpus: "1"
+    cpuset: "1"
 networks:
   test:
     name: test

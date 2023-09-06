@@ -1,11 +1,17 @@
 #/bin/sh
 set -e
 
+if [ ! -n "$1" ]; then
+  echo "gateway dir is missing, please run as: ./run.sh <gateway_dir>"
+  exit 1
+fi
+
 # needed because we are taking containers from another directory, and Docker can be stupid sometimes
 
 export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
 
 on_error(){
+    cd $BASE_DIR
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml logs
 }
@@ -34,7 +40,7 @@ sleep 10
 
 export END_TIME="$(date +%s)"
 
-docker logs gateway-benchmark-gateway-1 > ./$1/gateway_log.txt
+docker logs gateway > ./$1/gateway_log.txt
 
 rm -rf ./$1/overview.png || echo ""
 
@@ -43,6 +49,10 @@ npx --quiet capture-website-cli "http://localhost:3000/d/01npcT44k/k6?orgId=1&fr
 rm -rf ./$1/http.png || echo ""
 
 npx --quiet capture-website-cli "http://localhost:3000/d-solo/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&panelId=41" --output ./$1/http.png --width 1200
+
+rm -rf ./$1/containers.png || echo ""
+
+npx --quiet capture-website-cli "http://localhost:3000/d/pMEd7m0Mz/cadvisor-exporter?orgId=1&var-host=All&var-container=accounts&var-container=inventory&var-container=products&var-container=reviews&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output ./$1/containers.png --width 1200
 
 if [[ -z "${CI}" ]]; then
     echo "Done, you can find some stats in Grafana: http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000"

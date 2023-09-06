@@ -3,23 +3,25 @@ version: '3.8'
 services:
   accounts:
     image: service/accounts
+    container_name: accounts
     networks:
       - test
     ports:
-      - 4001:4001
+      - "0.0.0.0:4001:4001"
     environment:
       PORT: 4001
       SUBGRAPH_DELAY_MS: ${ACCOUNTS_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/accounts
-      dockerfile: ../Dockerfile
+      dockerfile: ../Dockerfile.rust
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4001/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4001/graphql", "temp"]
         interval: 3s
         timeout: 5s
         retries: 10
   inventory:
     image: service/inventory
+    container_name: inventory
     networks:
       - test
     ports:
@@ -29,31 +31,33 @@ services:
       SUBGRAPH_DELAY_MS: ${INVENTORY_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/inventory
-      dockerfile: ../Dockerfile
+      dockerfile: ../Dockerfile.rust
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4002/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4002/graphql", "temp"]
         interval: 3s
         timeout: 5s
         retries: 10
   products:
     image: service/products
+    container_name: products
     networks:
       - test
     ports:
-      - 4003:4003
+      - "0.0.0.0:4003:4003"
     environment:
       PORT: 4003
       SUBGRAPH_DELAY_MS: ${PRODUCTS_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/products
-      dockerfile: ../Dockerfile
+      dockerfile: ../Dockerfile.rust
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4003/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
-        interval: 3s
-        timeout: 5s
-        retries: 10
+      test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4003/graphql", "temp"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
   reviews:
     image: service/reviews
+    container_name: reviews
     networks:
       - test
     ports:
@@ -63,9 +67,9 @@ services:
       SUBGRAPH_DELAY_MS: ${REVIEWS_SUBGRAPH_DELAY_MS}
     build:
       context: ${BASE_DIR:-.}/services/reviews
-      dockerfile: ../Dockerfile
+      dockerfile: ../Dockerfile.rust
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4004/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4004/graphql", "temp"]
         interval: 3s
         timeout: 5s
         retries: 10

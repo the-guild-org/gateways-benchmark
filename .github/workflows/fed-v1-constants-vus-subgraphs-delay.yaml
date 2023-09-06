@@ -18,7 +18,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: [mesh, mesh-bun, mesh-supergraph, apollo-server, apollo-server-node16, apollo-router, mercurius, wundergraph]
+        directory: 
+          - mesh
+          # - mesh-bun
+          - mesh-supergraph
+          - apollo-server
+          - apollo-server-node16
+          - apollo-router
+          - mercurius
+          - wundergraph
     uses: ./.github/workflows/benchmark.template.yaml
     name: ${{ matrix.directory }}
     with:

@@ -1002,7 +1002,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(container_memory_rss{name=~\".+gateway.+\"}) by (name)",
+          "expr": "sum(container_memory_usage_bytes{name=~\"gateway\"}) by (name)",
           "hide": false,
           "legendFormat": "RAM {{name}}",
           "range": true,
@@ -1014,7 +1014,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_user_seconds_total{name=~\".+gateway.+\"}[10s]) * 100) by (name)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{name=~\"gateway\"}[10s]) * 100) by (name)",
           "hide": false,
           "legendFormat": "CPU {{name}}",
           "range": true,
