@@ -16,3 +16,4 @@ gateway_log.txt
 yarn.lock
 .mesh
 target
+report.vega.json
