@@ -149,7 +149,7 @@ async function generateReport(artifactsRootPath: string) {
     },
     mark: "bar",
     encoding: {
-      x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: 0 } },
+      x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: -90 } },
       y: { field: "rps", type: "quantitative" },
     },
   };
