@@ -2,6 +2,8 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import pkgJson from "./package.json";
 import tablemark from "tablemark";
+import * as vl from "vega-lite";
+import * as v from "vega";
 
 const IGNORED_DIRS = ["node_modules", "services"];
 const NEWLINE = "\n";
@@ -12,7 +14,14 @@ const {
   GITHUB_RUN_ID = "local",
 } = process.env;
 
-async function uploadImageToCloudflare(filename: string, filePath: string) {
+async function uploadImageToCloudflare(
+  filename: string,
+  filePath: string
+): Promise<string | null> {
+  if (!CF_IMAGES_LINK || !CF_IMAGES_TOKEN) {
+    return null;
+  }
+
   const buffer = readFileSync(filePath);
   const blob = new Blob([buffer], { type: "image/png" });
   const form = new FormData();
@@ -74,9 +83,9 @@ async function generateReport(artifactsRootPath: string) {
 
       const txtSummaryFilePath = join(fullPath, "./k6_summary.txt");
 
-      let overviewImageUrl = "";
-      let httpImageUrl = "";
-      let containersImageUrl = "";
+      let overviewImageUrl: string | null = "";
+      let httpImageUrl: string | null = "";
+      let containersImageUrl: string | null = "";
 
       if (!CF_IMAGES_LINK || !CF_IMAGES_TOKEN) {
         console.warn(
@@ -87,30 +96,31 @@ async function generateReport(artifactsRootPath: string) {
         const httpImageFilePath = join(fullPath, "./http.png");
         const containersFilePath = join(fullPath, "./containers.png");
 
-        [overviewImageUrl, httpImageUrl, containersImageUrl] = await Promise.all([
-          uploadImageToCloudflare(
-            `${GITHUB_RUN_ID}-overview.png`,
-            overviewImageFilePath
-          ),
-          uploadImageToCloudflare(
-            `${GITHUB_RUN_ID}-http.png`,
-            httpImageFilePath
-          ),
-          uploadImageToCloudflare(
-            `${GITHUB_RUN_ID}-http.png`,
-            containersFilePath
-          ),
-        ]);
+        [overviewImageUrl, httpImageUrl, containersImageUrl] =
+          await Promise.all([
+            uploadImageToCloudflare(
+              `${GITHUB_RUN_ID}-overview.png`,
+              overviewImageFilePath
+            ),
+            uploadImageToCloudflare(
+              `${GITHUB_RUN_ID}-http.png`,
+              httpImageFilePath
+            ),
+            uploadImageToCloudflare(
+              `${GITHUB_RUN_ID}-http.png`,
+              containersFilePath
+            ),
+          ]);
       }
 
-      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, 'utf8'));
+      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, "utf8"));
 
       return {
         name: dirName,
         path: fullPath,
         jsonSummary,
-        txtSummary: readFileSync(txtSummaryFilePath, 'utf8'),
-        rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
+        txtSummary: readFileSync(txtSummaryFilePath, "utf8"),
+        rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate),
         overviewImageUrl,
         httpImageUrl,
         containersImageUrl,
@@ -123,6 +133,37 @@ async function generateReport(artifactsRootPath: string) {
     .filter(notEmpty)
     .sort((a, b) => b.rps - a.rps);
 
+  const vega: vl.TopLevelSpec = {
+    width: 600,
+    height: 400,
+    background: null as any,
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    description: "",
+    data: {
+      values: validReportsData.map((v) => {
+        return {
+          "gateway-setup": v.name,
+          rps: v.rps,
+        };
+      }),
+    },
+    mark: "bar",
+    encoding: {
+      x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: -90 } },
+      y: { field: "rps", type: "quantitative" },
+    },
+  };
+
+  const vegaSpec = vl.compile(vega).spec;
+  const view = new v.View(v.parse(vegaSpec), { renderer: "none" });
+  const svg = await view.toSVG();
+  writeFileSync("report.svg", svg);
+
+  const reportChartUrl = await uploadImageToCloudflare(
+    `${GITHUB_RUN_ID}-report.svg`,
+    "report.svg"
+  );
+
   const markdownLines: string[] = [
     `## Overview for: \`${process.env.SCENARIO_TITLE}\``,
     NEWLINE,
@@ -132,6 +173,10 @@ async function generateReport(artifactsRootPath: string) {
     NEWLINE,
     "### Comparison",
     NEWLINE,
+    reportChartUrl
+      ? `<img src="${reportChartUrl}" alt="Comparison" />`
+      : "**no-chart-available**",
+    NEWLINE,
     tablemark(
       validReportsData.map((v) => ({
         gw: v.name,
@@ -139,9 +184,9 @@ async function generateReport(artifactsRootPath: string) {
         requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
         duration: `avg: ${Math.round(
           v.jsonSummary.metrics.http_req_duration.values.avg
-        )}ms, p95: ${
-          Math.round(v.jsonSummary.metrics.http_req_duration.values["p(95)"])
-        }ms`,
+        )}ms, p95: ${Math.round(
+          v.jsonSummary.metrics.http_req_duration.values["p(95)"]
+        )}ms`,
       })),
       {
         columns: [
@@ -158,24 +203,30 @@ async function generateReport(artifactsRootPath: string) {
         formatSummary(
           `Summary for: \`${info.name}\``,
           [
-            "**K6 Output**", 
+            "**K6 Output**",
             NEWLINE,
             NEWLINE,
             "```",
             info.txtSummary,
             "```",
             NEWLINE,
-            "**Performance Overview**", 
+            "**Performance Overview**",
             NEWLINE,
-            info.overviewImageUrl ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />` : '**no-image-available**',
+            info.overviewImageUrl
+              ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />`
+              : "**no-image-available**",
             NEWLINE,
-            "**Subgraphs Overview**", 
+            "**Subgraphs Overview**",
             NEWLINE,
-            info.containersImageUrl ? `<img src="${info.containersImageUrl}" alt="Subgraphs Overview" />` : '**no-image-available**',
+            info.containersImageUrl
+              ? `<img src="${info.containersImageUrl}" alt="Subgraphs Overview" />`
+              : "**no-image-available**",
             NEWLINE,
-            "**HTTP Overview**", 
+            "**HTTP Overview**",
             NEWLINE,
-            info.httpImageUrl ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />` : '**no-image-available**',
+            info.httpImageUrl
+              ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />`
+              : "**no-image-available**",
             NEWLINE,
           ].join("\n")
         )
@@ -185,6 +236,7 @@ async function generateReport(artifactsRootPath: string) {
 
   const markdown = markdownLines.join("\n");
   writeFileSync("result.md", markdown);
+  writeFileSync("report.vega.json", markdown);
 }
 
 const artifactsRootPath = process.argv[2] || __dirname;

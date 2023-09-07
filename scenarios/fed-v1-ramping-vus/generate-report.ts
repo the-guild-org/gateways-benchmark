@@ -2,6 +2,8 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import pkgJson from "./package.json";
 import tablemark from "tablemark";
+import * as vl from "vega-lite";
+import * as v from "vega";
 
 const IGNORED_DIRS = ["node_modules", "services"];
 const NEWLINE = "\n";
@@ -86,31 +88,34 @@ async function generateReport(artifactsRootPath: string) {
         const overviewImageFilePath = join(fullPath, "./overview.png");
         const httpImageFilePath = join(fullPath, "./http.png");
         const containersFilePath = join(fullPath, "./containers.png");
-        [overviewImageUrl, httpImageUrl, containersImageUrl] = await Promise.all([
-          uploadImageToCloudflare(
-            `${GITHUB_RUN_ID}-overview.png`,
-            overviewImageFilePath
-          ),
-          uploadImageToCloudflare(
-            `${GITHUB_RUN_ID}-http.png`,
-            httpImageFilePath
-          ),
-          uploadImageToCloudflare(
-            `${GITHUB_RUN_ID}-http.png`,
-            containersFilePath
-          ),
-        ]);
+        [overviewImageUrl, httpImageUrl, containersImageUrl] =
+          await Promise.all([
+            uploadImageToCloudflare(
+              `${GITHUB_RUN_ID}-overview.png`,
+              overviewImageFilePath
+            ),
+            uploadImageToCloudflare(
+              `${GITHUB_RUN_ID}-http.png`,
+              httpImageFilePath
+            ),
+            uploadImageToCloudflare(
+              `${GITHUB_RUN_ID}-http.png`,
+              containersFilePath
+            ),
+          ]);
       }
 
-      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, 'utf8'));
+      const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, "utf8"));
 
       return {
         name: dirName,
         path: fullPath,
         jsonSummary,
-        txtSummary: readFileSync(txtSummaryFilePath, 'utf8'),
-        rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate), 
-        p95_duration: Math.floor(jsonSummary.metrics.http_req_duration.values["p(95)"]),
+        txtSummary: readFileSync(txtSummaryFilePath, "utf8"),
+        rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate),
+        p95_duration: Math.floor(
+          jsonSummary.metrics.http_req_duration.values["p(95)"]
+        ),
         overviewImageUrl,
         httpImageUrl,
         containersImageUrl,
@@ -124,6 +129,37 @@ async function generateReport(artifactsRootPath: string) {
     .filter(notEmpty)
     .sort((a, b) => a.p95_duration - b.p95_duration);
 
+  const vega: vl.TopLevelSpec = {
+    width: 600,
+    height: 400,
+    background: null as any,
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    description: "",
+    data: {
+      values: validReportsData.map((v) => {
+        return {
+          "gateway-setup": v.name,
+          "duration (p95)": v.p95_duration,
+        };
+      }),
+    },
+    mark: "bar",
+    encoding: {
+      x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: -90 } },
+      y: { field: "duration (p95)", type: "quantitative" },
+    },
+  };
+
+  const vegaSpec = vl.compile(vega).spec;
+  const view = new v.View(v.parse(vegaSpec), { renderer: "none" });
+  const svg = await view.toSVG();
+  writeFileSync("report.svg", svg);
+
+  const reportChartUrl = await uploadImageToCloudflare(
+    `${GITHUB_RUN_ID}-report.svg`,
+    "report.svg"
+  );
+
   const markdownLines: string[] = [
     "## Overview for: `fed-v1-ramping-vus`",
     NEWLINE,
@@ -133,6 +169,10 @@ async function generateReport(artifactsRootPath: string) {
     NEWLINE,
     "### Comparison",
     NEWLINE,
+    reportChartUrl
+      ? `<img src="${reportChartUrl}" alt="Comparison" />`
+      : "**no-chart-available**",
+    NEWLINE,
     tablemark(
       validReportsData.map((v) => ({
         gw: v.name,
@@ -141,13 +181,13 @@ async function generateReport(artifactsRootPath: string) {
         requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
         duration: `avg: ${Math.round(
           v.jsonSummary.metrics.http_req_duration.values.avg
-        )}ms, p95: ${
-          Math.round(v.jsonSummary.metrics.http_req_duration.values["p(95)"])
-        }ms, max: ${
-          Math.round(v.jsonSummary.metrics.http_req_duration.values.max)
-        }ms, med: ${
-          Math.round(v.jsonSummary.metrics.http_req_duration.values.med)
-        }ms`,
+        )}ms, p95: ${Math.round(
+          v.jsonSummary.metrics.http_req_duration.values["p(95)"]
+        )}ms, max: ${Math.round(
+          v.jsonSummary.metrics.http_req_duration.values.max
+        )}ms, med: ${Math.round(
+          v.jsonSummary.metrics.http_req_duration.values.med
+        )}ms`,
       })),
       {
         columns: [
@@ -165,24 +205,30 @@ async function generateReport(artifactsRootPath: string) {
         formatSummary(
           `Summary for: \`${info.name}\``,
           [
-            "**K6 Output**", 
+            "**K6 Output**",
             NEWLINE,
             NEWLINE,
             "```",
             info.txtSummary,
             "```",
             NEWLINE,
-            "**Performance Overview**", 
+            "**Performance Overview**",
             NEWLINE,
-            info.overviewImageUrl ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />` : '**no-image-available**',
+            info.overviewImageUrl
+              ? `<img src="${info.overviewImageUrl}" alt="Performance Overview" />`
+              : "**no-image-available**",
             NEWLINE,
-            "**Subgraphs Overview**", 
+            "**Subgraphs Overview**",
             NEWLINE,
-            info.containersImageUrl ? `<img src="${info.containersImageUrl}" alt="Subgraphs Overview" />` : '**no-image-available**',
+            info.containersImageUrl
+              ? `<img src="${info.containersImageUrl}" alt="Subgraphs Overview" />`
+              : "**no-image-available**",
             NEWLINE,
-            "**HTTP Overview**", 
+            "**HTTP Overview**",
             NEWLINE,
-            info.httpImageUrl ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />` : '**no-image-available**',
+            info.httpImageUrl
+              ? `<img src="${info.httpImageUrl}" alt="HTTP Overview" />`
+              : "**no-image-available**",
             NEWLINE,
           ].join("\n")
         )
