@@ -27,10 +27,10 @@ services:
         interval: 8s
         timeout: 5s
         retries: 5
-    mem_limit: "1g"
-    mem_reservation: "512m"
-    cpus: "1"
-    cpuset: "1"
+    mem_limit: ${MEM_LIMIT:-1gb}
+    mem_reservation: ${MEM_RESERVE:-512m}
+    cpus: ${CPU_LIMIT:-1}
+    cpuset: ${CPU_SET:-1}
 networks:
   test:
     name: test
