@@ -32,10 +32,11 @@ services:
         timeout: 5s
         retries: 10
     command: ["-c", "config/router.yaml", "-s", "schema/local.graphql"]
-    mem_limit: ${MEM_LIMIT:-1gb}
-    mem_reservation: ${MEM_RESERVE:-512m}
-    cpus: ${CPU_LIMIT:-1}
-    cpuset: ${CPU_SET:-1}
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPU_LIMIT:-1}
+          memory: ${MEM_LIMIT:-1gb}
 networks:
   test:
     name: test

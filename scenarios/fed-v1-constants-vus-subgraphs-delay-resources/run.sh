@@ -11,11 +11,6 @@ export INVENTORY_SUBGRAPH_DELAY_MS="50~100"
 export PRODUCTS_SUBGRAPH_DELAY_MS="100~120"
 export REVIEWS_SUBGRAPH_DELAY_MS="20-150"
 
-export MEM_LIMIT="2gb"
-export MEM_RESERVE="1gb"
-export CPU_LIMIT="4"
-export CPU_SET="4"
-
 # needed because we are taking containers from another directory, and Docker can be stupid sometimes
 
 export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
