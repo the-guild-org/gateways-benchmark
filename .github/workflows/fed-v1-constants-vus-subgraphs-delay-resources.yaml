@@ -1,4 +1,4 @@
-name: fed-v1-constants-vus-subgraphs-delay
+name: fed-v1-constants-vus-subgraphs-delay-resources
 on:
   pull_request: {}
   push:
@@ -6,7 +6,7 @@ on:
       - 'main'
 
 concurrency:
-  group: fed-v1-constants-vus-subgraphs-delay-${{ github.ref }}
+  group: fed-v1-constants-vus-subgraphs-delay-resources-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -21,7 +21,6 @@ jobs:
         directory: 
           - mesh
           - mesh-bun
-          - mesh-supergraph
           - apollo-server
           - apollo-server-node16
           - apollo-router
@@ -33,14 +32,14 @@ jobs:
       gateway: ${{ matrix.directory }}
       vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
-      scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay
+      scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay-resources
       runner: ${{ needs.setup.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '0.5' || '1' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '500mb' || '1gb' }}
-      
+      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' || '2gb' }}
+
   report:
     needs: benchmark
     uses: ./.github/workflows/report.template.yaml
     secrets: inherit
     with:
-      scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay
+      scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay-resources

@@ -27,10 +27,11 @@ services:
         interval: 3s
         timeout: 5s
         retries: 10
-    mem_limit: "1g"
-    mem_reservation: "512m"
-    cpus: "1"
-    cpuset: "1"
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPU_LIMIT:-1}
+          memory: ${MEM_LIMIT:-1gb}
 networks:
   test:
     name: test

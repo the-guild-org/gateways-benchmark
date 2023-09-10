@@ -1,0 +1,20 @@
+{
+    "name": "fed-v1-constants-vus-subgraphs-delay-resources",
+    "description": "",
+    "scripts": {
+      "compose-supergraph": "tsx compose-supergraph.ts",
+      "generate-report": "cp ../fed-v1-constant-vus-over-time/generate-report.ts . && tsx generate-report.ts"
+    },
+    "dependencies": {
+      "vega": "5.25.0",
+      "vega-lite": "5.14.1",
+      "tablemark": "3.0.0",
+      "tsx": "3.12.8",
+      "typescript": "^5.1.6",
+      "graphql": "^16.7.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.1"
+    }
+  }
+  

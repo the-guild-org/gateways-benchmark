@@ -16,6 +16,12 @@ on:
       time: 
         type: string
         required: true
+      cpuLimit: 
+        type: string
+        required: true
+      memoryLimit: 
+        type: string
+        required: true
 
 jobs:
   test:
@@ -43,6 +49,8 @@ jobs:
         env:
           BENCH_VUS: ${{ inputs.vu }}
           BENCH_OVER_TIME: ${{ inputs.time }}
+          MEM_LIMIT: ${{ inputs.memoryLimit }}
+          CPU_LIMIT: ${{ inputs.cpuLimit }}
 
       - uses: actions/upload-artifact@v3
         with: 

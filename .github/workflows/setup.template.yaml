@@ -14,8 +14,10 @@ jobs:
       - name: decide on runner
         id: step1
         run: |
-          if [ ${{ github.event_name == 'pull_request' }} ]; then
+          if [ ${{ github.event_name }} == 'pull_request' ]; then
+            echo "using GitHub Actions default runner"
             echo "runner=ubuntu-latest" >> $GITHUB_OUTPUT
           else
+            echo "using stable runner: 'benchmark-runners'"
             echo 'runner={"group": "benchmark-runners"}' >> $GITHUB_OUTPUT
           fi
