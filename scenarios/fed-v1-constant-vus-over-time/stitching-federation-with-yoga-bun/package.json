@@ -4,7 +4,7 @@
     "start": "bun index.ts"
   },
   "dependencies": {
-    "bun-types": "^0.8.0",
+    "bun-types": "^1.0.0",
     "typescript": "^5.1.6",
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.1",
