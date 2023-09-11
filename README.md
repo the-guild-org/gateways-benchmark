@@ -61,6 +61,12 @@ This measures the following:
 
 This scenario runs the same flow as `fed-v1-constant-vus-over-time` but with an intentional delay on each upstream Subgraph. This creates more stress and increases memory in the server due to the more inflight requests. 
 
+## `fed-v1-constants-vus-subgraphs-delay-resources`
+
+[Latest Results](./scenarios/fed-v1-constants-vus-subgraphs-delay-resources/README.md)
+
+This scenario runs the same flow as `fed-v1-constants-vus-subgraphs-delay` but with more resources (CPU and RAM) allocated for the gateway.
+
 ## `fed-v1-ramping-vus`
 
 [Latest Results](./scenarios/fed-v1-ramping-vus/README.md)
