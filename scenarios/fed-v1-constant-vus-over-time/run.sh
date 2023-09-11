@@ -21,6 +21,7 @@ export BASE_DIR=$( realpath ./ )
 
 on_error(){
     cd $BASE_DIR
+    docker logs gateway
     docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml ps
     docker compose  -f ../../docker-compose.metrics.yaml  -f ./docker-compose.services.yaml -f ./$1/docker-compose.yaml logs
 }

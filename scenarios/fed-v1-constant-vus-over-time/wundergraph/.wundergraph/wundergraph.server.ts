@@ -5,5 +5,6 @@ export default configureWunderGraphServer(() => ({
 		queries: {},
 		mutations: {},
 	},
+	graphqlServers: [],
 }));
 
