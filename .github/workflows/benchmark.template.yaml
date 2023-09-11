@@ -53,6 +53,7 @@ jobs:
           CPU_LIMIT: ${{ inputs.cpuLimit }}
 
       - uses: actions/upload-artifact@v3
+        if: always()
         with: 
           name: ${{ inputs.gateway }}
           path: |

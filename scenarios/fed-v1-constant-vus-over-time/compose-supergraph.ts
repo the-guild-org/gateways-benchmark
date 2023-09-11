@@ -1,10 +1,10 @@
 import { composeServices } from '@apollo/composition'
 import { DocumentNode, Kind, SchemaExtensionNode, parse } from 'graphql'
 import { writeFileSync } from 'node:fs'
+import { print } from 'graphql';
 
 function cleanupFedV1(doc: DocumentNode): DocumentNode {
-    const schemaNode = doc.definitions.find(d => d.kind === Kind.SCHEMA_EXTENSION)! as SchemaExtensionNode;
-    (schemaNode as any).directives = [];
+    (doc as any).definitions = doc.definitions.filter(d => d.kind != Kind.SCHEMA_EXTENSION);
 
     return doc;
 }
@@ -14,6 +14,11 @@ async function main() {
     let inventorySdl = await fetch('http://127.0.0.1:4002/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
     let productsSdl = await fetch('http://127.0.0.1:4003/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
     let reviewsSdl = await fetch('http://127.0.0.1:4004/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
+    
+    writeFileSync(__dirname + '/wundergraph/.wundergraph/accounts.graphql', print(accountsSdl));
+    writeFileSync(__dirname + '/wundergraph/.wundergraph/inventory.graphql', print(inventorySdl));
+    writeFileSync(__dirname + '/wundergraph/.wundergraph/products.graphql', print(productsSdl));
+    writeFileSync(__dirname + '/wundergraph/.wundergraph/reviews.graphql', print(reviewsSdl));
 
     const { supergraphSdl, errors } = composeServices([
         {

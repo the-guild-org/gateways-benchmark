@@ -8,7 +8,6 @@ COPY .wundergraph .graphqlrc.yaml tsconfig.json ./
 
 RUN yarn install
 
-
 ENV CONFIG_PATH "/config"
 ENV NODE_ENV production
 ENV WG_NODE_HOST 0.0.0.0
