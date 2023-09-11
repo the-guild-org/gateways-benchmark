@@ -182,7 +182,7 @@ async function generateReport(artifactsRootPath: string) {
         const notes: string[] = [];
 
         if (v.jsonSummary.metrics.http_req_failed.values.passes > 0) {
-          notes.push(`‼️ ${v.jsonSummary.metrics.http_req_failed.values.passes} failed requests`);
+          notes.push(`${v.jsonSummary.metrics.http_req_failed.values.passes} failed requests`);
         }
 
         const checks = v.jsonSummary.root_group.checks;
@@ -191,11 +191,11 @@ async function generateReport(artifactsRootPath: string) {
         const responseStructure = checks.find(c => c.name === 'valid response structure');
 
         if (http200Check.fails > 0) {
-          notes.push(`‼️ ${http200Check.fails} non-200 responses`);
+          notes.push(`${http200Check.fails} non-200 responses`);
         }
 
         if (graphqlErrors.fails > 0) {
-          notes.push(`‼️ ${graphqlErrors.fails} unexpected GraphQL errors`);
+          notes.push(`${graphqlErrors.fails} unexpected GraphQL errors`);
         }
 
         if (responseStructure.fails > 0) {
