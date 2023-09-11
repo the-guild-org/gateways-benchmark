@@ -17,6 +17,7 @@ export BASE_DIR=$( realpath ../fed-v1-constant-vus-over-time )
 
 on_error(){
     cd $BASE_DIR
+    docker inspect gateway
     docker logs gateway
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml ps
     docker compose  -f ../../docker-compose.metrics.yaml  -f ../fed-v1-constant-vus-over-time/docker-compose.services.yaml -f ../fed-v1-constant-vus-over-time/$1/docker-compose.yaml logs

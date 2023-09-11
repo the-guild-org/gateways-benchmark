@@ -178,22 +178,49 @@ async function generateReport(artifactsRootPath: string) {
       : "**no-chart-available**",
     NEWLINE,
     tablemark(
-      validReportsData.map((v) => ({
-        gw: v.name,
-        rps: Math.round(v.rps),
-        requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
-        duration: `avg: ${Math.round(
-          v.jsonSummary.metrics.http_req_duration.values.avg
-        )}ms, p95: ${Math.round(
-          v.jsonSummary.metrics.http_req_duration.values["p(95)"]
-        )}ms`,
-      })),
+      validReportsData.map((v) => {
+        const notes: string[] = [];
+
+        if (v.jsonSummary.metrics.http_req_failed.values.passes > 0) {
+          notes.push(`‼️ ${v.jsonSummary.metrics.http_req_failed.values.passes} failed requests`);
+        }
+
+        const checks = v.jsonSummary.root_group.checks;
+        const http200Check = checks.find(c => c.name === 'response code was 200');
+        const graphqlErrors = checks.find(c => c.name === 'no graphql errors');
+        const responseStructure = checks.find(c => c.name === 'valid response structure');
+
+        if (http200Check.fails > 0) {
+          notes.push(`‼️ ${http200Check.fails} non-200 responses`);
+        }
+
+        if (graphqlErrors.fails > 0) {
+          notes.push(`‼️ ${graphqlErrors.fails} unexpected GraphQL errors`);
+        }
+
+        if (responseStructure.fails > 0) {
+          notes.push(`non-compatible response structure (${responseStructure.fails})`);
+        }
+
+        return {
+          gw: v.name,
+          rps: Math.round(v.rps),
+          requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
+          duration: `avg: ${Math.round(
+            v.jsonSummary.metrics.http_req_duration.values.avg
+          )}ms, p95: ${Math.round(
+            v.jsonSummary.metrics.http_req_duration.values["p(95)"]
+          )}ms`,
+          notes: notes.length === 0 ? '✅' : '❌ ' + notes.join(', '),
+        };
+      }),
       {
         columns: [
           { name: "Gateway" },
           { name: "RPS ⬇️", align: "center" },
           { name: "Requests", align: "center" },
           { name: "Duration", align: "center" },
+          { name: "Notes", align: "left" },
         ],
       }
     ),
