@@ -13,8 +13,5 @@
     "@graphql-mesh/store": "^0.95.3",
     "@graphql-mesh/types": "^0.95.3",
     "bun-types": "^1.0.0"
-  },
-  "devDependencies": {
-    "@graphql-mesh/cli": "^0.87.6"
   }
 }
