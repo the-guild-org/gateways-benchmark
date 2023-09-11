@@ -9,6 +9,17 @@ function cleanupFedV1(doc: DocumentNode): DocumentNode {
     return doc;
 }
 
+const FED_V1_DIRECTIVES = `
+scalar _Any
+scalar _FieldSet
+
+directive @external on FIELD_DEFINITION
+directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+directive @key(fields: _FieldSet!) on OBJECT | INTERFACE
+directive @extends on OBJECT
+`;
+
 async function main() {
     let accountsSdl = await fetch('http://127.0.0.1:4001/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
     let inventorySdl = await fetch('http://127.0.0.1:4002/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
@@ -19,6 +30,11 @@ async function main() {
     writeFileSync(__dirname + '/wundergraph/.wundergraph/inventory.graphql', print(inventorySdl));
     writeFileSync(__dirname + '/wundergraph/.wundergraph/products.graphql', print(productsSdl));
     writeFileSync(__dirname + '/wundergraph/.wundergraph/reviews.graphql', print(reviewsSdl));
+    
+    writeFileSync(__dirname + '/mesh/config/accounts.graphql', FED_V1_DIRECTIVES + print(accountsSdl));
+    writeFileSync(__dirname + '/mesh/config/inventory.graphql', FED_V1_DIRECTIVES + print(inventorySdl));
+    writeFileSync(__dirname + '/mesh/config/products.graphql', FED_V1_DIRECTIVES + print(productsSdl));
+    writeFileSync(__dirname + '/mesh/config/reviews.graphql', FED_V1_DIRECTIVES + print(reviewsSdl));
 
     const { supergraphSdl, errors } = composeServices([
         {

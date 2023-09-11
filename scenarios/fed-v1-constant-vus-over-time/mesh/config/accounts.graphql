@@ -1,0 +1,25 @@
+
+scalar _Any
+scalar _FieldSet
+
+directive @external on FIELD_DEFINITION
+directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+directive @key(fields: _FieldSet!) on OBJECT | INTERFACE
+directive @extends on OBJECT
+extend type Query {
+  me: User
+  user(id: ID!): User
+  users: [User]
+}
+
+type User @key(fields: "id") {
+  id: ID!
+  name: String
+  username: String
+  birthday: Int
+}
+
+directive @include(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+directive @skip(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
