@@ -18,6 +18,6 @@ jobs:
             echo "using GitHub Actions default runner"
             echo "runner=ubuntu-latest" >> $GITHUB_OUTPUT
           else
-            echo "using stable runner: 'benchmark-runners'"
-            echo 'runner={"group": "benchmark-runners"}' >> $GITHUB_OUTPUT
+            echo "using stable runner: 'guild-azure-runners'"
+            echo 'runner=guild-azure-runners' >> $GITHUB_OUTPUT
           fi
