@@ -1,11 +1,7 @@
 name: fed-v1-constants-vus-subgraphs-delay
 on:
   pull_request: {}
-  push:
-    branches:
-      - 'main'
-    paths-ignore:
-      - '**/README.md'
+  workflow_dispatch: {}
       
 concurrency:
   group: fed-v1-constants-vus-subgraphs-delay-${{ github.ref }}

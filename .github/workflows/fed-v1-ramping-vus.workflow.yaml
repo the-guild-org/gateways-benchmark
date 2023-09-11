@@ -1,11 +1,7 @@
 name: fed-v1-ramping-vus
 on:
   pull_request: {}
-  push:
-    branches:
-      - 'main'
-    paths-ignore:
-      - '**/README.md'
+  workflow_dispatch: {}
       
 concurrency:
   group: fed-v1-ramping-vus-${{ github.ref }}
@@ -44,7 +40,9 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
       scenarioDir: scenarios/fed-v1-ramping-vus
       runner: ${{ needs.setup.outputs.runner }}
-
+      cpuLimit: ${{ github.event_name == 'pull_request' && '0.5' || '1' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '500mb' || '1gb' }}
+      
   report:
     needs: benchmark
     uses: ./.github/workflows/report.template.yaml
