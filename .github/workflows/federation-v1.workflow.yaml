@@ -40,7 +40,8 @@ jobs:
       gateway: ${{ matrix.directory }}
       vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
-      scenarioDir: federation-v1/scenarios/constant-vus-over-time
+      baseDir: federation-v1
+      scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '2'
       memoryLimit: '2gb'

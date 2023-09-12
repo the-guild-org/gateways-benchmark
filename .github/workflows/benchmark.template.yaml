@@ -1,10 +1,13 @@
 on:
   workflow_call:
     inputs:
+      baseDir:
+        type: string
+        required: true
       runner:
         type: string
         required: true
-      scenarioDir:
+      scenarioName:
         type: string
         required: true
       gateway: 
@@ -44,20 +47,22 @@ jobs:
 
       - name: run benchmark (${{ inputs.time }})
         timeout-minutes: 15
-        working-directory: ${{ inputs.scenarioDir }} 
+        working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }} 
         run: ./run.sh ${{ inputs.gateway }}
         env:
+          DOCKER_REGISTRY: ghcr.io/${{ github.repository }}/
+          DOCKER_TAG: ":${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
           BENCH_VUS: ${{ inputs.vu }}
           BENCH_OVER_TIME: ${{ inputs.time }}
           MEM_LIMIT: ${{ inputs.memoryLimit }}
           CPU_LIMIT: ${{ inputs.cpuLimit }}
 
-      # - uses: actions/upload-artifact@v3
-      #   if: always()
-      #   with: 
-      #     name: ${{ inputs.gateway }}
-      #     path: |
-      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.json
-      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.txt
-      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/gateway_log.txt
-      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/*.png
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with: 
+          name: ${{ inputs.baseDir }}-${{ inputs.gateway }}
+          path: |
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/k6_summary.json
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/k6_summary.txt
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/gateway_log.txt
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/*.png
