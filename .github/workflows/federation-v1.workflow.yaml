@@ -16,6 +16,7 @@ jobs:
     with:
       dir: federation-v1/subgraphs
       hcl: docker.hcl
+      target: subgraphs
 
   # fed-v1-ramping-vus:
   #   needs:

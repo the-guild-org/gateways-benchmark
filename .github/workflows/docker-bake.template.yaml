@@ -7,6 +7,9 @@ on:
       dir:
         type: string
         required: true
+      target:
+        type: string
+        required: true
 
 jobs:
   bake:
@@ -41,5 +44,5 @@ jobs:
           provenance: false
           push: true
           files: ${{ inputs.dir }}/${{ inputs.hcl }}
-          targets: ${{ inputs.hcl }}
+          targets: ${{ inputs.target }}
           
