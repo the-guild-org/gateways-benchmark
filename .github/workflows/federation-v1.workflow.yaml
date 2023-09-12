@@ -8,15 +8,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  decide-runner:
-    uses: ./.github/workflows/decide-runner.template.yaml
-
   subgraphs: 
     uses: ./.github/workflows/docker-bake.template.yaml
     with:
       dir: federation-v1/subgraphs
       hcl: docker.hcl
       target: subgraphs
+
+  decide-runner:
+    needs: subgraphs
+    uses: ./.github/workflows/decide-runner.template.yaml
 
   # fed-v1-ramping-vus:
   #   needs:

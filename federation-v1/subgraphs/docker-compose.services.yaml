@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   accounts:
-    image: '${DOCKER_REGISTRY}composition-federation-2${DOCKER_TAG}'
+    image: '${DOCKER_REGISTRY}subgraph-accounts${DOCKER_TAG}'
     container_name: accounts
     networks:
       - test
@@ -17,7 +17,7 @@ services:
         timeout: 5s
         retries: 10
   inventory:
-    image: service/inventory
+    image: '${DOCKER_REGISTRY}subgraph-inventory${DOCKER_TAG}'
     container_name: inventory
     networks:
       - test
@@ -35,7 +35,7 @@ services:
         timeout: 5s
         retries: 10
   products:
-    image: service/products
+    image: '${DOCKER_REGISTRY}subgraph-products${DOCKER_TAG}'
     container_name: products
     networks:
       - test
@@ -53,7 +53,7 @@ services:
       timeout: 5s
       retries: 10
   reviews:
-    image: service/reviews
+    image: '${DOCKER_REGISTRY}subgraph-reviews${DOCKER_TAG}'
     container_name: reviews
     networks:
       - test
@@ -70,6 +70,7 @@ services:
         interval: 3s
         timeout: 5s
         retries: 10
+        
 networks:
   test:
     name: test
