@@ -54,14 +54,14 @@ jobs:
       - name: update summary
         run: cat ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md >> $GITHUB_STEP_SUMMARY
 
-      - name: copy report (workflow_dispatch)
-        if: github.event_name == 'workflow_dispatch'
+      - name: copy report (workflow_dispatch/push)
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
         run: |
           cp ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }}/README.md
 
-      - name: publish report (workflow_dispatch)
+      - name: publish report (workflow_dispatch/push)
         uses: EndBug/add-and-commit@v9
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
         with:
           add: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }}/README.md
           message: 'Update results for scenario: ${{ inputs.scenarioName }}'
