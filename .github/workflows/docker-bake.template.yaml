@@ -46,6 +46,6 @@ jobs:
           push: true
           files: ${{ inputs.hcl }}
           targets: ${{ inputs.target }}
-          set:
-            subgraphs.cache-from=type=gha
-            subgraphs.cache-to=type=gha,mode=max
+          set: |
+            *.cache-from=type=gha,scope=build
+            *.cache-to=type=gha,scope=build,mode=max
