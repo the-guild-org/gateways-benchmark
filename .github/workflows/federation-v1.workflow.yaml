@@ -1,7 +1,7 @@
 name: federation-v1
 on:
   pull_request: {}
-  # workflow_dispatch: {}
+  workflow_dispatch: {}
 
 concurrency:
   group: federation-v1-${{ github.ref }}
@@ -33,9 +33,9 @@ jobs:
           # - apollo-server
           - apollo-router
           # - mercurius
-          # - wundergraph
+          - wundergraph
     uses: ./.github/workflows/benchmark.template.yaml
-    name: ${{ matrix.directory }}
+    name: constant-vus-over-time / ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
       vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
@@ -46,9 +46,10 @@ jobs:
       cpuLimit: '2'
       memoryLimit: '2gb'
   
-  # fed-v1-ramping-vus-report:
-  #   needs: fed-v1-ramping-vus
-  #   uses: ./.github/workflows/report.template.yaml
-  #   secrets: inherit
-  #   with:
-  #     scenarioDir: scenarios/fed-v1-ramping-vus
+  constant-vus-over-time-report:
+    needs: constant-vus-over-time
+    uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
+    with:
+      scenarioName: constant-vus-over-time
+      baseDir: federation-v1

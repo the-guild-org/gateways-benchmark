@@ -52,7 +52,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: run benchmark (${{ inputs.time }})
+      - name: prepare containers and run benchmark (${{ inputs.time }})
         timeout-minutes: 15
         working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }} 
         run: ./run.sh ${{ inputs.gateway }}
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: always()
         with: 
-          name: ${{ inputs.baseDir }}-${{ inputs.gateway }}
+          name: ${{ inputs.gateway }}
           path: |
             ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/k6_summary.json
             ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/k6_summary.txt
