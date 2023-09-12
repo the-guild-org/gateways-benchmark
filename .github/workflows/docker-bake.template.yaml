@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build docker images
-        timeout-minutes: 10
+        timeout-minutes: 15
         id: docker-bake
         uses: docker/bake-action@v3
         env:
@@ -46,4 +46,6 @@ jobs:
           push: true
           files: ${{ inputs.hcl }}
           targets: ${{ inputs.target }}
-          
+          set:
+            subgraphs.cache-from=type=gha
+            subgraphs.cache-to=type=gha,mode=max

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  accounts:
+    image: subgraph/accounts
+    build:
+      context: ${BASE_DIR:-.}/accounts
+      dockerfile: ../Dockerfile.rust
+  inventory:
+    image: subgraph/inventory
+    build:
+      context: ${BASE_DIR:-.}/inventory
+      dockerfile: ../Dockerfile.rust
+  products:
+    image: subgraph/products
+    build:
+      context: ${BASE_DIR:-.}/products
+      dockerfile: ../Dockerfile.rust
+  reviews:
+    image: subgraph/reviews
+    build:
+      context: ${BASE_DIR:-.}/reviews
+      dockerfile: ../Dockerfile.rust
+
+networks:
+  test:
+    name: test

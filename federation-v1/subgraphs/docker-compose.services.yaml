@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   accounts:
-    image: service/accounts
+    image: '${DOCKER_REGISTRY}composition-federation-2${DOCKER_TAG}'
     container_name: accounts
     networks:
       - test
@@ -11,9 +11,6 @@ services:
     environment:
       PORT: 4001
       SUBGRAPH_DELAY_MS: ${ACCOUNTS_SUBGRAPH_DELAY_MS}
-    build:
-      context: ${BASE_DIR:-.}/services/accounts
-      dockerfile: ../Dockerfile.rust
     healthcheck:
         test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4001/graphql", "temp"]
         interval: 3s
