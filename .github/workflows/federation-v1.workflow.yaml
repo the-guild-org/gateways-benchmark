@@ -41,7 +41,7 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
-      scenarioName: constant-vus-over-time
+      scenarioDir: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '1'
       memoryLimit: '1gb'
@@ -75,10 +75,11 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
-      scenarioName: constants-vus-subgraphs-delay
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '1'
       memoryLimit: '1gb'
+      scenarioDir: constant-vus-over-time
+      subgraphDelayRange: "40~150"
   
   constants-vus-subgraphs-delay-report:
     needs: constants-vus-subgraphs-delay
@@ -109,11 +110,12 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
-      scenarioName: constants-vus-subgraphs-delay-resources
+      scenarioDir: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: '2'
-      memoryLimit: '2gb'
-  
+      cpuLimit: ${{ github.event_name == 'pull_request' && '3' || '2' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' ||'2gb' }}
+      subgraphDelayRange: "40~150"
+
   constants-vus-subgraphs-delay-resources-report:
     needs: constants-vus-subgraphs-delay-resources
     uses: ./.github/workflows/report.template.yaml
@@ -143,7 +145,7 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
       baseDir: federation-v1
-      scenarioName: ramping-vus
+      scenarioDir: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '2'
       memoryLimit: '2gb'

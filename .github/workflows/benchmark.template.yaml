@@ -7,7 +7,7 @@ on:
       runner:
         type: string
         required: true
-      scenarioName:
+      scenarioDir:
         type: string
         required: true
       gateway: 
@@ -25,6 +25,8 @@ on:
       memoryLimit: 
         type: string
         required: true
+      subgraphDelayRange: 
+        type: string
 
 jobs:
   test:
@@ -54,9 +56,13 @@ jobs:
 
       - name: prepare containers and run benchmark (${{ inputs.time }})
         timeout-minutes: 15
-        working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }} 
+        working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }} 
         run: ./run.sh ${{ inputs.gateway }}
         env:
+          ACCOUNTS_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          INVENTORY_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          PRODUCTS_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          REVIEWS_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
           DOCKER_REGISTRY: ghcr.io/${{ github.repository }}/
           DOCKER_TAG: ":${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
           BENCH_VUS: ${{ inputs.vu }}
