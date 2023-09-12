@@ -2,6 +2,17 @@ import http from "k6/http";
 import { check } from "k6";
 import { textSummary } from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
 
+let identifiersMap = {};
+
+function printOnce(identifier, ...args) {
+  if (identifiersMap[identifier]) {
+    return;
+  }
+
+  console.log(...args);
+  identifiersMap[identifier] = true;
+}
+
 const graphqlRequest = {
   payload: JSON.stringify({
     query: `fragment User on User {
@@ -111,7 +122,7 @@ export function makeGraphQLRequest() {
       );
 
       if (!noErrors) {
-        console.log(`‼️ Got GraphQL errors:`, res.body);
+        printOnce('graphql_errors', `‼️ Got GraphQL errors, here's a sample:`, res.body);
       }
 
       return noErrors;
@@ -119,7 +130,13 @@ export function makeGraphQLRequest() {
     "valid response structure": (resp) => {
       const json = resp.json();
 
-      return checkResponseStructure(json);
+      let isValid = checkResponseStructure(json);
+
+      if (!isValid) {
+        printOnce('response_strcuture', `‼️ Got invalid structure, here's a sample:`, res.body);
+      }
+
+      return isValid;
     },
   });
 }
