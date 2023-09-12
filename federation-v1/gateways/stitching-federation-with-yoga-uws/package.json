@@ -7,7 +7,7 @@
   "dependencies": {
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.1",
-    "@graphql-tools/federation": "^1.1.2",
+    "@graphql-tools/federation": "^1.1.8",
     "uWebSockets.js": "uNetworking/uWebSockets.js#v20.31.0"
   },
   "devDependencies": {
