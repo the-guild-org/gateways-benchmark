@@ -23,10 +23,10 @@ services:
       reviews:
         condition: service_healthy
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4000/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
-        interval: 8s
+        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://localhost:4000/graphql", "temp"]
+        interval: 3s
         timeout: 5s
-        retries: 5
+        retries: 10
     deploy:
       resources:
         limits:

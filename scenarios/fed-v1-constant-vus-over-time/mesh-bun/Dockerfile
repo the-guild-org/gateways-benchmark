@@ -1,4 +1,4 @@
-FROM oven/bun:canary
+FROM oven/bun:1.0.0
 
 COPY package.json ./
 COPY .meshrc.yaml ./
