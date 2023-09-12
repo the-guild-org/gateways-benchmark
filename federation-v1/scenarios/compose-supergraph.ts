@@ -26,15 +26,15 @@ async function main() {
     let productsSdl = await fetch('http://127.0.0.1:4003/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
     let reviewsSdl = await fetch('http://127.0.0.1:4004/sdl').then(r => r.text()).then(parse).then(cleanupFedV1);
     
-    writeFileSync(__dirname + '/wundergraph/.wundergraph/accounts.graphql', print(accountsSdl));
-    writeFileSync(__dirname + '/wundergraph/.wundergraph/inventory.graphql', print(inventorySdl));
-    writeFileSync(__dirname + '/wundergraph/.wundergraph/products.graphql', print(productsSdl));
-    writeFileSync(__dirname + '/wundergraph/.wundergraph/reviews.graphql', print(reviewsSdl));
+    writeFileSync(__dirname + '/../gateways/wundergraph/.wundergraph/accounts.graphql', print(accountsSdl));
+    writeFileSync(__dirname + '/../gateways/wundergraph/.wundergraph/inventory.graphql', print(inventorySdl));
+    writeFileSync(__dirname + '/../gateways/wundergraph/.wundergraph/products.graphql', print(productsSdl));
+    writeFileSync(__dirname + '/../gateways/wundergraph/.wundergraph/reviews.graphql', print(reviewsSdl));
     
-    writeFileSync(__dirname + '/mesh/config/accounts.graphql', FED_V1_DIRECTIVES + print(accountsSdl));
-    writeFileSync(__dirname + '/mesh/config/inventory.graphql', FED_V1_DIRECTIVES + print(inventorySdl));
-    writeFileSync(__dirname + '/mesh/config/products.graphql', FED_V1_DIRECTIVES + print(productsSdl));
-    writeFileSync(__dirname + '/mesh/config/reviews.graphql', FED_V1_DIRECTIVES + print(reviewsSdl));
+    writeFileSync(__dirname + '/../gateways/mesh/config/accounts.graphql', FED_V1_DIRECTIVES + print(accountsSdl));
+    writeFileSync(__dirname + '/../gateways/mesh/config/inventory.graphql', FED_V1_DIRECTIVES + print(inventorySdl));
+    writeFileSync(__dirname + '/../gateways/mesh/config/products.graphql', FED_V1_DIRECTIVES + print(productsSdl));
+    writeFileSync(__dirname + '/../gateways/mesh/config/reviews.graphql', FED_V1_DIRECTIVES + print(reviewsSdl));
 
     const { supergraphSdl, errors } = composeServices([
         {
@@ -58,17 +58,16 @@ async function main() {
             url: 'http://products:4003/graphql'
         }
     ]);
-    
-    if (supergraphSdl) {
-        writeFileSync(__dirname + '/apollo-gateway-with-yoga/supergraph.graphql', supergraphSdl!);
-        writeFileSync(__dirname + '/apollo-gateway-with-yoga-uws/supergraph.graphql', supergraphSdl!);
-        writeFileSync(__dirname + '/apollo-router/supergraph.graphql', supergraphSdl!);
-        writeFileSync(__dirname + '/apollo-server/supergraph.graphql', supergraphSdl!);
-        writeFileSync(__dirname + '/apollo-server-node16/supergraph.graphql', supergraphSdl!);
-        writeFileSync(__dirname + '/mesh-supergraph/supergraph.graphql', supergraphSdl!);
-    } else {
+
+    if (errors?.length && errors?.length > 0) {
         console.log(`Failed to compose supergraph:`, errors);
         throw new Error('No supergraph SDL found!')
+    } else {
+        console.log("Got SDL:\n", supergraphSdl);
+        writeFileSync(__dirname + '/../gateways/apollo-router/supergraph.graphql', supergraphSdl!);
+        writeFileSync(__dirname + '/../gateways/apollo-server/supergraph.graphql', supergraphSdl!);
+        writeFileSync(__dirname + '/../gateways/apollo-server-node16/supergraph.graphql', supergraphSdl!);
+        writeFileSync(__dirname + '/../gateways/mesh-supergraph/supergraph.graphql', supergraphSdl!);
     }
 }
 

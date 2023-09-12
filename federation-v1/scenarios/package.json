@@ -1,0 +1,16 @@
+{
+    "name": "federation-v1-scenarios",
+    "scripts": {
+      "compose-supergraph": "tsx compose-supergraph.ts"
+    },
+    "dependencies": {
+      "tsx": "3.12.8",
+      "typescript": "^5.1.6",
+      "graphql": "^16.7.1",
+      "@apollo/composition": "2.5.4"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.1"
+    }
+  }
+  
