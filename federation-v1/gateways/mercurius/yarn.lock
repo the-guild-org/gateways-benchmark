@@ -10,21 +10,21 @@
     "@esbuild-kit/core-utils" "^3.0.0"
     get-tsconfig "^4.4.0"
 
-"@esbuild-kit/core-utils@^3.0.0", "@esbuild-kit/core-utils@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/core-utils/-/core-utils-3.2.2.tgz#ac3fe38d6ddcb3aa4658425034bb7a9cefa83495"
-  integrity sha512-Ub6LaRaAgF80dTSzUdXpFLM1pVDdmEVB9qb5iAzSpyDlX/mfJTFGOnZ516O05p5uWWteNviMKi4PAyEuRxI5gA==
+"@esbuild-kit/core-utils@^3.0.0", "@esbuild-kit/core-utils@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@esbuild-kit/core-utils/-/core-utils-3.3.0.tgz#2d8cfed79a34f71b07b0c91f634655d81fca72ab"
+  integrity sha512-jTtSvVpr5ygNXyPXf9IBbCrKQ0uckq6vWkcGfy1fEr9KjkKdnFn4kFAGjpqZDZim1wsTwh/Be+lhAUemEmxEYA==
   dependencies:
     esbuild "~0.18.20"
     source-map-support "^0.5.21"
 
-"@esbuild-kit/esm-loader@^2.5.5":
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/esm-loader/-/esm-loader-2.5.5.tgz#b82da14fcee3fc1d219869756c06f43f67d1ca71"
-  integrity sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==
+"@esbuild-kit/esm-loader@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@esbuild-kit/esm-loader/-/esm-loader-2.6.1.tgz#30bbe6b97fab40d384ae0c6cef0e53f63d1fd90e"
+  integrity sha512-NJT43EF+rJ/KCU/9VlBWS9HByN1FvbWdNmtNxdZNLYcxwxF+MASIjRsH9/f6FRa3Eml+Fr8TNujB6uzNTAPZfQ==
   dependencies:
-    "@esbuild-kit/core-utils" "^3.0.0"
-    get-tsconfig "^4.4.0"
+    "@esbuild-kit/core-utils" "^3.3.0"
+    get-tsconfig "^4.7.0"
 
 "@esbuild/android-arm64@0.18.20":
   version "0.18.20"
@@ -526,7 +526,7 @@ generate-function@^2.3.1:
   dependencies:
     is-property "^1.0.2"
 
-get-tsconfig@^4.4.0:
+get-tsconfig@^4.4.0, get-tsconfig@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.7.0.tgz#06ce112a1463e93196aa90320c35df5039147e34"
   integrity sha512-pmjiZ7xtB8URYm74PlGJozDNyhvsVLUcpBa8DZBG3bWHwaHa9bPiRpiSfovw+fjhwONSCWKRyk+JQHEGZmMrzw==
@@ -927,13 +927,13 @@ toidentifier@1.0.1:
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
 tsx@^3.12.7:
-  version "3.12.8"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.12.8.tgz#e9ec95c6b116e28f0187467f839029a3ce17a851"
-  integrity sha512-Lt9KYaRGF023tlLInPj8rgHwsZU8qWLBj4iRXNWxTfjIkU7canGL806AqKear1j722plHuiYNcL2ZCo6uS9UJA==
+  version "3.12.9"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.12.9.tgz#026e920d91930f005ab57cf2fbf1513292e1bac7"
+  integrity sha512-N9Cpuiy55IcemQ2kouH1ZqDvjUa31mkhIYmnJKnvDp0sLQrK9MUrRuN/XzW70iTk5a2kX2A63wLYWORwa34vug==
   dependencies:
     "@esbuild-kit/cjs-loader" "^2.4.2"
-    "@esbuild-kit/core-utils" "^3.2.2"
-    "@esbuild-kit/esm-loader" "^2.5.5"
+    "@esbuild-kit/core-utils" "^3.3.0"
+    "@esbuild-kit/esm-loader" "^2.6.1"
   optionalDependencies:
     fsevents "~2.3.2"
 
