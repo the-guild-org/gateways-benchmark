@@ -4,7 +4,7 @@
     "start": "tsx index.ts"
   },
   "dependencies": {
-    "tsx": "3.12.8",
+    "tsx": "3.12.9",
     "typescript": "^5.1.6",
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.1",
