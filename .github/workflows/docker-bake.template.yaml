@@ -40,6 +40,7 @@ jobs:
         env:
           DOCKER_REGISTRY: ghcr.io/${{ github.repository }}/
           PWD: ${{ inputs.dir }}
+          COMMIT_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
         with:
           provenance: false
           push: true
