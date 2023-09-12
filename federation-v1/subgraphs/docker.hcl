@@ -17,6 +17,7 @@ function "image_tag" {
 
 target "accounts" {
   context = "${PWD}/accounts"
+  dockerfile = "${PWD}/Dockerfile.rust"
   tags = [
     image_tag("subgraph-accounts", COMMIT_SHA),
   ]
@@ -24,6 +25,7 @@ target "accounts" {
 
 target "reviews" {
   context = "${PWD}/reviews"
+  dockerfile = "${PWD}/Dockerfile.rust"
   tags = [
     image_tag("subgraph-reviews", COMMIT_SHA),
   ]
@@ -31,6 +33,7 @@ target "reviews" {
 
 target "products" {
   context = "${PWD}/products"
+  dockerfile = "${PWD}/Dockerfile.rust"
   tags = [
     image_tag("subgraph-products", COMMIT_SHA),
   ]
@@ -38,6 +41,7 @@ target "products" {
 
 target "inventory" {
   context = "${PWD}/inventory"
+  dockerfile = "${PWD}/Dockerfile.rust"
   tags = [
     image_tag("subgraph-inventory", COMMIT_SHA),
   ]
