@@ -10,7 +10,7 @@ RUN addgroup -S gw && adduser -S gw -G gw
 
 WORKDIR /home/gw
 COPY index.ts ./
-COPY package.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn install --production
 ENV PORT 4000

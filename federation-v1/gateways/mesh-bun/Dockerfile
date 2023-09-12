@@ -1,6 +1,6 @@
 FROM oven/bun:1.0.0
 
-COPY package.json ./
+COPY package.json yarn.lock ./
 COPY .meshrc.yaml ./
 COPY .mesh ./.mesh
 COPY index.ts ./

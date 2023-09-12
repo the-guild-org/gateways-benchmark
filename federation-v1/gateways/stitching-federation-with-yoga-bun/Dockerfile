@@ -1,7 +1,7 @@
 FROM oven/bun:canary
 
 COPY index.ts ./
-COPY package.json ./
+COPY package.json yarn.lock ./
 
 ENV PORT 4000
 ENV NODE_ENV production
