@@ -1,0 +1,53 @@
+name: federation-v2
+on:
+  pull_request: {}
+  workflow_dispatch: {}
+
+concurrency:
+  group: federation-v2-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  subgraphs: 
+    uses: ./.github/workflows/docker-bake.template.yaml
+    with:
+      dir: federation-v2/subgraphs 
+      hcl: docker.hcl
+      target: subgraphs
+
+  decide-runner:
+    needs: subgraphs
+    uses: ./.github/workflows/decide-runner.template.yaml
+
+  v2-constant-vus-over-time:
+    needs:
+      - decide-runner
+      - subgraphs
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: 
+          - apollo-server
+          - apollo-router
+          - mesh-supergraph
+          - mesh-supergraph-bun
+    uses: ./.github/workflows/benchmark.template.yaml
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      baseDir: federation-v2
+      scenarioDir: v2-constant-vus-over-time
+      scenarioName: v2-constant-vus-over-time
+      runner: ${{ needs.decide-runner.outputs.runner }}
+      cpuLimit: '1'
+      memoryLimit: '1gb'
+  
+  v2-constant-vus-over-time-report:
+    needs: v2-constant-vus-over-time
+    uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
+    with:
+      scenarioName: v2-constant-vus-over-time
+      baseDir: federation-v2
+      scenarioDir: v2-constant-vus-over-time

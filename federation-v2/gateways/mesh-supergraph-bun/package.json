@@ -1,0 +1,17 @@
+{
+  "name": "mesh-gateway-bun",
+  "dependencies": {
+    "@types/node": "^20.4.5",
+    "graphql": "^16.7.1",
+    "@graphql-mesh/supergraph": "^0.0.3",
+    "@graphql-mesh/runtime": "^0.96.5",
+    "@graphql-mesh/utils": "^0.95.3",
+    "@graphql-mesh/cross-helpers": "^0.4.0",
+    "@graphql-mesh/cache-localforage": "^0.95.3",
+    "@graphql-mesh/merger-bare": "^0.95.3",
+    "@graphql-mesh/http": "^0.96.6",
+    "@graphql-mesh/store": "^0.95.3",
+    "@graphql-mesh/types": "^0.95.3",
+    "bun-types": "^1.0.0"
+  }
+}
