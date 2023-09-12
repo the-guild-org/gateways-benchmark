@@ -10,18 +10,36 @@ variable "COMMIT_SHA" {
   default = ""
 }
 
+function "image_tag" {
+  params = [name, tag]
+  result = notequal("", tag) ? "${DOCKER_REGISTRY}${name}:${tag}" : ""
+}
+
 target "accounts" {
   context = "${PWD}/accounts"
-  args = {
-    IMAGE_TITLE = "graphql-hive/app"
-    PORT = "3000"
-    IMAGE_DESCRIPTION = "The app of the GraphQL Hive project."
-  }
   tags = [
-    local_image_tag("app"),
-    stable_image_tag("app"),
-    image_tag("app", COMMIT_SHA),
-    image_tag("app", BRANCH_NAME)
+    image_tag("subgraph-accounts", COMMIT_SHA),
+  ]
+}
+
+target "reviews" {
+  context = "${PWD}/reviews"
+  tags = [
+    image_tag("subgraph-reviews", COMMIT_SHA),
+  ]
+}
+
+target "products" {
+  context = "${PWD}/products"
+  tags = [
+    image_tag("subgraph-products", COMMIT_SHA),
+  ]
+}
+
+target "inventory" {
+  context = "${PWD}/inventory"
+  tags = [
+    image_tag("subgraph-inventory", COMMIT_SHA),
   ]
 }
 
