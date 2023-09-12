@@ -53,6 +53,7 @@ jobs:
     with:
       scenarioName: constant-vus-over-time
       baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
 
   constants-vus-subgraphs-delay:
     needs:
@@ -88,6 +89,7 @@ jobs:
     with:
       scenarioName: constants-vus-subgraphs-delay
       baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
 
   constants-vus-subgraphs-delay-resources:
     needs:
@@ -112,8 +114,8 @@ jobs:
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '3' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' ||'2gb' }}
+      cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '3' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' ||'1gb' }}
       subgraphDelayRange: "40~150"
 
   constants-vus-subgraphs-delay-resources-report:
@@ -123,6 +125,7 @@ jobs:
     with:
       scenarioName: constants-vus-subgraphs-delay-resources
       baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
 
   ramping-vus:
     needs:
@@ -156,4 +159,5 @@ jobs:
     secrets: inherit
     with:
       scenarioName: ramping-vus
+      scenarioDir: ramping-vus
       baseDir: federation-v1
