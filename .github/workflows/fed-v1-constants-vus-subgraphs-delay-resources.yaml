@@ -20,7 +20,7 @@ jobs:
           - mesh
           - mesh-bun
           - apollo-server
-          - apollo-server-node16
+          # - apollo-server-node16
           - apollo-router
           - mercurius
           - wundergraph
