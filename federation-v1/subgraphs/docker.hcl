@@ -1,7 +1,3 @@
-variable "PWD" {
-  default = "."
-}
-
 variable "DOCKER_REGISTRY" {
   default = ""
 }
@@ -16,32 +12,32 @@ function "image_tag" {
 }
 
 target "accounts" {
-  context = "${PWD}/accounts"
-  dockerfile = "${PWD}/Dockerfile.rust"
+  context = "./accounts/"
+  dockerfile = "../Dockerfile.rust"
   tags = [
     image_tag("subgraph-accounts", COMMIT_SHA),
   ]
 }
 
 target "reviews" {
-  context = "${PWD}/reviews"
-  dockerfile = "${PWD}/Dockerfile.rust"
+  context = "./reviews/"
+  dockerfile = "../Dockerfile.rust"
   tags = [
     image_tag("subgraph-reviews", COMMIT_SHA),
   ]
 }
 
 target "products" {
-  context = "${PWD}/products"
-  dockerfile = "${PWD}/Dockerfile.rust"
+  context = "./products/"
+  dockerfile = "../Dockerfile.rust"
   tags = [
     image_tag("subgraph-products", COMMIT_SHA),
   ]
 }
 
 target "inventory" {
-  context = "${PWD}/inventory"
-  dockerfile = "${PWD}/Dockerfile.rust"
+  context = "./inventory/"
+  dockerfile = "../Dockerfile.rust"
   tags = [
     image_tag("subgraph-inventory", COMMIT_SHA),
   ]
