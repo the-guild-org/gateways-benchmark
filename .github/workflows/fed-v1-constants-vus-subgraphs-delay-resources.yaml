@@ -32,8 +32,8 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       scenarioDir: scenarios/fed-v1-constants-vus-subgraphs-delay-resources
       runner: ${{ needs.setup.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' || '2gb' }}
+      cpuLimit: '2'
+      memoryLimit: '2gb'
 
   report:
     needs: benchmark

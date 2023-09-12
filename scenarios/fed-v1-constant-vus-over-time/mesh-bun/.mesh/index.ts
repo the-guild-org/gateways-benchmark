@@ -432,7 +432,7 @@ const reviewsTransforms = [];
 const additionalTypeDefs = [] as any[];
 const accountsHandler = new GraphqlHandler({
               name: "accounts",
-              config: {"source":"../mesh/config/accounts.graphql","endpoint":"http://localhost:4001/graphql"},
+              config: {"source":"../mesh/config/accounts.graphql","endpoint":"http://accounts:4001/graphql"},
               baseDir,
               cache,
               pubsub,
@@ -442,7 +442,7 @@ const accountsHandler = new GraphqlHandler({
             });
 const inventoryHandler = new GraphqlHandler({
               name: "inventory",
-              config: {"source":"../mesh/config/inventory.graphql","endpoint":"http://localhost:4002/graphql"},
+              config: {"source":"../mesh/config/inventory.graphql","endpoint":"http://inventory:4002/graphql"},
               baseDir,
               cache,
               pubsub,
@@ -452,7 +452,7 @@ const inventoryHandler = new GraphqlHandler({
             });
 const productsHandler = new GraphqlHandler({
               name: "products",
-              config: {"source":"../mesh/config/products.graphql","endpoint":"http://localhost:4003/graphql"},
+              config: {"source":"../mesh/config/products.graphql","endpoint":"http://products:4003/graphql"},
               baseDir,
               cache,
               pubsub,
@@ -462,7 +462,7 @@ const productsHandler = new GraphqlHandler({
             });
 const reviewsHandler = new GraphqlHandler({
               name: "reviews",
-              config: {"source":"../mesh/config/reviews.graphql","endpoint":"http://localhost:4004/graphql"},
+              config: {"source":"../mesh/config/reviews.graphql","endpoint":"http://reviews:4004/graphql"},
               baseDir,
               cache,
               pubsub,

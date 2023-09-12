@@ -40,8 +40,8 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       scenarioDir: scenarios/fed-v1-constant-vus-over-time
       runner: ${{ needs.setup.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '1' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '1g' || '1gb' }}
+      cpuLimit: '1'
+      memoryLimit: '1gb'
 
   report:
     needs: benchmark
