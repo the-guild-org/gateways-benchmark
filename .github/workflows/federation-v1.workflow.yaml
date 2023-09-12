@@ -2,9 +2,9 @@ name: federation-v1
 on:
   pull_request: {}
   workflow_dispatch: {}
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
 concurrency:
   group: federation-v1-${{ github.ref }}
