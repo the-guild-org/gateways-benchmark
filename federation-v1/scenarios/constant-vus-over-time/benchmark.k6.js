@@ -6,9 +6,6 @@ const time = __ENV.BENCH_OVER_TIME || "30s";
 export const options = {
   vus: vus,
   duration: time,
-  // thresholds: {
-  //   http_req_failed: ["rate<0.1"],
-  // },
 };
 
 export default function() {
