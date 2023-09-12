@@ -36,7 +36,7 @@ jobs:
           CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
           CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
 
-      - name: publish report
+      - name: publish report (pull_request)
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
         with:
@@ -45,14 +45,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.githubToken }}
 
-      - name: copy report
-        if: github.event_name == 'push'
+      - name: copy report (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
         run: |
           cp ${{ inputs.scenarioDir }}/result.md ${{ inputs.scenarioDir }}/README.md
 
-      - name: publish report
+      - name: publish report (workflow_dispatch)
         uses: EndBug/add-and-commit@v9
-        if: github.event_name == 'push'
+        if: github.event_name == 'workflow_dispatch'
         with:
           add: ${{ inputs.scenarioDir }}/README.md
           message: 'Update results for scenario: ${{ inputs.scenarioDir }}'
