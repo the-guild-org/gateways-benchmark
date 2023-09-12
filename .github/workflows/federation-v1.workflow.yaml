@@ -122,7 +122,7 @@ jobs:
       scenarioName: constants-vus-subgraphs-delay-resources
       baseDir: federation-v1
 
-  fed-v1-ramping-vus:
+  ramping-vus:
     needs:
       - decide-runner
       - subgraphs
@@ -143,15 +143,15 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
       baseDir: federation-v1
-      scenarioName: fed-v1-ramping-vus
+      scenarioName: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '2'
       memoryLimit: '2gb'
   
-  fed-v1-ramping-vus-report:
-    needs: fed-v1-ramping-vus
+  ramping-vus-report:
+    needs: ramping-vus
     uses: ./.github/workflows/report.template.yaml
     secrets: inherit
     with:
-      scenarioName: fed-v1-ramping-vus
+      scenarioName: ramping-vus
       baseDir: federation-v1
