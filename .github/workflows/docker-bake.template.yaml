@@ -11,7 +11,6 @@ on:
 jobs:
   bake:
     runs-on: ubuntu-latest
-    name: docker build (${{ inputs.hcl }})
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -41,6 +40,6 @@ jobs:
         with:
           provenance: false
           push: true
-          files: ${{ inputs.hcl }}
+          files: ${{ inputs.dir }}/${{ inputs.hcl }}
           targets: ${{ inputs.hcl }}
           
