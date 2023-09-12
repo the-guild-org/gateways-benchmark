@@ -47,5 +47,5 @@ jobs:
           files: ${{ inputs.hcl }}
           targets: ${{ inputs.target }}
           set: |
-            *.cache-from=type=gha
-            *.cache-to=type=gha,mode=max
+            *.cache-from=type=gha,scope=build
+            *.cache-to=type=gha,scope=build,mode=max
