@@ -5,7 +5,7 @@ import tablemark from "tablemark";
 import * as vl from "vega-lite";
 import * as v from "vega";
 
-const IGNORED_DIRS = ["node_modules", "services"];
+const IGNORED_DIRS = ["node_modules"];
 const NEWLINE = "\n";
 
 const {
