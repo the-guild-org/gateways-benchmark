@@ -7,9 +7,9 @@ RUN cargo build --release
 RUN rm ./subgraph.rs
 
 COPY subgraph.rs ./
-RUN cargo install --path .
+RUN cargo build --release
 
 FROM debian:12.1
-COPY --from=builder /usr/local/cargo/bin/subgraph /usr/local/bin/subgraph
+COPY --from=builder /usr/src/subgraph/target/release/subgraph /usr/local/bin/subgraph
 
 CMD subgraph
