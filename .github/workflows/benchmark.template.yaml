@@ -29,7 +29,7 @@ on:
 jobs:
   test:
     runs-on: ${{ startsWith(inputs.runner, '{') && fromJSON(inputs.runner) || inputs.runner }}
-    name: benchmark
+    name: ${{ inputs.gateway }}
     steps:
       - name: adjust os 
         run: |
