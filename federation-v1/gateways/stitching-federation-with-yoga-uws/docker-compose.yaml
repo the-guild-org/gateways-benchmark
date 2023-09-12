@@ -11,7 +11,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ${BASE_DIR:-.}/stitching-federation-with-yoga-uws
+      context: ${BASE_DIR:-.}/../../gateways/stitching-federation-with-yoga-uws
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 

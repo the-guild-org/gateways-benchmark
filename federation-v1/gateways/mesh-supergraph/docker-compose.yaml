@@ -11,7 +11,7 @@ services:
     environment:
       PORT: 4000
     build:
-      context: ${BASE_DIR:-.}/mesh-supergraph
+      context: ${BASE_DIR:-.}/../../gateways/mesh-supergraph
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 

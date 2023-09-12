@@ -3,19 +3,19 @@ version: '3.8'
 services:
   accounts:
     build:
-      context: ${BASE_DIR:-.}/accounts
+      context: ${BASE_DIR:-.}/../../subgraphs/accounts
       dockerfile: ../Dockerfile.rust
   inventory:
     build:
-      context: ${BASE_DIR:-.}/inventory
+      context: ${BASE_DIR:-.}/../../subgraphs/inventory
       dockerfile: ../Dockerfile.rust
   products:
     build:
-      context: ${BASE_DIR:-.}/products
+      context: ${BASE_DIR:-.}/../../subgraphs/products
       dockerfile: ../Dockerfile.rust
   reviews:
     build:
-      context: ${BASE_DIR:-.}/reviews
+      context: ${BASE_DIR:-.}/../../subgraphs/reviews
       dockerfile: ../Dockerfile.rust
 
 networks:

@@ -42,8 +42,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install k6=0.46.0
 
-      - name: run benchmark (${{ inputs.vu }} VUs over ${{ inputs.time }})
-        timeout-minutes: 40
+      - name: run benchmark (${{ inputs.time }})
+        timeout-minutes: 15
         working-directory: ${{ inputs.scenarioDir }} 
         run: ./run.sh ${{ inputs.gateway }}
         env:
@@ -52,12 +52,12 @@ jobs:
           MEM_LIMIT: ${{ inputs.memoryLimit }}
           CPU_LIMIT: ${{ inputs.cpuLimit }}
 
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with: 
-          name: ${{ inputs.gateway }}
-          path: |
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.json
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.txt
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/gateway_log.txt
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/*.png
+      # - uses: actions/upload-artifact@v3
+      #   if: always()
+      #   with: 
+      #     name: ${{ inputs.gateway }}
+      #     path: |
+      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.json
+      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.txt
+      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/gateway_log.txt
+      #       ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/*.png

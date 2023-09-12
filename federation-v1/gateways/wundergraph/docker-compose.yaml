@@ -8,11 +8,8 @@ services:
       - test
     ports:
       - "0.0.0.0:4000:4000"
-    environment:
-      # Added because we want to ensure 1 cpu is used, to make the comparison fair
-      GOMAXPROCS: 1
     build:
-      context: ${BASE_DIR:-.}/wundergraph
+      context: ${BASE_DIR:-.}/../../gateways/wundergraph
       dockerfile: ./Dockerfile
     depends_on:
       accounts: 

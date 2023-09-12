@@ -19,31 +19,32 @@ jobs:
     needs: subgraphs
     uses: ./.github/workflows/decide-runner.template.yaml
 
-  # fed-v1-ramping-vus:
-  #   needs:
-  #     - setup
-  #     - subgraphs
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       directory: 
-  #         - mesh
-  #         - mesh-supergraph
-  #         - mesh-bun
-  #         - apollo-server
-  #         - apollo-router
-  #         - mercurius
-  #         - wundergraph
-  #   uses: ./.github/workflows/benchmark.template.yaml
-  #   name: ${{ matrix.directory }}
-  #   with:
-  #     gateway: ${{ matrix.directory }}
-  #     vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
-  #     time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
-  #     scenarioDir: scenarios/fed-v1-ramping-vus
-  #     runner: ${{ needs.setup.outputs.runner }}
-  #     cpuLimit: '2'
-  #     memoryLimit: '2gb'
+  constant-vus-over-time:
+    needs:
+      - decide-runner
+      - subgraphs
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: 
+          # - mesh
+          # - mesh-supergraph
+          # - mesh-bun
+          # - apollo-server
+          - apollo-router
+          # - mercurius
+          # - wundergraph
+    uses: ./.github/workflows/benchmark.template.yaml
+    name: ${{ matrix.directory }}
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
+      time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
+      scenarioDir: federation-v1/scenarios/constant-vus-over-time
+      runner: ${{ needs.decide-runner.outputs.runner }}
+      cpuLimit: '2'
+      memoryLimit: '2gb'
+  
   # fed-v1-ramping-vus-report:
   #   needs: fed-v1-ramping-vus
   #   uses: ./.github/workflows/report.template.yaml
