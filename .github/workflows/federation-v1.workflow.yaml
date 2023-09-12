@@ -1,0 +1,163 @@
+name: federation-v1
+on:
+  pull_request: {}
+  workflow_dispatch: {}
+
+concurrency:
+  group: federation-v1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  subgraphs: 
+    uses: ./.github/workflows/docker-bake.template.yaml
+    with:
+      dir: federation-v1/subgraphs
+      hcl: docker.hcl
+      target: subgraphs
+
+  decide-runner:
+    needs: subgraphs
+    uses: ./.github/workflows/decide-runner.template.yaml
+
+  constant-vus-over-time:
+    needs:
+      - decide-runner
+      - subgraphs
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: 
+          - mesh
+          - mesh-supergraph
+          - mesh-bun
+          - apollo-server
+          - apollo-server-node16
+          - apollo-router
+          - mercurius
+          - wundergraph
+    uses: ./.github/workflows/benchmark.template.yaml
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+      runner: ${{ needs.decide-runner.outputs.runner }}
+      cpuLimit: '1'
+      memoryLimit: '1gb'
+  
+  constant-vus-over-time-report:
+    needs: constant-vus-over-time
+    uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
+    with:
+      scenarioName: constant-vus-over-time
+      baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+
+  constants-vus-subgraphs-delay:
+    needs:
+      - decide-runner
+      - subgraphs
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: 
+          - mesh
+          - mesh-bun
+          - mesh-supergraph
+          - apollo-server
+          - apollo-router
+          - mercurius
+          - wundergraph
+    uses: ./.github/workflows/benchmark.template.yaml
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      baseDir: federation-v1
+      runner: ${{ needs.decide-runner.outputs.runner }}
+      cpuLimit: '1'
+      memoryLimit: '1gb'
+      scenarioDir: constant-vus-over-time
+      subgraphDelayRange: "40~150"
+  
+  constants-vus-subgraphs-delay-report:
+    needs: constants-vus-subgraphs-delay
+    uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
+    with:
+      scenarioName: constants-vus-subgraphs-delay
+      baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+
+  constants-vus-subgraphs-delay-resources:
+    needs:
+      - decide-runner
+      - subgraphs
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: 
+          - mesh
+          - mesh-bun
+          - mesh-supergraph
+          - apollo-server
+          - apollo-router
+          - mercurius
+          - wundergraph
+    uses: ./.github/workflows/benchmark.template.yaml
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+      runner: ${{ needs.decide-runner.outputs.runner }}
+      cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '3' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' ||'1gb' }}
+      subgraphDelayRange: "40~150"
+
+  constants-vus-subgraphs-delay-resources-report:
+    needs: constants-vus-subgraphs-delay-resources
+    uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
+    with:
+      scenarioName: constants-vus-subgraphs-delay-resources
+      baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+
+  ramping-vus:
+    needs:
+      - decide-runner
+      - subgraphs
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: 
+          - mesh
+          - mesh-bun
+          - mesh-supergraph
+          - apollo-server
+          - apollo-router
+          - mercurius
+          - wundergraph
+    uses: ./.github/workflows/benchmark.template.yaml
+    with:
+      gateway: ${{ matrix.directory }}
+      vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
+      time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
+      baseDir: federation-v1
+      scenarioDir: ramping-vus
+      runner: ${{ needs.decide-runner.outputs.runner }}
+      cpuLimit: '2'
+      memoryLimit: '2gb'
+  
+  ramping-vus-report:
+    needs: ramping-vus
+    uses: ./.github/workflows/report.template.yaml
+    secrets: inherit
+    with:
+      scenarioName: ramping-vus
+      scenarioDir: ramping-vus
+      baseDir: federation-v1

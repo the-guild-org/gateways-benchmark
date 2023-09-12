@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      baseDir:
+        type: string
+        required: true
       runner:
         type: string
         required: true
@@ -22,11 +25,13 @@ on:
       memoryLimit: 
         type: string
         required: true
+      subgraphDelayRange: 
+        type: string
 
 jobs:
   test:
     runs-on: ${{ startsWith(inputs.runner, '{') && fromJSON(inputs.runner) || inputs.runner }}
-    name: benchmark
+    name: ${{ inputs.gateway }}
     steps:
       - name: adjust os 
         run: |
@@ -42,11 +47,24 @@ jobs:
           sudo apt-get update
           sudo apt-get install k6=0.46.0
 
-      - name: run benchmark (${{ inputs.vu }} VUs over ${{ inputs.time }})
-        timeout-minutes: 40
-        working-directory: ${{ inputs.scenarioDir }} 
+      - name: login to docker registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: prepare containers and run benchmark (${{ inputs.time }})
+        timeout-minutes: 15
+        working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }} 
         run: ./run.sh ${{ inputs.gateway }}
         env:
+          ACCOUNTS_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          INVENTORY_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          PRODUCTS_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          REVIEWS_SUBGRAPH_DELAY_MS: ${{ inputs.subgraphDelayRange }}
+          DOCKER_REGISTRY: ghcr.io/${{ github.repository }}/
+          DOCKER_TAG: ":${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
           BENCH_VUS: ${{ inputs.vu }}
           BENCH_OVER_TIME: ${{ inputs.time }}
           MEM_LIMIT: ${{ inputs.memoryLimit }}
@@ -57,7 +75,7 @@ jobs:
         with: 
           name: ${{ inputs.gateway }}
           path: |
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.json
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/k6_summary.txt
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/gateway_log.txt
-            ${{ inputs.scenarioDir }}/${{ inputs.gateway }}/*.png
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/k6_summary.json
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/k6_summary.txt
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/gateway_log.txt
+            ${{ inputs.baseDir }}/gateways/${{ inputs.gateway }}/*.png

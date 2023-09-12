@@ -1,6 +1,12 @@
 on:
   workflow_call:
     inputs:
+      baseDir:
+        type: string
+        required: true
+      scenarioName:
+        type: string
+        required: true
       scenarioDir:
         type: string
         required: true
@@ -8,7 +14,7 @@ on:
 jobs:
   report:
     runs-on: ubuntu-latest
-    name: report for ${{ inputs.scenarioDir }} 
+    name: report
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -26,13 +32,13 @@ jobs:
       
       - name: install dependencies
         run: yarn install
-        working-directory: ${{ inputs.scenarioDir }}
+        working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}
 
       - name: generate report
         run: yarn generate-report ${{ steps.download.outputs.download-path }} 
-        working-directory: ${{ inputs.scenarioDir }}
+        working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}
         env:
-          SCENARIO_TITLE: ${{ inputs.scenarioDir }}
+          SCENARIO_TITLE: ${{ inputs.scenarioName }}
           CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
           CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
 
@@ -40,23 +46,23 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
         with:
-          header: ${{ inputs.scenarioDir }}
-          path: ${{ inputs.scenarioDir }}/result.md
+          header: ${{ inputs.scenarioName }}
+          path: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md
         env:
           GITHUB_TOKEN: ${{ secrets.githubToken }}
 
       - name: update summary
-        run: cat ${{ inputs.scenarioDir }}/result.md >> $GITHUB_STEP_SUMMARY
+        run: cat ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md >> $GITHUB_STEP_SUMMARY
 
       - name: copy report (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          cp ${{ inputs.scenarioDir }}/result.md ${{ inputs.scenarioDir }}/README.md
+          cp ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }}/README.md
 
       - name: publish report (workflow_dispatch)
         uses: EndBug/add-and-commit@v9
         if: github.event_name == 'workflow_dispatch'
         with:
-          add: ${{ inputs.scenarioDir }}/README.md
-          message: 'Update results for scenario: ${{ inputs.scenarioDir }}'
+          add: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }}/README.md
+          message: 'Update results for scenario: ${{ inputs.scenarioName }}'
           pull: '--rebase --autostash'
