@@ -35,7 +35,6 @@ jobs:
           # - mercurius
           - wundergraph
     uses: ./.github/workflows/benchmark.template.yaml
-    name: constant-vus-over-time / ${{ matrix.directory }}
     with:
       gateway: ${{ matrix.directory }}
       vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
