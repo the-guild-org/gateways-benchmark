@@ -20,8 +20,8 @@ export COMPOSE_FLAGS="-f ../../../docker-compose.metrics.yaml -f ../../subgraphs
 on_error(){
     cd $BASE_DIR
     docker inspect gateway
-    docker logs gateway
-    docker compose $COMPOSE_FLAGS ps
+    docker inspect accounts
+    docker compose $COMPOSE_FLAGS ps -a
     docker compose $COMPOSE_FLAGS logs
 }
  
