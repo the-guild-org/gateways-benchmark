@@ -39,11 +39,11 @@ jobs:
         uses: docker/bake-action@v3
         env:
           DOCKER_REGISTRY: ghcr.io/${{ github.repository }}/
-          PWD: ${{ inputs.dir }}
           COMMIT_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
         with:
+          workdir: ${{ inputs.dir }}
           provenance: false
           push: true
-          files: ${{ inputs.dir }}/${{ inputs.hcl }}
+          files: ${{ inputs.hcl }}
           targets: ${{ inputs.target }}
           
