@@ -30,7 +30,7 @@ export type link__Purpose =
   | 'EXECUTION';
 
 export type _Service = {
-  sdl?: Maybe<Scalars['String']['output']>;
+  sdl: Scalars['String']['output'];
 };
 
 export type Query = {
@@ -55,6 +55,7 @@ export type User = {
   id: Scalars['ID']['output'];
   name?: Maybe<Scalars['String']['output']>;
   username?: Maybe<Scalars['String']['output']>;
+  birthday?: Maybe<Scalars['Int']['output']>;
 };
 
   export type QuerySdk = {

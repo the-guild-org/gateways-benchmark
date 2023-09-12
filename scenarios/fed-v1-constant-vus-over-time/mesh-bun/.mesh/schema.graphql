@@ -2,13 +2,13 @@ schema {
   query: Query
 }
 
-directive @external(reason: String) on OBJECT | FIELD_DEFINITION
+directive @external on FIELD_DEFINITION
 
 directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
 
 directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
 
-directive @key(fields: _FieldSet!, resolvable: Boolean = true) repeatable on OBJECT | INTERFACE
+directive @key(fields: _FieldSet!) on OBJECT | INTERFACE
 
 directive @link(url: String!, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
 
@@ -16,24 +16,24 @@ directive @shareable repeatable on OBJECT | FIELD_DEFINITION
 
 directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
 
-directive @tag(name: String!) repeatable on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+directive @tag(name: String!) repeatable on FIELD_DEFINITION | INTERFACE | OBJECT | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
 
 directive @override(from: String!) on FIELD_DEFINITION
 
 directive @composeDirective(name: String!) repeatable on SCHEMA
 
-directive @extends on OBJECT | INTERFACE
+directive @extends on OBJECT
 
 type Query {
   _entities(representations: [_Any!]!): [_Entity]!
   _service: _Service!
+  topProducts(first: Int = 5): [Product]
   me: User
   user(id: ID!): User
   users: [User]
-  topProducts(first: Int = 5): [Product]
 }
 
-union _Entity = User | Product | Review
+union _Entity = Product | Review | User
 
 scalar _Any
 
@@ -47,14 +47,7 @@ enum link__Purpose {
 }
 
 type _Service {
-  sdl: String
-}
-
-type User @key(fields: "id") {
-  id: ID!
-  reviews: [Review]
-  name: String
-  username: String
+  sdl: String!
 }
 
 type Product @key(fields: "upc") {
@@ -70,6 +63,14 @@ type Product @key(fields: "upc") {
 type Review @key(fields: "id") {
   id: ID!
   body: String
-  author: User @provides(fields: "username")
   product: Product
+  author: User @provides(fields: "username")
+}
+
+type User @key(fields: "id") {
+  id: ID!
+  reviews: [Review]
+  name: String
+  username: String
+  birthday: Int
 }

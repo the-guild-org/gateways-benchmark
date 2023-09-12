@@ -16,14 +16,14 @@ import { getMesh, ExecuteMeshFn, SubscribeMeshFn, MeshContext as BaseMeshContext
 import { MeshStore, FsStoreStorageAdapter } from '@graphql-mesh/store';
 import { path as pathModule } from '@graphql-mesh/cross-helpers';
 import { ImportFn } from '@graphql-mesh/types';
-import type { AccountsTypes } from './sources/accounts/types';
 import type { InventoryTypes } from './sources/inventory/types';
 import type { ProductsTypes } from './sources/products/types';
 import type { ReviewsTypes } from './sources/reviews/types';
-import * as importedModule$0 from "./sources/accounts/introspectionSchema";
-import * as importedModule$1 from "./sources/inventory/introspectionSchema";
-import * as importedModule$2 from "./sources/products/introspectionSchema";
-import * as importedModule$3 from "./sources/reviews/introspectionSchema";
+import type { AccountsTypes } from './sources/accounts/types';
+import * as importedModule$0 from "./sources/inventory/introspectionSchema";
+import * as importedModule$1 from "./sources/products/introspectionSchema";
+import * as importedModule$2 from "./sources/reviews/introspectionSchema";
+import * as importedModule$3 from "./sources/accounts/introspectionSchema";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -50,10 +50,10 @@ export type Scalars = {
 export type Query = {
   _entities: Array<Maybe<_Entity>>;
   _service: _Service;
+  topProducts?: Maybe<Array<Maybe<Product>>>;
   me?: Maybe<User>;
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
-  topProducts?: Maybe<Array<Maybe<Product>>>;
 };
 
 
@@ -62,30 +62,23 @@ export type Query_entitiesArgs = {
 };
 
 
-export type QueryuserArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
 export type QuerytopProductsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type _Entity = User | Product | Review;
+
+export type QueryuserArgs = {
+  id: Scalars['ID']['input'];
+};
+
+export type _Entity = Product | Review | User;
 
 export type link__Purpose =
   | 'SECURITY'
   | 'EXECUTION';
 
 export type _Service = {
-  sdl?: Maybe<Scalars['String']['output']>;
-};
-
-export type User = {
-  id: Scalars['ID']['output'];
-  reviews?: Maybe<Array<Maybe<Review>>>;
-  name?: Maybe<Scalars['String']['output']>;
-  username?: Maybe<Scalars['String']['output']>;
+  sdl: Scalars['String']['output'];
 };
 
 export type Product = {
@@ -101,8 +94,16 @@ export type Product = {
 export type Review = {
   id: Scalars['ID']['output'];
   body?: Maybe<Scalars['String']['output']>;
-  author?: Maybe<User>;
   product?: Maybe<Product>;
+  author?: Maybe<User>;
+};
+
+export type User = {
+  id: Scalars['ID']['output'];
+  reviews?: Maybe<Array<Maybe<Review>>>;
+  name?: Maybe<Scalars['String']['output']>;
+  username?: Maybe<Scalars['String']['output']>;
+  birthday?: Maybe<Scalars['Int']['output']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -189,7 +190,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping of union types */
 export type ResolversUnionTypes<RefType extends Record<string, unknown>> = ResolversObject<{
-  _Entity: ( User ) | ( Product ) | ( Review );
+  _Entity: ( Product ) | ( Review ) | ( User );
 }>;
 
 
@@ -203,12 +204,12 @@ export type ResolversTypes = ResolversObject<{
   link__Purpose: link__Purpose;
   _Service: ResolverTypeWrapper<_Service>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
-  ID: ResolverTypeWrapper<Scalars['ID']['output']>;
-  User: ResolverTypeWrapper<User>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   Product: ResolverTypeWrapper<Product>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Review: ResolverTypeWrapper<Review>;
+  ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  User: ResolverTypeWrapper<User>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -220,17 +221,15 @@ export type ResolversParentTypes = ResolversObject<{
   link__Import: Scalars['link__Import']['output'];
   _Service: _Service;
   String: Scalars['String']['output'];
-  ID: Scalars['ID']['output'];
-  User: User;
-  Boolean: Scalars['Boolean']['output'];
   Product: Product;
+  Boolean: Scalars['Boolean']['output'];
   Int: Scalars['Int']['output'];
   Review: Review;
+  ID: Scalars['ID']['output'];
+  User: User;
 }>;
 
-export type externalDirectiveArgs = {
-  reason?: Maybe<Scalars['String']['input']>;
-};
+export type externalDirectiveArgs = { };
 
 export type externalDirectiveResolver<Result, Parent, ContextType = MeshContext, Args = externalDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
@@ -248,7 +247,6 @@ export type providesDirectiveResolver<Result, Parent, ContextType = MeshContext,
 
 export type keyDirectiveArgs = {
   fields: Scalars['_FieldSet']['input'];
-  resolvable?: Maybe<Scalars['Boolean']['input']>;
 };
 
 export type keyDirectiveResolver<Result, Parent, ContextType = MeshContext, Args = keyDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
@@ -295,14 +293,14 @@ export type extendsDirectiveResolver<Result, Parent, ContextType = MeshContext, 
 export type QueryResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   _entities?: Resolver<Array<Maybe<ResolversTypes['_Entity']>>, ParentType, ContextType, RequireFields<Query_entitiesArgs, 'representations'>>;
   _service?: Resolver<ResolversTypes['_Service'], ParentType, ContextType>;
+  topProducts?: Resolver<Maybe<Array<Maybe<ResolversTypes['Product']>>>, ParentType, ContextType, RequireFields<QuerytopProductsArgs, 'first'>>;
   me?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryuserArgs, 'id'>>;
   users?: Resolver<Maybe<Array<Maybe<ResolversTypes['User']>>>, ParentType, ContextType>;
-  topProducts?: Resolver<Maybe<Array<Maybe<ResolversTypes['Product']>>>, ParentType, ContextType, RequireFields<QuerytopProductsArgs, 'first'>>;
 }>;
 
 export type _EntityResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['_Entity'] = ResolversParentTypes['_Entity']> = ResolversObject<{
-  __resolveType: TypeResolveFn<'User' | 'Product' | 'Review', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'Product' | 'Review' | 'User', ParentType, ContextType>;
 }>;
 
 export interface _AnyScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['_Any'], any> {
@@ -318,15 +316,7 @@ export interface link__ImportScalarConfig extends GraphQLScalarTypeConfig<Resolv
 }
 
 export type _ServiceResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['_Service'] = ResolversParentTypes['_Service']> = ResolversObject<{
-  sdl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
-export type UserResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  reviews?: Resolver<Maybe<Array<Maybe<ResolversTypes['Review']>>>, ParentType, ContextType>;
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  sdl?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -344,8 +334,17 @@ export type ProductResolvers<ContextType = MeshContext, ParentType extends Resol
 export type ReviewResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Review'] = ResolversParentTypes['Review']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   body?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  author?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
   product?: Resolver<Maybe<ResolversTypes['Product']>, ParentType, ContextType>;
+  author?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type UserResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  reviews?: Resolver<Maybe<Array<Maybe<ResolversTypes['Review']>>>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  birthday?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -356,9 +355,9 @@ export type Resolvers<ContextType = MeshContext> = ResolversObject<{
   _FieldSet?: GraphQLScalarType;
   link__Import?: GraphQLScalarType;
   _Service?: _ServiceResolvers<ContextType>;
-  User?: UserResolvers<ContextType>;
   Product?: ProductResolvers<ContextType>;
   Review?: ReviewResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
 }>;
 
 export type DirectiveResolvers<ContextType = MeshContext> = ResolversObject<{
@@ -375,7 +374,7 @@ export type DirectiveResolvers<ContextType = MeshContext> = ResolversObject<{
   extends?: extendsDirectiveResolver<any, any, ContextType>;
 }>;
 
-export type MeshContext = AccountsTypes.Context & InventoryTypes.Context & ProductsTypes.Context & ReviewsTypes.Context & BaseMeshContext;
+export type MeshContext = InventoryTypes.Context & ProductsTypes.Context & ReviewsTypes.Context & AccountsTypes.Context & BaseMeshContext;
 
 
 import { fileURLToPath } from '@graphql-mesh/utils';
@@ -384,16 +383,16 @@ const baseDir = pathModule.join(pathModule.dirname(fileURLToPath(import.meta.url
 const importFn: ImportFn = <T>(moduleId: string) => {
   const relativeModuleId = (pathModule.isAbsolute(moduleId) ? pathModule.relative(baseDir, moduleId) : moduleId).split('\\').join('/').replace(baseDir + '/', '');
   switch(relativeModuleId) {
-    case ".mesh/sources/accounts/introspectionSchema":
+    case ".mesh/sources/inventory/introspectionSchema":
       return Promise.resolve(importedModule$0) as T;
     
-    case ".mesh/sources/inventory/introspectionSchema":
+    case ".mesh/sources/products/introspectionSchema":
       return Promise.resolve(importedModule$1) as T;
     
-    case ".mesh/sources/products/introspectionSchema":
+    case ".mesh/sources/reviews/introspectionSchema":
       return Promise.resolve(importedModule$2) as T;
     
-    case ".mesh/sources/reviews/introspectionSchema":
+    case ".mesh/sources/accounts/introspectionSchema":
       return Promise.resolve(importedModule$3) as T;
     
     default:
@@ -433,7 +432,7 @@ const reviewsTransforms = [];
 const additionalTypeDefs = [] as any[];
 const accountsHandler = new GraphqlHandler({
               name: "accounts",
-              config: {"endpoint":"http://localhost:4001/graphql"},
+              config: {"source":"../mesh/config/accounts.graphql","endpoint":"http://accounts:4001/graphql"},
               baseDir,
               cache,
               pubsub,
@@ -443,7 +442,7 @@ const accountsHandler = new GraphqlHandler({
             });
 const inventoryHandler = new GraphqlHandler({
               name: "inventory",
-              config: {"endpoint":"http://localhost:4002/graphql"},
+              config: {"source":"../mesh/config/inventory.graphql","endpoint":"http://inventory:4002/graphql"},
               baseDir,
               cache,
               pubsub,
@@ -453,7 +452,7 @@ const inventoryHandler = new GraphqlHandler({
             });
 const productsHandler = new GraphqlHandler({
               name: "products",
-              config: {"endpoint":"http://localhost:4003/graphql"},
+              config: {"source":"../mesh/config/products.graphql","endpoint":"http://products:4003/graphql"},
               baseDir,
               cache,
               pubsub,
@@ -463,7 +462,7 @@ const productsHandler = new GraphqlHandler({
             });
 const reviewsHandler = new GraphqlHandler({
               name: "reviews",
-              config: {"endpoint":"http://localhost:4004/graphql"},
+              config: {"source":"../mesh/config/reviews.graphql","endpoint":"http://reviews:4004/graphql"},
               baseDir,
               cache,
               pubsub,

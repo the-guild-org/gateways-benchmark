@@ -1,4 +1,4 @@
-FROM oven/bun:canary
+FROM oven/bun:1.0.0
 
 COPY package.json ./
 COPY .meshrc.yaml ./
@@ -9,8 +9,6 @@ ENV PORT 4000
 ENV NODE_ENV production
 
 RUN bun install
-
-RUN apt-get update && apt-get install -y curl
 
 EXPOSE 4000
 

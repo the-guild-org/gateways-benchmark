@@ -99,26 +99,22 @@ export function makeGraphQLRequest() {
     console.log(`‼️ Failed to run HTTP request:`, res);
   }
 
-  if (
-    res.status === 200 &&
-    res.body &&
-    res.body.errors &&
-    res.body.errors.length > 0
-  ) {
-    console.log(`‼️ Got GraphQL errors:`, res.body.errors);
-  }
-
   check(res, {
     "response code was 200": (res) => res.status == 200,
     "no graphql errors": (resp) => {
       const json = resp.json();
-
-      return (
+      const noErrors = (
         !!json &&
         typeof json === "object" &&
         !Array.isArray(json) &&
         !json.errors
       );
+
+      if (!noErrors) {
+        console.log(`‼️ Got GraphQL errors:`, res.body);
+      }
+
+      return noErrors;
     },
     "valid response structure": (resp) => {
       const json = resp.json();

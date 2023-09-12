@@ -30,7 +30,7 @@ export type link__Purpose =
   | 'EXECUTION';
 
 export type _Service = {
-  sdl?: Maybe<Scalars['String']['output']>;
+  sdl: Scalars['String']['output'];
 };
 
 export type Query = {

@@ -30,7 +30,7 @@ export type link__Purpose =
   | 'EXECUTION';
 
 export type _Service = {
-  sdl?: Maybe<Scalars['String']['output']>;
+  sdl: Scalars['String']['output'];
 };
 
 export type Query = {
@@ -43,20 +43,20 @@ export type Query_entitiesArgs = {
   representations: Array<Scalars['_Any']['input']>;
 };
 
+export type Product = {
+  upc: Scalars['String']['output'];
+  reviews?: Maybe<Array<Maybe<Review>>>;
+};
+
 export type Review = {
   id: Scalars['ID']['output'];
   body?: Maybe<Scalars['String']['output']>;
-  author?: Maybe<User>;
   product?: Maybe<Product>;
+  author?: Maybe<User>;
 };
 
 export type User = {
   id: Scalars['ID']['output'];
-  reviews?: Maybe<Array<Maybe<Review>>>;
-};
-
-export type Product = {
-  upc: Scalars['String']['output'];
   reviews?: Maybe<Array<Maybe<Review>>>;
 };
 

@@ -25,56 +25,14 @@ const schemaAST = {
       "kind": "DirectiveDefinition",
       "name": {
         "kind": "Name",
-        "value": "key"
+        "value": "external"
       },
-      "arguments": [
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "fields"
-          },
-          "type": {
-            "kind": "NonNullType",
-            "type": {
-              "kind": "NamedType",
-              "name": {
-                "kind": "Name",
-                "value": "_FieldSet"
-              }
-            }
-          },
-          "directives": []
-        },
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "resolvable"
-          },
-          "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "Boolean"
-            }
-          },
-          "defaultValue": {
-            "kind": "BooleanValue",
-            "value": true
-          },
-          "directives": []
-        }
-      ],
-      "repeatable": true,
+      "arguments": [],
+      "repeatable": false,
       "locations": [
         {
           "kind": "Name",
-          "value": "OBJECT"
-        },
-        {
-          "kind": "Name",
-          "value": "INTERFACE"
+          "value": "FIELD_DEFINITION"
         }
       ]
     },
@@ -150,20 +108,23 @@ const schemaAST = {
       "kind": "DirectiveDefinition",
       "name": {
         "kind": "Name",
-        "value": "external"
+        "value": "key"
       },
       "arguments": [
         {
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "reason"
+            "value": "fields"
           },
           "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
+            "kind": "NonNullType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "_FieldSet"
+              }
             }
           },
           "directives": []
@@ -177,77 +138,7 @@ const schemaAST = {
         },
         {
           "kind": "Name",
-          "value": "FIELD_DEFINITION"
-        }
-      ]
-    },
-    {
-      "kind": "DirectiveDefinition",
-      "name": {
-        "kind": "Name",
-        "value": "tag"
-      },
-      "arguments": [
-        {
-          "kind": "InputValueDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "name"
-          },
-          "type": {
-            "kind": "NonNullType",
-            "type": {
-              "kind": "NamedType",
-              "name": {
-                "kind": "Name",
-                "value": "String"
-              }
-            }
-          },
-          "directives": []
-        }
-      ],
-      "repeatable": true,
-      "locations": [
-        {
-          "kind": "Name",
-          "value": "FIELD_DEFINITION"
-        },
-        {
-          "kind": "Name",
-          "value": "OBJECT"
-        },
-        {
-          "kind": "Name",
           "value": "INTERFACE"
-        },
-        {
-          "kind": "Name",
-          "value": "UNION"
-        },
-        {
-          "kind": "Name",
-          "value": "ARGUMENT_DEFINITION"
-        },
-        {
-          "kind": "Name",
-          "value": "SCALAR"
-        },
-        {
-          "kind": "Name",
-          "value": "ENUM"
-        },
-        {
-          "kind": "Name",
-          "value": "ENUM_VALUE"
-        },
-        {
-          "kind": "Name",
-          "value": "INPUT_OBJECT"
-        },
-        {
-          "kind": "Name",
-          "value": "INPUT_FIELD_DEFINITION"
         }
       ]
     },
@@ -263,79 +154,24 @@ const schemaAST = {
         {
           "kind": "Name",
           "value": "OBJECT"
-        },
-        {
-          "kind": "Name",
-          "value": "INTERFACE"
         }
       ]
     },
     {
-      "kind": "ObjectTypeDefinition",
+      "kind": "ScalarTypeDefinition",
       "name": {
         "kind": "Name",
-        "value": "Query"
+        "value": "_Any"
       },
-      "fields": [
-        {
-          "kind": "FieldDefinition",
-          "name": {
-            "kind": "Name",
-            "value": "topProducts"
-          },
-          "arguments": [
-            {
-              "kind": "InputValueDefinition",
-              "name": {
-                "kind": "Name",
-                "value": "first"
-              },
-              "type": {
-                "kind": "NamedType",
-                "name": {
-                  "kind": "Name",
-                  "value": "Int"
-                }
-              },
-              "defaultValue": {
-                "kind": "IntValue",
-                "value": "5"
-              },
-              "directives": []
-            }
-          ],
-          "type": {
-            "kind": "ListType",
-            "type": {
-              "kind": "NamedType",
-              "name": {
-                "kind": "Name",
-                "value": "Product"
-              }
-            }
-          },
-          "directives": []
-        }
-      ],
-      "interfaces": [],
-      "directives": [
-        {
-          "kind": "Directive",
-          "name": {
-            "kind": "Name",
-            "value": "extends",
-            "loc": {
-              "start": 610,
-              "end": 617
-            }
-          },
-          "arguments": [],
-          "loc": {
-            "start": 609,
-            "end": 617
-          }
-        }
-      ]
+      "directives": []
+    },
+    {
+      "kind": "ScalarTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "_FieldSet"
+      },
+      "directives": []
     },
     {
       "kind": "ObjectTypeDefinition",
@@ -420,8 +256,8 @@ const schemaAST = {
             "kind": "Name",
             "value": "key",
             "loc": {
-              "start": 680,
-              "end": 683
+              "start": 291,
+              "end": 294
             }
           },
           "arguments": [
@@ -431,8 +267,8 @@ const schemaAST = {
                 "kind": "Name",
                 "value": "fields",
                 "loc": {
-                  "start": 684,
-                  "end": 690
+                  "start": 295,
+                  "end": 301
                 }
               },
               "value": {
@@ -440,79 +276,86 @@ const schemaAST = {
                 "value": "upc",
                 "block": false,
                 "loc": {
-                  "start": 692,
-                  "end": 697
+                  "start": 303,
+                  "end": 308
                 }
               },
               "loc": {
-                "start": 684,
-                "end": 697
+                "start": 295,
+                "end": 308
               }
             }
           ],
           "loc": {
-            "start": 679,
-            "end": 698
+            "start": 290,
+            "end": 309
           }
         }
       ]
     },
     {
-      "kind": "ScalarTypeDefinition",
-      "name": {
-        "kind": "Name",
-        "value": "_FieldSet"
-      },
-      "directives": []
-    },
-    {
-      "kind": "ScalarTypeDefinition",
-      "name": {
-        "kind": "Name",
-        "value": "_Any"
-      },
-      "directives": []
-    },
-    {
       "kind": "ObjectTypeDefinition",
       "name": {
         "kind": "Name",
-        "value": "_Service"
+        "value": "Query"
       },
       "fields": [
         {
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "sdl"
+            "value": "topProducts"
           },
-          "arguments": [],
+          "arguments": [
+            {
+              "kind": "InputValueDefinition",
+              "name": {
+                "kind": "Name",
+                "value": "first"
+              },
+              "type": {
+                "kind": "NamedType",
+                "name": {
+                  "kind": "Name",
+                  "value": "Int"
+                }
+              },
+              "defaultValue": {
+                "kind": "IntValue",
+                "value": "5"
+              },
+              "directives": []
+            }
+          ],
           "type": {
-            "kind": "NamedType",
-            "name": {
-              "kind": "Name",
-              "value": "String"
+            "kind": "ListType",
+            "type": {
+              "kind": "NamedType",
+              "name": {
+                "kind": "Name",
+                "value": "Product"
+              }
             }
           },
           "directives": []
         }
       ],
       "interfaces": [],
-      "directives": []
-    },
-    {
-      "kind": "UnionTypeDefinition",
-      "name": {
-        "kind": "Name",
-        "value": "_Entity"
-      },
-      "directives": [],
-      "types": [
+      "directives": [
         {
-          "kind": "NamedType",
+          "kind": "Directive",
           "name": {
             "kind": "Name",
-            "value": "Product"
+            "value": "extends",
+            "loc": {
+              "start": 384,
+              "end": 391
+            }
+          },
+          "arguments": [],
+          "loc": {
+            "start": 383,
+            "end": 391
           }
         }
       ]
