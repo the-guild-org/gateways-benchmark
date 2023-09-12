@@ -4,7 +4,6 @@ WORKDIR /usr/src/subgraph
 COPY Cargo.toml Cargo.lock ./
 RUN echo 'fn main() { println!("Dummy!"); }' > ./subgraph.rs
 RUN cargo build --release
-RUN rm ./subgraph.rs
 
 COPY subgraph.rs ./
 RUN cargo build --release
