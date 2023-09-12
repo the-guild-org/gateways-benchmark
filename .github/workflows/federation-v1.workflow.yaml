@@ -27,12 +27,12 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
-          # - mesh
-          # - mesh-supergraph
-          # - mesh-bun
-          # - apollo-server
+          - mesh
+          - mesh-supergraph
+          - mesh-bun
+          - apollo-server
           - apollo-router
-          # - mercurius
+          - mercurius
           - wundergraph
     uses: ./.github/workflows/benchmark.template.yaml
     with:
