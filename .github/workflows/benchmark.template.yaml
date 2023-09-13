@@ -59,7 +59,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: prepare containers and run benchmark (${{ inputs.time }})
-        timeout-minutes: 15
+        timeout-minutes: 20
         working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }} 
         run: ./run.sh ${{ inputs.gateway }}
         env:
