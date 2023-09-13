@@ -25,10 +25,6 @@ jobs:
         with:
           path: artifacts
 
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: artifacts
-
       - name: setup node
         uses: actions/setup-node@v3
         with:
@@ -43,6 +39,7 @@ jobs:
         working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}
         env:
           SCENARIO_TITLE: ${{ inputs.scenarioName }}
+          SCENARIO_ARTIFACTS_PREFIX: ${{ inputs.baseDir }}-${{ inputs.scenarioName }}-
           CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
           CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
 

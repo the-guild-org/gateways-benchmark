@@ -45,6 +45,7 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
+      scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '1'
       memoryLimit: '1gb'
@@ -79,10 +80,11 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+      scenarioName: constants-vus-subgraphs-delay
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '1'
       memoryLimit: '1gb'
-      scenarioDir: constant-vus-over-time
       subgraphDelayRange: "40~150"
   
   constants-vus-subgraphs-delay-report:
@@ -116,6 +118,7 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
+      scenarioName: constants-vus-subgraphs-delay-resources
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '3' }}
       memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' ||'1gb' }}
@@ -134,7 +137,7 @@ jobs:
     needs:
       - decide-runner
       - subgraphs
-    strategy:
+    strategy: 
       fail-fast: false
       matrix:
         directory: 
@@ -152,6 +155,7 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
       baseDir: federation-v1
       scenarioDir: ramping-vus
+      scenarioName: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '2'
       memoryLimit: '2gb'

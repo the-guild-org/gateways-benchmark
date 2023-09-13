@@ -50,6 +50,7 @@ async function generateReport(artifactsRootPath: string) {
     withFileTypes: true,
   })
     .filter((r) => r.isDirectory() && !IGNORED_DIRS.includes(r.name))
+    .filter((r) => r.name.startsWith(process.env.SCENARIO_ARTIFACTS_PREFIX!))
     .map((r) => r.name);
   console.info(
     `Found the following directories to look reports in: ${foundDirectories.join(
