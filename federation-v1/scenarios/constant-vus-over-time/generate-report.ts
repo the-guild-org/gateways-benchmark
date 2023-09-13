@@ -57,7 +57,9 @@ async function generateReport(artifactsRootPath: string) {
     withFileTypes: true,
   })
     .filter((r) => r.isDirectory() && !IGNORED_DIRS.includes(r.name))
+    .filter((r) => r.name.startsWith(process.env.SCENARIO_ARTIFACTS_PREFIX!))
     .map((r) => r.name);
+
   console.info(
     `Found the following directories to look reports in: ${foundDirectories.join(
       ", "
@@ -116,7 +118,7 @@ async function generateReport(artifactsRootPath: string) {
       const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, "utf8"));
 
       return {
-        name: dirName,
+        name: dirName.replace(process.env.SCENARIO_ARTIFACTS_PREFIX!, ""),
         path: fullPath,
         jsonSummary,
         txtSummary: readFileSync(txtSummaryFilePath, "utf8"),

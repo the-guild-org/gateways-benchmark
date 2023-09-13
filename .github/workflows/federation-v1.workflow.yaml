@@ -45,6 +45,7 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
+      scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '1'
       memoryLimit: '1gb'
@@ -58,7 +59,7 @@ jobs:
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
 
-  constants-vus-subgraphs-delay:
+  constant-vus-subgraphs-delay:
     needs:
       - decide-runner
       - subgraphs
@@ -79,22 +80,23 @@ jobs:
       vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
+      scenarioDir: constant-vus-over-time
+      scenarioName: constant-vus-subgraphs-delay
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '1'
       memoryLimit: '1gb'
-      scenarioDir: constant-vus-over-time
       subgraphDelayRange: "40~150"
   
-  constants-vus-subgraphs-delay-report:
-    needs: constants-vus-subgraphs-delay
+  constant-vus-subgraphs-delay-report:
+    needs: constant-vus-subgraphs-delay
     uses: ./.github/workflows/report.template.yaml
     secrets: inherit
     with:
-      scenarioName: constants-vus-subgraphs-delay
+      scenarioName: constant-vus-subgraphs-delay
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
 
-  constants-vus-subgraphs-delay-resources:
+  constant-vus-subgraphs-delay-resources:
     needs:
       - decide-runner
       - subgraphs
@@ -116,17 +118,18 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
+      scenarioName: constant-vus-subgraphs-delay-resources
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '3' }}
       memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' ||'1gb' }}
       subgraphDelayRange: "40~150"
 
-  constants-vus-subgraphs-delay-resources-report:
-    needs: constants-vus-subgraphs-delay-resources
+  constant-vus-subgraphs-delay-resources-report:
+    needs: constant-vus-subgraphs-delay-resources
     uses: ./.github/workflows/report.template.yaml
     secrets: inherit
     with:
-      scenarioName: constants-vus-subgraphs-delay-resources
+      scenarioName: constant-vus-subgraphs-delay-resources
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
 
@@ -134,7 +137,7 @@ jobs:
     needs:
       - decide-runner
       - subgraphs
-    strategy:
+    strategy: 
       fail-fast: false
       matrix:
         directory: 
@@ -152,6 +155,7 @@ jobs:
       time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
       baseDir: federation-v1
       scenarioDir: ramping-vus
+      scenarioName: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: '2'
       memoryLimit: '2gb'
