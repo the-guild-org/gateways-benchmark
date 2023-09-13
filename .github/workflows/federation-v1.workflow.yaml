@@ -47,8 +47,8 @@ jobs:
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: '1'
-      memoryLimit: '1gb'
+      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' || '2gb' }}
   
   constant-vus-over-time-report:
     needs: constant-vus-over-time
@@ -83,8 +83,8 @@ jobs:
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: '1'
-      memoryLimit: '1gb'
+      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' || '2gb' }}
       subgraphDelayRange: "40~150"
   
   constant-vus-subgraphs-delay-report:
@@ -121,7 +121,7 @@ jobs:
       scenarioName: constant-vus-subgraphs-delay-resources
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '3' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' ||'1gb' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' ||'4gb' }}
       subgraphDelayRange: "40~150"
 
   constant-vus-subgraphs-delay-resources-report:
@@ -157,8 +157,8 @@ jobs:
       scenarioDir: ramping-vus
       scenarioName: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: '2'
-      memoryLimit: '2gb'
+      cpuLimit: '3'
+      memoryLimit: '4gb'
   
   ramping-vus-report:
     needs: ramping-vus
