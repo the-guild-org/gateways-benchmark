@@ -2,9 +2,6 @@ name: federation-v1
 on:
   pull_request: {}
   workflow_dispatch: {}
-  # push:
-  #   branches:
-  #     - main
 
 concurrency:
   group: federation-v1-${{ github.ref }}
@@ -48,7 +45,7 @@ jobs:
       scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' || '2gb' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '2gb' }}
   
   constant-vus-over-time-report:
     needs: constant-vus-over-time
@@ -84,7 +81,7 @@ jobs:
       scenarioName: constant-vus-subgraphs-delay
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '1gb' || '2gb' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '4gb' }}
       subgraphDelayRange: "40~150"
   
   constant-vus-subgraphs-delay-report:
