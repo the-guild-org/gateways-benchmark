@@ -8,7 +8,7 @@
     "@graphql-mesh/utils": "^0.95.3",
     "@graphql-mesh/cross-helpers": "^0.4.0",
     "@graphql-mesh/cache-localforage": "^0.95.3",
-    "@graphql-mesh/merger-stitching": "^0.95.3",
+    "@graphql-mesh/merger-bare": "^0.95.3",
     "@graphql-mesh/http": "0.96.6-alpha-20230912172539-074a55675",
     "@graphql-mesh/store": "^0.95.3",
     "@graphql-mesh/types": "^0.95.3",
