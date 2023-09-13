@@ -24,6 +24,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: artifacts
+          name: ${{ inputs.baseDir }}-${{ inputs.scenarioDir }}
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: artifacts
 
       - name: setup node
         uses: actions/setup-node@v3
