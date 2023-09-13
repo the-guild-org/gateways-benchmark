@@ -38,14 +38,14 @@ jobs:
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
-      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 300 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '700s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '2gb' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '4gb' }}
   
   constant-vus-over-time-report:
     needs: constant-vus-over-time
@@ -74,8 +74,8 @@ jobs:
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
-      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 300 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '700s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay
@@ -111,8 +111,8 @@ jobs:
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 100 || 350 }}
-      time: ${{ github.event_name == 'pull_request' && '30s' || '400s' }}
+      vu: ${{ github.event_name == 'pull_request' && 100 || 500 }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '700s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay-resources
@@ -148,14 +148,14 @@ jobs:
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 500 || 1500 }}
-      time: ${{ github.event_name == 'pull_request' && '60s' || '300s' }}
+      vu: ${{ github.event_name == 'pull_request' && 500 || 2000 }}
+      time: ${{ github.event_name == 'pull_request' && '60s' || '700s' }}
       baseDir: federation-v1
       scenarioDir: ramping-vus
       scenarioName: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: '4'
-      memoryLimit: '8gb'
+      cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '4' }}
+      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '8gb' }}
   
   ramping-vus-report:
     needs: ramping-vus
