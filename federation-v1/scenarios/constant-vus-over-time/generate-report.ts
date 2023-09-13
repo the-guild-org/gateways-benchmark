@@ -118,7 +118,7 @@ async function generateReport(artifactsRootPath: string) {
       const jsonSummary = JSON.parse(readFileSync(jsonSummaryFilePath, "utf8"));
 
       return {
-        name: dirName,
+        name: dirName.replace(process.env.SCENARIO_ARTIFACTS_PREFIX!, ""),
         path: fullPath,
         jsonSummary,
         txtSummary: readFileSync(txtSummaryFilePath, "utf8"),

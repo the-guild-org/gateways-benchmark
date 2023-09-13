@@ -36,7 +36,7 @@ This goals of this repo:
 
 ## `fed-v1-constant-vus-over-time`
 
-[Latest Results](./scenarios/fed-v1-constant-vus-over-time/README.md)
+[Latest Results](./federation-v1/scenarios/constant-vus-over-time/README.md)
 
 This scenario runs the following:
 
@@ -55,21 +55,21 @@ This measures the following:
 
 > This scenario uses Federation v1 spec with all gateways that supports this kind of specification (not all gateways supports v2 spec).
 
-## `fed-v1-constants-vus-subgraphs-delay`
+## `fed-v1-constant-vus-subgraphs-delay`
 
-[Latest Results](./scenarios/fed-v1-constants-vus-subgraphs-delay/README.md)
+[Latest Results](./federation-v1/scenarios/constant-vus-subgraphs-delay/README.md)
 
 This scenario runs the same flow as `fed-v1-constant-vus-over-time` but with an intentional delay on each upstream Subgraph. This creates more stress and increases memory in the server due to the more inflight requests. 
 
-## `fed-v1-constants-vus-subgraphs-delay-resources`
+## `fed-v1-constant-vus-subgraphs-delay-resources`
 
-[Latest Results](./scenarios/fed-v1-constants-vus-subgraphs-delay-resources/README.md)
+[Latest Results](./federation-v1/scenarios/constant-vus-subgraphs-delay-resources/README.md)
 
-This scenario runs the same flow as `fed-v1-constants-vus-subgraphs-delay` but with more resources (CPU and RAM) allocated for the gateway.
+This scenario runs the same flow as `fed-v1-constant-vus-subgraphs-delay` but with more resources (CPU and RAM) allocated for the gateway.
 
 ## `fed-v1-ramping-vus`
 
-[Latest Results](./scenarios/fed-v1-ramping-vus/README.md)
+[Latest Results](./federation-v1/scenarios/ramping-vus/README.md)
 
 This scenario runs the following:
 
