@@ -752,7 +752,7 @@
     tsconfig-paths "^4.2.0"
     tslib "^2.4.0"
     typescript "^5.0.4"
-    uWebSockets.js "uNetworking/uWebSockets.js#semver:^20"
+    uWebSockets.js "github:uNetworking/uWebSockets.js#semver:^20"
     yargs "^17.7.1"
 
 "@graphql-mesh/config@^0.97.7":
@@ -3489,8 +3489,9 @@ typescript@^5.0.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
-"uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
+"uWebSockets.js@github:uNetworking/uWebSockets.js#semver:^20":
   version "20.31.0"
+  uid "809b99d2d7d12e2cbf89b7135041e9b41ff84084"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/809b99d2d7d12e2cbf89b7135041e9b41ff84084"
 
 ua-parser-js@^1.0.35:
