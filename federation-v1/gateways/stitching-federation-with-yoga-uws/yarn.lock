@@ -417,6 +417,7 @@ tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.4.0, tslib@^2.5.0, tslib@^2.5
 
 uWebSockets.js@uNetworking/uWebSockets.js#v20.31.0:
   version "20.31.0"
+  uid "809b99d2d7d12e2cbf89b7135041e9b41ff84084"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/809b99d2d7d12e2cbf89b7135041e9b41ff84084"
 
 urlpattern-polyfill@^9.0.0:
