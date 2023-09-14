@@ -27,14 +27,15 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
-          - mesh
-          - mesh-supergraph
-          - mesh-bun
           - apollo-server
           - apollo-server-node16
           - apollo-router
           - mercurius
           - wundergraph
+          - mesh
+          - mesh-supergraph
+          - mesh-bun
+          - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -64,13 +65,14 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
-          - mesh
-          - mesh-bun
-          - mesh-supergraph
           - apollo-server
           - apollo-router
           - mercurius
           - wundergraph
+          - mesh
+          - mesh-supergraph
+          - mesh-bun
+          - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -101,13 +103,14 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
-          - mesh
-          - mesh-bun
-          - mesh-supergraph
           - apollo-server
           - apollo-router
           - mercurius
           - wundergraph
+          - mesh
+          - mesh-supergraph
+          - mesh-bun
+          - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -138,13 +141,14 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
-          - mesh
-          - mesh-bun
-          - mesh-supergraph
           - apollo-server
           - apollo-router
           - mercurius
           - wundergraph
+          - mesh
+          - mesh-bun
+          - mesh-supergraph
+          - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}

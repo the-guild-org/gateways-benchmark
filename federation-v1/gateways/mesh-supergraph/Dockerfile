@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 RUN apk --no-cache add curl
 RUN apk add --no-cache libc6-compat
@@ -10,7 +10,7 @@ RUN addgroup -S gw && adduser -S gw -G gw
 
 WORKDIR /home/gw
 COPY package.json yarn.lock ./
-COPY config ./
+COPY .meshrc.yaml ./
 COPY supergraph.graphql ./
 
 RUN yarn install --production
@@ -18,7 +18,6 @@ ENV PORT 4000
 ENV NODE_ENV production
 
 EXPOSE 4000
-ENV CONFIG_PATH "/config"
 ENV NODE_ENV production
 
 USER gw
