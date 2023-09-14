@@ -10,18 +10,19 @@ This scenario was running 500 VUs over 600s
 ### Comparison
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/26099179-af91-4f46-07cd-c0f5a6566300/public" alt="Comparison" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/34e4fe71-8717-49ca-6be5-dd1cc8d9e600/public" alt="Comparison" />
 
 
-| Gateway         | RPS ⬇️ |        Requests        |          Duration          | Notes |
-| :-------------- | :----: | :--------------------: | :------------------------: | :---- |
-| wundergraph     |  189   | 114259 total, 0 failed |  avg: 1820ms, p95: 3360ms  | ✅     |
-| apollo-router   |  184   | 111024 total, 0 failed |  avg: 1646ms, p95: 3495ms  | ✅     |
-| mesh-supergraph |   89   | 54218 total, 0 failed  |  avg: 5464ms, p95: 6281ms  | ✅     |
-| mesh-bun        |   87   | 53282 total, 0 failed  |  avg: 5635ms, p95: 6124ms  | ✅     |
-| mesh            |   82   | 49600 total, 0 failed  |  avg: 6005ms, p95: 7299ms  | ✅     |
-| apollo-server   |   63   | 38179 total, 0 failed  | avg: 7885ms, p95: 18007ms  | ✅     |
-| mercurius       |   12   |  7895 total, 0 failed  | avg: 38666ms, p95: 42028ms | ✅     |
+| Gateway             | RPS ⬇️ |         Requests         |          Duration          | Notes                                                                          |
+| :------------------ | :----: | :----------------------: | :------------------------: | :----------------------------------------------------------------------------- |
+| wundergraph         |  189   |  113852 total, 0 failed  |  avg: 1851ms, p95: 3451ms  | ✅                                                                              |
+| apollo-router       |  185   |  111774 total, 0 failed  |  avg: 1650ms, p95: 3340ms  | ✅                                                                              |
+| mesh-supergraph-bun |  105   |  64050 total, 0 failed   |  avg: 4609ms, p95: 7923ms  | ✅                                                                              |
+| mesh-bun            |  101   |  61430 total, 0 failed   |  avg: 4785ms, p95: 8068ms  | ✅                                                                              |
+| mesh                |   98   |  59372 total, 0 failed   |  avg: 4967ms, p95: 5818ms  | ✅                                                                              |
+| mesh-supergraph     |   90   |  54828 total, 0 failed   |  avg: 5359ms, p95: 6474ms  | ✅                                                                              |
+| apollo-server       |   67   | 40896 total, 2610 failed | avg: 7327ms, p95: 59989ms  | ❌ 2610 failed requests, 2610 non-200 responses, 2610 unexpected GraphQL errors |
+| mercurius           |   12   |   7944 total, 0 failed   | avg: 38429ms, p95: 41567ms | ✅                                                                              |
 
 
 
@@ -38,22 +39,22 @@ This scenario was running 500 VUs over 600s
      ✓ no graphql errors
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 342777     ✗ 0     
+     checks.........................: 100.00% ✓ 341556     ✗ 0     
      data_received..................: 10 GB   17 MB/s
-     data_sent......................: 136 MB  225 kB/s
-     http_req_blocked...............: avg=471.51µs min=1.03µs   med=3.01µs  max=3.16s  p(90)=5.17µs  p(95)=6.35µs
-     http_req_connecting............: avg=157.8µs  min=0s       med=0s      max=1.96s  p(90)=0s      p(95)=0s    
-     http_req_duration..............: avg=1.81s    min=488.7ms  med=1.65s   max=9.13s  p(90)=2.8s    p(95)=3.35s 
-       { expected_response:true }...: avg=1.81s    min=488.7ms  med=1.65s   max=9.13s  p(90)=2.8s    p(95)=3.35s 
-     http_req_failed................: 0.00%   ✓ 0          ✗ 114259
-     http_req_receiving.............: avg=304.3ms  min=20.52µs  med=79.09µs max=7.9s   p(90)=1.33s   p(95)=1.84s 
-     http_req_sending...............: avg=25.15ms  min=7.35µs   med=13.87µs max=4.92s  p(90)=35.27µs p(95)=1.02ms
-     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s      max=0s     p(90)=0s      p(95)=0s    
-     http_req_waiting...............: avg=1.49s    min=488.35ms med=1.42s   max=4.48s  p(90)=2.07s   p(95)=2.24s 
-     http_reqs......................: 114259  189.900657/s
-     iteration_duration.............: avg=2.61s    min=516.94ms med=2.27s   max=14.72s p(90)=4.51s   p(95)=5.3s  
-     iterations.....................: 114259  189.900657/s
-     vus............................: 252     min=252      max=500 
+     data_sent......................: 135 MB  225 kB/s
+     http_req_blocked...............: avg=395.41µs min=1.18µs   med=3.14µs  max=2.74s  p(90)=5.32µs  p(95)=6.64µs 
+     http_req_connecting............: avg=169.73µs min=0s       med=0s      max=2.37s  p(90)=0s      p(95)=0s     
+     http_req_duration..............: avg=1.85s    min=563.53ms med=1.65s   max=9.41s  p(90)=2.92s   p(95)=3.45s  
+       { expected_response:true }...: avg=1.85s    min=563.53ms med=1.65s   max=9.41s  p(90)=2.92s   p(95)=3.45s  
+     http_req_failed................: 0.00%   ✓ 0          ✗ 113852
+     http_req_receiving.............: avg=331.59ms min=25.81µs  med=83.86µs max=6.78s  p(90)=1.43s   p(95)=1.97s  
+     http_req_sending...............: avg=27.69ms  min=6.32µs   med=13.75µs max=5.03s  p(90)=40.17µs p(95)=15.05ms
+     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s      max=0s     p(90)=0s      p(95)=0s     
+     http_req_waiting...............: avg=1.49s    min=563.46ms med=1.42s   max=4.47s  p(90)=2.08s   p(95)=2.25s  
+     http_reqs......................: 113852  189.098377/s
+     iteration_duration.............: avg=2.62s    min=625.17ms med=2.27s   max=16.96s p(90)=4.56s   p(95)=5.39s  
+     iterations.....................: 113852  189.098377/s
+     vus............................: 5       min=5        max=500 
      vus_max........................: 500     min=500      max=500 
 ```
 
@@ -61,19 +62,19 @@ This scenario was running 500 VUs over 600s
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/d03a71eb-6cd4-4b1a-3466-5f6f41ee1500/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/1a87a06f-c498-4c81-3872-4f16a77a7100/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/3916efb5-918a-4b5b-7a83-492522b1fc00/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/3caaa30e-f08e-4584-714f-a9a8b8cc7c00/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/2107860a-8899-41a0-e38b-fd4bf8388e00/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/9a773a2d-9b6b-4687-bcd8-15cb271fda00/public" alt="HTTP Overview" />
 
 
   </details>
@@ -91,22 +92,22 @@ This scenario was running 500 VUs over 600s
      ✓ no graphql errors
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 333072     ✗ 0     
-     data_received..................: 9.7 GB  16 MB/s
-     data_sent......................: 132 MB  219 kB/s
-     http_req_blocked...............: avg=1.43ms   min=1.24µs   med=3.09µs  max=3.53s p(90)=4.96µs  p(95)=6.06µs 
-     http_req_connecting............: avg=1.05ms   min=0s       med=0s      max=3.53s p(90)=0s      p(95)=0s     
-     http_req_duration..............: avg=1.64s    min=243.26ms med=1.45s   max=9.47s p(90)=2.84s   p(95)=3.49s  
-       { expected_response:true }...: avg=1.64s    min=243.26ms med=1.45s   max=9.47s p(90)=2.84s   p(95)=3.49s  
-     http_req_failed................: 0.00%   ✓ 0          ✗ 111024
-     http_req_receiving.............: avg=367.67ms min=21.72µs  med=72.21µs max=8.82s p(90)=1.53s   p(95)=2.29s  
-     http_req_sending...............: avg=33.64ms  min=6.84µs   med=14.01µs max=5.21s p(90)=37.66µs p(95)=24.25ms
-     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s      max=0s    p(90)=0s      p(95)=0s     
-     http_req_waiting...............: avg=1.24s    min=243.18ms med=1.17s   max=5.59s p(90)=1.94s   p(95)=2.16s  
-     http_reqs......................: 111024  184.521389/s
-     iteration_duration.............: avg=2.68s    min=272.95ms med=2.33s   max=16.3s p(90)=4.92s   p(95)=5.85s  
-     iterations.....................: 111024  184.521389/s
-     vus............................: 340     min=340      max=500 
+     checks.........................: 100.00% ✓ 335322     ✗ 0     
+     data_received..................: 9.8 GB  16 MB/s
+     data_sent......................: 133 MB  221 kB/s
+     http_req_blocked...............: avg=1.47ms  min=1.32µs   med=3.13µs  max=6.81s  p(90)=5.07µs  p(95)=6.32µs  
+     http_req_connecting............: avg=1.05ms  min=0s       med=0s      max=6.81s  p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=1.65s   min=196.45ms med=1.48s   max=10.45s p(90)=2.74s   p(95)=3.33s   
+       { expected_response:true }...: avg=1.65s   min=196.45ms med=1.48s   max=10.45s p(90)=2.74s   p(95)=3.33s   
+     http_req_failed................: 0.00%   ✓ 0          ✗ 111774
+     http_req_receiving.............: avg=371.1ms min=23.45µs  med=73.66µs max=9.43s  p(90)=1.54s   p(95)=2.2s    
+     http_req_sending...............: avg=24.18ms min=6.65µs   med=13.93µs max=6.74s  p(90)=32.76µs p(95)=278.32µs
+     http_req_tls_handshaking.......: avg=0s      min=0s       med=0s      max=0s     p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=1.25s   min=196.36ms med=1.2s    max=4.98s  p(90)=1.93s   p(95)=2.15s   
+     http_reqs......................: 111774  185.771479/s
+     iteration_duration.............: avg=2.66s   min=265.48ms med=2.33s   max=13.63s p(90)=4.83s   p(95)=5.8s    
+     iterations.....................: 111774  185.771479/s
+     vus............................: 249     min=249      max=500 
      vus_max........................: 500     min=500      max=500 
 ```
 
@@ -114,25 +115,25 @@ This scenario was running 500 VUs over 600s
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/f3d4f7b9-5e75-427e-ec79-7756b0979c00/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/bff4a501-cd55-47d3-b944-2102098ae300/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/52c2dc89-cfa9-41e6-0745-f1884d3c2c00/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/ab6cd858-3334-4542-989c-b06432738400/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/85f67b09-4e06-466b-958a-c50ea0d81800/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/6eca62c5-01ae-493f-fc19-711ae4917300/public" alt="HTTP Overview" />
 
 
   </details>
 
 <details>
-  <summary>Summary for: `mesh-supergraph`</summary>
+  <summary>Summary for: `mesh-supergraph-bun`</summary>
 
   **K6 Output**
 
@@ -144,22 +145,22 @@ This scenario was running 500 VUs over 600s
      ✓ no graphql errors
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 162654    ✗ 0    
-     data_received..................: 4.8 GB  7.9 MB/s
-     data_sent......................: 64 MB   107 kB/s
-     http_req_blocked...............: avg=175.16µs min=1.74µs  med=4.1µs   max=173.9ms p(90)=6.15µs p(95)=7.23µs  
-     http_req_connecting............: avg=142.21µs min=0s      med=0s      max=43.75ms p(90)=0s     p(95)=0s      
-     http_req_duration..............: avg=5.46s    min=2.37s   med=5.44s   max=9.07s   p(90)=6.08s  p(95)=6.28s   
-       { expected_response:true }...: avg=5.46s    min=2.37s   med=5.44s   max=9.07s   p(90)=6.08s  p(95)=6.28s   
-     http_req_failed................: 0.00%   ✓ 0         ✗ 54218
-     http_req_receiving.............: avg=13.57ms  min=34.07µs med=79.94µs max=2.07s   p(90)=2.71ms p(95)=19.94ms 
-     http_req_sending...............: avg=1.6ms    min=8.33µs  med=18.48µs max=2.51s   p(90)=37.4µs p(95)=144.75µs
-     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s      max=0s      p(90)=0s     p(95)=0s      
-     http_req_waiting...............: avg=5.44s    min=2.37s   med=5.43s   max=7.9s    p(90)=6.06s  p(95)=6.25s   
-     http_reqs......................: 54218   89.763296/s
-     iteration_duration.............: avg=5.55s    min=2.38s   med=5.52s   max=9.11s   p(90)=6.19s  p(95)=6.42s   
-     iterations.....................: 54218   89.763296/s
-     vus............................: 66      min=66      max=500
+     checks.........................: 100.00% ✓ 192150    ✗ 0    
+     data_received..................: 5.6 GB  9.3 MB/s
+     data_sent......................: 76 MB   126 kB/s
+     http_req_blocked...............: avg=215.4µs  min=1.48µs  med=3.5µs   max=560.36ms p(90)=5.76µs  p(95)=7.06µs  
+     http_req_connecting............: avg=141.33µs min=0s      med=0s      max=43.28ms  p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=4.6s     min=1.84s   med=4.1s    max=9.27s    p(90)=7.44s   p(95)=7.92s   
+       { expected_response:true }...: avg=4.6s     min=1.84s   med=4.1s    max=9.27s    p(90)=7.44s   p(95)=7.92s   
+     http_req_failed................: 0.00%   ✓ 0         ✗ 64050
+     http_req_receiving.............: avg=35.4ms   min=29.66µs med=71.42µs max=2.88s    p(90)=18.8ms  p(95)=224.64ms
+     http_req_sending...............: avg=2.77ms   min=6.99µs  med=15.08µs max=1.36s    p(90)=40.32µs p(95)=531.4µs 
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s      max=0s       p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=4.57s    min=1.84s   med=4.07s   max=9.08s    p(90)=7.41s   p(95)=7.87s   
+     http_reqs......................: 64050   105.92035/s
+     iteration_duration.............: avg=4.71s    min=1.84s   med=4.18s   max=9.54s    p(90)=7.57s   p(95)=8.05s   
+     iterations.....................: 64050   105.92035/s
+     vus............................: 128     min=128     max=500
      vus_max........................: 500     min=500     max=500
 ```
 
@@ -167,19 +168,19 @@ This scenario was running 500 VUs over 600s
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/2b5da248-be2a-4149-460a-df7558436a00/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/8bd73580-2b2f-4ac0-430d-77108c020a00/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/be4038ad-5b83-4f1d-84e2-be9df982d200/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/258498f5-b1ff-4135-8937-104de86ff900/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/8172aeff-5435-435c-a9cb-2aba401acc00/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/deff1a96-4c03-462c-68fc-c88816e40b00/public" alt="HTTP Overview" />
 
 
   </details>
@@ -197,42 +198,42 @@ This scenario was running 500 VUs over 600s
      ✓ no graphql errors
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 159846    ✗ 0    
-     data_received..................: 4.7 GB  7.7 MB/s
-     data_sent......................: 63 MB   104 kB/s
-     http_req_blocked...............: avg=167.91µs min=1.39µs  med=3.04µs  max=123.88ms p(90)=4.95µs   p(95)=6.08µs 
-     http_req_connecting............: avg=151.65µs min=0s      med=0s      max=44.33ms  p(90)=0s       p(95)=0s     
-     http_req_duration..............: avg=5.63s    min=3.2s    med=5.51s   max=11.6s    p(90)=5.92s    p(95)=6.12s  
-       { expected_response:true }...: avg=5.63s    min=3.2s    med=5.51s   max=11.6s    p(90)=5.92s    p(95)=6.12s  
-     http_req_failed................: 0.00%   ✓ 0         ✗ 53282
-     http_req_receiving.............: avg=16ms     min=32.52µs med=82.41µs max=2.89s    p(90)=329.22µs p(95)=1.66ms 
-     http_req_sending...............: avg=579.75µs min=7.89µs  med=14.03µs max=353.89ms p(90)=29.46µs  p(95)=69.58µs
-     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s      max=0s       p(90)=0s       p(95)=0s     
-     http_req_waiting...............: avg=5.61s    min=3.2s    med=5.5s    max=11.45s   p(90)=5.9s     p(95)=6.08s  
-     http_reqs......................: 53282   87.980435/s
-     iteration_duration.............: avg=5.66s    min=3.24s   med=5.54s   max=11.61s   p(90)=5.96s    p(95)=6.18s  
-     iterations.....................: 53282   87.980435/s
-     vus............................: 80      min=80      max=500
-     vus_max........................: 500     min=500     max=500
+     checks.........................: 100.00% ✓ 184290     ✗ 0    
+     data_received..................: 5.4 GB  8.9 MB/s
+     data_sent......................: 73 MB   121 kB/s
+     http_req_blocked...............: avg=411.46µs min=1.28µs  med=3.07µs  max=750.54ms p(90)=4.93µs  p(95)=6.04µs  
+     http_req_connecting............: avg=353.9µs  min=0s      med=0s      max=81.06ms  p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=4.78s    min=2.39s   med=4.11s   max=9.52s    p(90)=7.69s   p(95)=8.06s   
+       { expected_response:true }...: avg=4.78s    min=2.39s   med=4.11s   max=9.52s    p(90)=7.69s   p(95)=8.06s   
+     http_req_failed................: 0.00%   ✓ 0          ✗ 61430
+     http_req_receiving.............: avg=35.35ms  min=26.69µs med=64.98µs max=2.35s    p(90)=17.19ms p(95)=221.91ms
+     http_req_sending...............: avg=2.91ms   min=7.41µs  med=13.76µs max=1.27s    p(90)=33.36µs p(95)=457.91µs
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s      max=0s       p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=4.74s    min=2.39s   med=4.08s   max=9.02s    p(90)=7.66s   p(95)=8.03s   
+     http_reqs......................: 61430   101.774277/s
+     iteration_duration.............: avg=4.9s     min=2.42s   med=4.2s    max=9.61s    p(90)=7.88s   p(95)=8.25s   
+     iterations.....................: 61430   101.774277/s
+     vus............................: 121     min=121      max=500
+     vus_max........................: 500     min=500      max=500
 ```
 
 
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/8d88e56a-c437-4838-2604-631d285d1a00/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/5016fad9-d041-4e3f-124c-3c2070cd8700/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/d24dbab5-af0e-448d-0038-7156c9e92100/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/aa45ae89-8ea6-4b00-deb1-f06d6c545d00/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/5530271c-8b34-4464-54e8-ed578f4c4800/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/768cf21a-4fbf-4a68-9d33-984c7addc600/public" alt="HTTP Overview" />
 
 
   </details>
@@ -250,22 +251,22 @@ This scenario was running 500 VUs over 600s
      ✓ no graphql errors
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 148800    ✗ 0    
-     data_received..................: 4.4 GB  7.2 MB/s
-     data_sent......................: 59 MB   97 kB/s
-     http_req_blocked...............: avg=517.66µs min=1.52µs  med=3.92µs  max=216.96ms p(90)=5.85µs  p(95)=6.97µs 
-     http_req_connecting............: avg=484.88µs min=0s      med=0s      max=105.2ms  p(90)=0s      p(95)=0s     
-     http_req_duration..............: avg=6s       min=2.92s   med=6s      max=9.16s    p(90)=7.02s   p(95)=7.29s  
-       { expected_response:true }...: avg=6s       min=2.92s   med=6s      max=9.16s    p(90)=7.02s   p(95)=7.29s  
-     http_req_failed................: 0.00%   ✓ 0         ✗ 49600
-     http_req_receiving.............: avg=8.61ms   min=32.43µs med=83.09µs max=1.25s    p(90)=2.04ms  p(95)=11.9ms 
-     http_req_sending...............: avg=904.96µs min=8.53µs  med=18.17µs max=1.27s    p(90)=35.02µs p(95)=117.3µs
-     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s      max=0s       p(90)=0s      p(95)=0s     
-     http_req_waiting...............: avg=5.99s    min=2.91s   med=5.99s   max=9.16s    p(90)=7s      p(95)=7.28s  
-     http_reqs......................: 49600   82.060338/s
-     iteration_duration.............: avg=6.07s    min=2.98s   med=6.06s   max=9.54s    p(90)=7.1s    p(95)=7.39s  
-     iterations.....................: 49600   82.060338/s
-     vus............................: 79      min=79      max=500
+     checks.........................: 100.00% ✓ 178116    ✗ 0    
+     data_received..................: 5.2 GB  8.6 MB/s
+     data_sent......................: 71 MB   117 kB/s
+     http_req_blocked...............: avg=175.55µs min=1.55µs med=3.73µs  max=257.47ms p(90)=5.79µs  p(95)=7.12µs  
+     http_req_connecting............: avg=153.15µs min=0s     med=0s      max=39.17ms  p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=4.96s    min=2.4s   med=4.94s   max=9.17s    p(90)=5.6s    p(95)=5.81s   
+       { expected_response:true }...: avg=4.96s    min=2.4s   med=4.94s   max=9.17s    p(90)=5.6s    p(95)=5.81s   
+     http_req_failed................: 0.00%   ✓ 0         ✗ 59372
+     http_req_receiving.............: avg=13.71ms  min=33µs   med=71.28µs max=1.44s    p(90)=2.3ms   p(95)=27.42ms 
+     http_req_sending...............: avg=1.66ms   min=8.44µs med=16.46µs max=853.48ms p(90)=34.62µs p(95)=147.75µs
+     http_req_tls_handshaking.......: avg=0s       min=0s     med=0s      max=0s       p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=4.95s    min=2.4s   med=4.92s   max=9.17s    p(90)=5.58s   p(95)=5.78s   
+     http_reqs......................: 59372   98.387607/s
+     iteration_duration.............: avg=5.07s    min=2.4s   med=5.03s   max=9.22s    p(90)=5.74s   p(95)=5.98s   
+     iterations.....................: 59372   98.387607/s
+     vus............................: 216     min=216     max=500
      vus_max........................: 500     min=500     max=500
 ```
 
@@ -273,19 +274,72 @@ This scenario was running 500 VUs over 600s
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/5ac2767f-824a-42b3-9633-39ca46b98600/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/932513cc-d9af-403f-4b30-a4dc5e8fdf00/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/cae337f6-9fa2-4acd-0f80-b3b700d44500/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/dfede86c-f310-49e1-ac69-699ce785eb00/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/6e75b578-114c-4d62-2ff3-aafbee996f00/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/958b7119-2561-4898-5d50-5c4784826000/public" alt="HTTP Overview" />
+
+
+  </details>
+
+<details>
+  <summary>Summary for: `mesh-supergraph`</summary>
+
+  **K6 Output**
+
+
+
+
+```
+     ✓ response code was 200
+     ✓ no graphql errors
+     ✓ valid response structure
+
+     checks.........................: 100.00% ✓ 164484    ✗ 0    
+     data_received..................: 4.8 GB  8.0 MB/s
+     data_sent......................: 65 MB   108 kB/s
+     http_req_blocked...............: avg=367.4µs min=1.64µs  med=4.71µs  max=253.18ms p(90)=7.73µs  p(95)=9.61µs  
+     http_req_connecting............: avg=321.8µs min=0s      med=0s      max=118.36ms p(90)=0s      p(95)=0s      
+     http_req_duration..............: avg=5.35s   min=2.53s   med=5.3s    max=10.38s   p(90)=6.2s    p(95)=6.47s   
+       { expected_response:true }...: avg=5.35s   min=2.53s   med=5.3s    max=10.38s   p(90)=6.2s    p(95)=6.47s   
+     http_req_failed................: 0.00%   ✓ 0         ✗ 54828
+     http_req_receiving.............: avg=17.09ms min=37.62µs med=92.95µs max=2.99s    p(90)=3.84ms  p(95)=47.66ms 
+     http_req_sending...............: avg=2.18ms  min=9µs     med=20.56µs max=2.22s    p(90)=49.22µs p(95)=207.66µs
+     http_req_tls_handshaking.......: avg=0s      min=0s      med=0s      max=0s       p(90)=0s      p(95)=0s      
+     http_req_waiting...............: avg=5.33s   min=2.53s   med=5.28s   max=10.36s   p(90)=6.18s   p(95)=6.44s   
+     http_reqs......................: 54828   90.800857/s
+     iteration_duration.............: avg=5.49s   min=2.6s    med=5.42s   max=10.41s   p(90)=6.39s   p(95)=6.68s   
+     iterations.....................: 54828   90.800857/s
+     vus............................: 148     min=148     max=500
+     vus_max........................: 500     min=500     max=500
+```
+
+
+**Performance Overview**
+
+
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/40213c53-4b54-41d4-dc58-a63d97cf7000/public" alt="Performance Overview" />
+
+
+**Subgraphs Overview**
+
+
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/9276fc5a-07e1-46e9-d7ae-110b5fefa300/public" alt="Subgraphs Overview" />
+
+
+**HTTP Overview**
+
+
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/d8e87831-5f66-48cc-d3ec-2eb23c977800/public" alt="HTTP Overview" />
 
 
   </details>
@@ -299,46 +353,48 @@ This scenario was running 500 VUs over 600s
 
 
 ```
-     ✓ response code was 200
-     ✓ no graphql errors
+     ✗ response code was 200
+      ↳  93% — ✓ 38286 / ✗ 2610
+     ✗ no graphql errors
+      ↳  93% — ✓ 38286 / ✗ 2610
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 114537    ✗ 0    
-     data_received..................: 3.4 GB  5.5 MB/s
-     data_sent......................: 45 MB   75 kB/s
-     http_req_blocked...............: avg=423.43µs min=1.26µs   med=3.26µs  max=62.29ms  p(90)=5.17µs   p(95)=6.2µs  
-     http_req_connecting............: avg=412.94µs min=0s       med=0s      max=62.22ms  p(90)=0s       p(95)=0s     
-     http_req_duration..............: avg=7.88s    min=805.08ms med=5.86s   max=38.89s   p(90)=14.76s   p(95)=18s    
-       { expected_response:true }...: avg=7.88s    min=805.08ms med=5.86s   max=38.89s   p(90)=14.76s   p(95)=18s    
-     http_req_failed................: 0.00%   ✓ 0         ✗ 38179
-     http_req_receiving.............: avg=1.48ms   min=35.91µs  med=91.12µs max=339.78ms p(90)=161.57µs p(95)=561µs  
-     http_req_sending...............: avg=165.63µs min=8.03µs   med=16.1µs  max=168.05ms p(90)=31.38µs  p(95)=45.61µs
-     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s      max=0s       p(90)=0s       p(95)=0s     
-     http_req_waiting...............: avg=7.88s    min=804.99ms med=5.86s   max=38.89s   p(90)=14.76s   p(95)=18s    
-     http_reqs......................: 38179   63.003767/s
-     iteration_duration.............: avg=7.9s     min=812.18ms med=5.87s   max=38.9s    p(90)=14.81s   p(95)=18.04s 
-     iterations.....................: 38179   63.003767/s
-     vus............................: 29      min=29      max=500
-     vus_max........................: 500     min=500     max=500
+     checks.........................: 95.65% ✓ 114858    ✗ 5220 
+     data_received..................: 3.4 GB 5.6 MB/s
+     data_sent......................: 49 MB  81 kB/s
+     http_req_blocked...............: avg=1.57ms   min=1.22µs   med=3.08µs  max=296.19ms p(90)=5.88µs   p(95)=866.8µs 
+     http_req_connecting............: avg=1.48ms   min=0s       med=0s      max=294.3ms  p(90)=0s       p(95)=770.44µs
+     http_req_duration..............: avg=7.32s    min=743.26ms med=3.8s    max=1m0s     p(90)=4.77s    p(95)=59.98s  
+       { expected_response:true }...: avg=3.73s    min=743.26ms med=3.74s   max=59.78s   p(90)=4.45s    p(95)=4.69s   
+     http_req_failed................: 6.38%  ✓ 2610      ✗ 38286
+     http_req_receiving.............: avg=674.15µs min=0s       med=87.25µs max=237.79ms p(90)=150.13µs p(95)=481.42µs
+     http_req_sending...............: avg=516.63µs min=8µs      med=16.07µs max=180.86ms p(90)=36.94µs  p(95)=147.04µs
+     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s      max=0s       p(90)=0s       p(95)=0s      
+     http_req_waiting...............: avg=7.32s    min=742.02ms med=3.8s    max=1m0s     p(90)=4.77s    p(95)=59.98s  
+     http_reqs......................: 40896  67.910984/s
+     iteration_duration.............: avg=7.34s    min=798.85ms med=3.82s   max=1m0s     p(90)=4.8s     p(95)=1m0s    
+     iterations.....................: 40896  67.910984/s
+     vus............................: 36     min=36      max=500
+     vus_max........................: 500    min=500     max=500
 ```
 
 
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/36157855-d9d1-4def-3d9e-18c8b705fb00/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/7c7ba766-066c-40e4-ccbe-dce5e2fcbf00/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/1828cfba-57d7-4fa7-13e1-c92e8f64aa00/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/cffb16e4-cd4d-4c0b-fb86-52fa5e51c000/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/eb2a6a5d-737c-4d25-351e-a2e0e2700500/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/4a164ed5-50e5-4a88-ac30-53a3222abe00/public" alt="HTTP Overview" />
 
 
   </details>
@@ -356,21 +412,21 @@ This scenario was running 500 VUs over 600s
      ✓ no graphql errors
      ✓ valid response structure
 
-     checks.........................: 100.00% ✓ 23685     ✗ 0    
-     data_received..................: 693 MB  1.1 MB/s
-     data_sent......................: 9.5 MB  15 kB/s
-     http_req_blocked...............: avg=1.16ms   min=1.7µs   med=4.12µs   max=52.41ms p(90)=6.08µs   p(95)=3.49ms  
-     http_req_connecting............: avg=1.13ms   min=0s      med=0s       max=37.1ms  p(90)=0s       p(95)=3.31ms  
-     http_req_duration..............: avg=38.66s   min=11.75s  med=39.79s   max=44.01s  p(90)=40.41s   p(95)=42.02s  
-       { expected_response:true }...: avg=38.66s   min=11.75s  med=39.79s   max=44.01s  p(90)=40.41s   p(95)=42.02s  
-     http_req_failed................: 0.00%   ✓ 0         ✗ 7895 
-     http_req_receiving.............: avg=131.36µs min=39.84µs med=109.33µs max=13.62ms p(90)=147.54µs p(95)=164.53µs
-     http_req_sending...............: avg=74.07µs  min=9.25µs  med=23.55µs  max=3.85ms  p(90)=33.88µs  p(95)=350.94µs
-     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s      p(90)=0s       p(95)=0s      
-     http_req_waiting...............: avg=38.66s   min=11.75s  med=39.79s   max=44.01s  p(90)=40.41s   p(95)=42.02s  
-     http_reqs......................: 7895    12.531685/s
-     iteration_duration.............: avg=38.67s   min=11.76s  med=39.79s   max=44.02s  p(90)=40.41s   p(95)=42.03s  
-     iterations.....................: 7895    12.531685/s
+     checks.........................: 100.00% ✓ 23832     ✗ 0    
+     data_received..................: 697 MB  1.1 MB/s
+     data_sent......................: 9.6 MB  15 kB/s
+     http_req_blocked...............: avg=1.62ms   min=1.44µs  med=3.47µs max=54.37ms p(90)=5.46µs   p(95)=10.2ms 
+     http_req_connecting............: avg=1.59ms   min=0s      med=0s     max=52.51ms p(90)=0s       p(95)=9.68ms 
+     http_req_duration..............: avg=38.42s   min=11.06s  med=39.58s max=44.38s  p(90)=40.23s   p(95)=41.56s 
+       { expected_response:true }...: avg=38.42s   min=11.06s  med=39.58s max=44.38s  p(90)=40.23s   p(95)=41.56s 
+     http_req_failed................: 0.00%   ✓ 0         ✗ 7944 
+     http_req_receiving.............: avg=119.38µs min=46.79µs med=101µs  max=25.24ms p(90)=139.68µs p(95)=157.6µs
+     http_req_sending...............: avg=317.14µs min=7.72µs  med=20.2µs max=15.2ms  p(90)=31.2µs   p(95)=1.53ms 
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s     max=0s      p(90)=0s       p(95)=0s     
+     http_req_waiting...............: avg=38.42s   min=11.06s  med=39.58s max=44.38s  p(90)=40.23s   p(95)=41.56s 
+     http_reqs......................: 7944    12.609488/s
+     iteration_duration.............: avg=38.43s   min=11.06s  med=39.59s max=44.39s  p(90)=40.23s   p(95)=41.57s 
+     iterations.....................: 7944    12.609488/s
      vus............................: 113     min=113     max=500
      vus_max........................: 500     min=500     max=500
 ```
@@ -379,19 +435,19 @@ This scenario was running 500 VUs over 600s
 **Performance Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/890a330a-039e-40e5-197e-ed1613818100/public" alt="Performance Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/c1886876-fcf0-4590-0c0e-59c4de8ca200/public" alt="Performance Overview" />
 
 
 **Subgraphs Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/1969491b-8c30-4fa7-ce24-fd41e9059a00/public" alt="Subgraphs Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/5ad76a25-5102-40fc-e272-853a5c8b3400/public" alt="Subgraphs Overview" />
 
 
 **HTTP Overview**
 
 
-<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/4480230c-a555-4f3c-72dc-08ac4236e400/public" alt="HTTP Overview" />
+<img src="https://imagedelivery.net/KYe9TScr4TldYHA48pczVg/0cb56d8a-1d84-4259-045e-accbe5e92e00/public" alt="HTTP Overview" />
 
 
   </details>
