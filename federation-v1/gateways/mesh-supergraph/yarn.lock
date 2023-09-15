@@ -838,10 +838,10 @@
     json-pointer "0.6.2"
     lodash.get "4.4.2"
 
-"@graphql-mesh/supergraph@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/supergraph/-/supergraph-0.0.3.tgz#ce9c3921f97963eebe8e1a1969f728adb27d44b1"
-  integrity sha512-xL0MEn1ZUHHFwCw4gcWGGvwpMLUY6/yTj/ojn+PQFGrnPQurLycpnDcxsADNckBePbcoeJMiMlH2VIU0dB9mDQ==
+"@graphql-mesh/supergraph@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/supergraph/-/supergraph-0.0.4.tgz#7af5d92899e9ac7cd2cef95fee274faadf270758"
+  integrity sha512-jyLWZZu86c5yAaPUClncw8Yy7iUTL2NAplzsJuw6QiIYBXiERapsNt1hMFM2/VFeN+/bEa5x28QQ7KPSAEERyQ==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.1"
     "@graphql-tools/executor-http" "^1.0.2"

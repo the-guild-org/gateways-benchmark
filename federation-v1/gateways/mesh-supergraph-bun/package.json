@@ -3,7 +3,7 @@
   "dependencies": {
     "@types/node": "^20.4.5",
     "graphql": "^16.7.1",
-    "@graphql-mesh/supergraph": "^0.0.3",
+    "@graphql-mesh/supergraph": "^0.0.4",
     "@graphql-mesh/runtime": "^0.96.5",
     "@graphql-mesh/utils": "^0.95.3",
     "@graphql-mesh/cross-helpers": "^0.4.0",
