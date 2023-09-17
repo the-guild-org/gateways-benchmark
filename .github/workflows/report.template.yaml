@@ -67,3 +67,12 @@ jobs:
           add: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }}/README.md
           message: 'Update results for scenario: ${{ inputs.scenarioName }}'
           pull: '--rebase --autostash'
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with: 
+          name: ${{ inputs.baseDir }}-${{ inputs.scenarioName }}-report
+          path: |
+            ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md
+            ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/report.vega.json
+            ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/report.svg
