@@ -26,9 +26,6 @@ services:
     environment:
       PORT: 4002
       SUBGRAPH_DELAY_MS: ${INVENTORY_SUBGRAPH_DELAY_MS}
-    build:
-      context: ${BASE_DIR:-.}/services/inventory
-      dockerfile: ../Dockerfile.rust
     healthcheck:
         test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4002/graphql", "temp"]
         interval: 3s
@@ -44,9 +41,6 @@ services:
     environment:
       PORT: 4003
       SUBGRAPH_DELAY_MS: ${PRODUCTS_SUBGRAPH_DELAY_MS}
-    build:
-      context: ${BASE_DIR:-.}/services/products
-      dockerfile: ../Dockerfile.rust
     healthcheck:
       test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4003/graphql", "temp"]
       interval: 3s
@@ -62,9 +56,6 @@ services:
     environment:
       PORT: 4004
       SUBGRAPH_DELAY_MS: ${REVIEWS_SUBGRAPH_DELAY_MS}
-    build:
-      context: ${BASE_DIR:-.}/services/reviews
-      dockerfile: ../Dockerfile.rust
     healthcheck:
         test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4004/graphql", "temp"]
         interval: 3s

@@ -1,0 +1,17 @@
+{
+  "name": "fed-v2-constant-vus-over-time",
+  "description": "This scenario runs 5 subgraphs and a GraphQL gateway with Federation v2 spec, and runs a heavy query. It's being executed with a constant amount of VUs over a fixed amount of time. It measure things like memory usage, CPU usage, average RPS. It also includes a summary of the entire execution, and metrics information about HTTP execution times.",
+  "scripts": {
+    "generate-report": "tsx generate-report.ts"
+  },
+  "dependencies": {
+    "vega": "5.25.0",
+    "vega-lite": "5.14.1",
+    "tablemark": "3.0.0",
+    "tsx": "3.12.10",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1"
+  }
+}

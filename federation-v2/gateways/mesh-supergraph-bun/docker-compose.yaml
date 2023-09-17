@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: gateway/mesh-supergraph-bun
+    container_name: gateway
+    networks:
+      - test
+    ports:
+      - 4000:4000
+    environment:
+      PORT: 4000
+    build:
+      context: ${BASE_DIR:-.}/../../gateways/mesh-supergraph-bun
+      dockerfile: ./Dockerfile
+    depends_on:
+      users: 
+        condition: service_healthy
+      pandas: 
+        condition: service_healthy
+      inventory:
+        condition: service_healthy
+      products:
+        condition: service_healthy
+      reviews:
+        condition: service_healthy
+    healthcheck:
+        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://localhost:4000/graphql", "temp"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPU_LIMIT:-1}
+          memory: ${MEM_LIMIT:-1gb}
+networks:
+  test:
+    name: test

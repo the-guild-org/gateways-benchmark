@@ -5,7 +5,7 @@ import tablemark from "tablemark";
 import * as vl from "vega-lite";
 import * as v from "vega";
 
-const IGNORED_DIRS = ["node_modules", "services"];
+const IGNORED_DIRS = ["node_modules"];
 const NEWLINE = "\n";
 
 const {
@@ -14,7 +14,14 @@ const {
   GITHUB_RUN_ID = "local",
 } = process.env;
 
-async function uploadImageToCloudflare(filename: string, filePath: string) {
+async function uploadImageToCloudflare(
+  filename: string,
+  filePath: string
+): Promise<string | null> {
+  if (!CF_IMAGES_LINK || !CF_IMAGES_TOKEN) {
+    return null;
+  }
+
   const buffer = readFileSync(filePath);
   const blob = new Blob([buffer], { type: "image/png" });
   const form = new FormData();
@@ -52,6 +59,7 @@ async function generateReport(artifactsRootPath: string) {
     .filter((r) => r.isDirectory() && !IGNORED_DIRS.includes(r.name))
     .filter((r) => r.name.startsWith(process.env.SCENARIO_ARTIFACTS_PREFIX!))
     .map((r) => r.name);
+
   console.info(
     `Found the following directories to look reports in: ${foundDirectories.join(
       ", "
@@ -77,9 +85,9 @@ async function generateReport(artifactsRootPath: string) {
 
       const txtSummaryFilePath = join(fullPath, "./k6_summary.txt");
 
-      let overviewImageUrl = "";
-      let httpImageUrl = "";
-      let containersImageUrl = "";
+      let overviewImageUrl: string | null = "";
+      let httpImageUrl: string | null = "";
+      let containersImageUrl: string | null = "";
 
       if (!CF_IMAGES_LINK || !CF_IMAGES_TOKEN) {
         console.warn(
@@ -89,6 +97,7 @@ async function generateReport(artifactsRootPath: string) {
         const overviewImageFilePath = join(fullPath, "./overview.png");
         const httpImageFilePath = join(fullPath, "./http.png");
         const containersFilePath = join(fullPath, "./containers.png");
+
         [overviewImageUrl, httpImageUrl, containersImageUrl] =
           await Promise.all([
             uploadImageToCloudflare(
@@ -114,9 +123,6 @@ async function generateReport(artifactsRootPath: string) {
         jsonSummary,
         txtSummary: readFileSync(txtSummaryFilePath, "utf8"),
         rps: Math.floor(jsonSummary.metrics.http_reqs.values.rate),
-        p95_duration: Math.floor(
-          jsonSummary.metrics.http_req_duration.values["p(95)"]
-        ),
         overviewImageUrl,
         httpImageUrl,
         containersImageUrl,
@@ -125,10 +131,9 @@ async function generateReport(artifactsRootPath: string) {
       };
     })
   );
-
   const validReportsData = reportsData
     .filter(notEmpty)
-    .sort((a, b) => a.p95_duration - b.p95_duration);
+    .sort((a, b) => b.rps - a.rps);
 
   const vega: vl.TopLevelSpec = {
     width: 600,
@@ -140,14 +145,14 @@ async function generateReport(artifactsRootPath: string) {
       values: validReportsData.map((v) => {
         return {
           "gateway-setup": v.name,
-          "duration (p95)": v.p95_duration,
+          rps: v.rps,
         };
       }),
     },
     mark: "bar",
     encoding: {
       x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: -90 } },
-      y: { field: "duration (p95)", type: "quantitative" },
+      y: { field: "rps", type: "quantitative" },
     },
   };
 
@@ -162,11 +167,11 @@ async function generateReport(artifactsRootPath: string) {
   );
 
   const markdownLines: string[] = [
-    "## Overview for: `federation-v1/ramping-vus`",
+    `## Overview for: \`${process.env.SCENARIO_TITLE}\``,
     NEWLINE,
     pkgJson.description,
     NEWLINE,
-    `This scenario was trying to reach ${validReportsData[0].vus} concurrent VUs over ${validReportsData[0].time}`,
+    `This scenario was running ${validReportsData[0].vus} VUs over ${validReportsData[0].time}`,
     NEWLINE,
     "### Comparison",
     NEWLINE,
@@ -201,28 +206,22 @@ async function generateReport(artifactsRootPath: string) {
 
         return {
           gw: v.name,
-          p95_duration: `${v.p95_duration}ms`,
           rps: Math.round(v.rps),
           requests: `${v.jsonSummary.metrics.http_reqs.values.count} total, ${v.jsonSummary.metrics.http_req_failed.values.passes} failed`,
           duration: `avg: ${Math.round(
             v.jsonSummary.metrics.http_req_duration.values.avg
           )}ms, p95: ${Math.round(
             v.jsonSummary.metrics.http_req_duration.values["p(95)"]
-          )}ms, max: ${Math.round(
-            v.jsonSummary.metrics.http_req_duration.values.max
-          )}ms, med: ${Math.round(
-            v.jsonSummary.metrics.http_req_duration.values.med
           )}ms`,
           notes: notes.length === 0 ? '✅' : '❌ ' + notes.join(', '),
-        }
+        };
       }),
       {
         columns: [
           { name: "Gateway" },
-          { name: "duration(p95)⬇️", align: "center" },
-          { name: "RPS", align: "center" },
+          { name: "RPS ⬇️", align: "center" },
           { name: "Requests", align: "center" },
-          { name: "Durations", align: "center" },
+          { name: "Duration", align: "center" },
           { name: "Notes", align: "left" },
         ],
       }
@@ -266,6 +265,7 @@ async function generateReport(artifactsRootPath: string) {
 
   const markdown = markdownLines.join("\n");
   writeFileSync("result.md", markdown);
+  writeFileSync("report.vega.json", markdown);
 }
 
 const artifactsRootPath = process.argv[2] || __dirname;

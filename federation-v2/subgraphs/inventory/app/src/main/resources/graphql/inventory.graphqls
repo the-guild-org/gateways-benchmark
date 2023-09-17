@@ -1,0 +1,37 @@
+extend schema
+    @link(url: "https://specs.apollo.dev/federation/v2.1",
+       import: ["@key", "@shareable", "@external", "@requires", "@composeDirective"])
+    @link(url: "https://myspecs.dev/myDirective/v1.0", import: ["@myDirective", { name: "@anotherDirective", as: "@hello" }])
+    @composeDirective(name: "@myDirective")
+    @composeDirective(name: "@hello")
+
+directive @myDirective(a: String!) on FIELD_DEFINITION
+directive @hello on FIELD_DEFINITION
+
+type Product implements ProductItf @key(fields: "id") {
+  id: ID!
+  dimensions: ProductDimension @external
+  delivery(zip: String): DeliveryEstimates @requires(fields: "dimensions { size weight }")
+}
+
+type ProductDimension @shareable {
+  size: String @hello
+  weight: Float
+}
+
+type DeliveryEstimates {
+  estimatedDelivery: String
+  fastestDelivery: String
+}
+
+interface ProductItf {
+  id: ID!
+  dimensions: ProductDimension
+  delivery(zip: String): DeliveryEstimates
+}
+
+enum ShippingClass {
+  STANDARD
+  EXPRESS
+  OVERNIGHT
+}
