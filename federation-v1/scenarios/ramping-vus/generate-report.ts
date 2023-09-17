@@ -152,7 +152,7 @@ async function generateReport(artifactsRootPath: string) {
         sort: "-y",
       },
       y: {
-        field: "rps",
+        field: "duration (p95)",
         type: "quantitative",
       },
     },
