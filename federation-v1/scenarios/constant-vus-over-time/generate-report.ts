@@ -151,8 +151,15 @@ async function generateReport(artifactsRootPath: string) {
     },
     mark: "bar",
     encoding: {
-      x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: -90 } },
-      y: { field: "rps", type: "quantitative" },
+      x: {
+        field: "gateway-setup",
+        type: "nominal",
+        sort: "-y",
+      },
+      y: {
+        field: "rps",
+        type: "quantitative",
+      },
     },
   };
 
@@ -184,13 +191,21 @@ async function generateReport(artifactsRootPath: string) {
         const notes: string[] = [];
 
         if (v.jsonSummary.metrics.http_req_failed.values.passes > 0) {
-          notes.push(`${v.jsonSummary.metrics.http_req_failed.values.passes} failed requests`);
+          notes.push(
+            `${v.jsonSummary.metrics.http_req_failed.values.passes} failed requests`
+          );
         }
 
         const checks = v.jsonSummary.root_group.checks;
-        const http200Check = checks.find(c => c.name === 'response code was 200');
-        const graphqlErrors = checks.find(c => c.name === 'no graphql errors');
-        const responseStructure = checks.find(c => c.name === 'valid response structure');
+        const http200Check = checks.find(
+          (c) => c.name === "response code was 200"
+        );
+        const graphqlErrors = checks.find(
+          (c) => c.name === "no graphql errors"
+        );
+        const responseStructure = checks.find(
+          (c) => c.name === "valid response structure"
+        );
 
         if (http200Check.fails > 0) {
           notes.push(`${http200Check.fails} non-200 responses`);
@@ -201,7 +216,9 @@ async function generateReport(artifactsRootPath: string) {
         }
 
         if (responseStructure.fails > 0) {
-          notes.push(`non-compatible response structure (${responseStructure.fails})`);
+          notes.push(
+            `non-compatible response structure (${responseStructure.fails})`
+          );
         }
 
         return {
@@ -213,7 +230,7 @@ async function generateReport(artifactsRootPath: string) {
           )}ms, p95: ${Math.round(
             v.jsonSummary.metrics.http_req_duration.values["p(95)"]
           )}ms`,
-          notes: notes.length === 0 ? '✅' : '❌ ' + notes.join(', '),
+          notes: notes.length === 0 ? "✅" : "❌ " + notes.join(", "),
         };
       }),
       {
@@ -265,7 +282,7 @@ async function generateReport(artifactsRootPath: string) {
 
   const markdown = markdownLines.join("\n");
   writeFileSync("result.md", markdown);
-  writeFileSync("report.vega.json", markdown);
+  writeFileSync("report.vega.json", JSON.stringify(vega, null, 2));
 }
 
 const artifactsRootPath = process.argv[2] || __dirname;

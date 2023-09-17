@@ -146,8 +146,15 @@ async function generateReport(artifactsRootPath: string) {
     },
     mark: "bar",
     encoding: {
-      x: { field: "gateway-setup", type: "nominal", axis: { labelAngle: -90 } },
-      y: { field: "duration (p95)", type: "quantitative" },
+      x: {
+        field: "gateway-setup",
+        type: "nominal",
+        sort: "-y",
+      },
+      y: {
+        field: "rps",
+        type: "quantitative",
+      },
     },
   };
 
@@ -266,6 +273,7 @@ async function generateReport(artifactsRootPath: string) {
 
   const markdown = markdownLines.join("\n");
   writeFileSync("result.md", markdown);
+  writeFileSync("report.vega.json", JSON.stringify(vega, null, 2));
 }
 
 const artifactsRootPath = process.argv[2] || __dirname;
