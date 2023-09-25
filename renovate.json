@@ -5,5 +5,9 @@
   ],
   "lockFileMaintenance": {
     "enabled": true
+  },
+  "automerge": true,
+  "major": {
+    "automerge": false
   }
 }
