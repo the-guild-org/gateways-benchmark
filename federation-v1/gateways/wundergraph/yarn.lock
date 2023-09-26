@@ -790,10 +790,10 @@
     protobufjs "^7.2.4"
     ts-proto "^1.156.1"
 
-"@wundergraph/sdk@0.178.0":
-  version "0.178.0"
-  resolved "https://registry.yarnpkg.com/@wundergraph/sdk/-/sdk-0.178.0.tgz#48e5eacfb648cffb95886b58ffe91df985b1602d"
-  integrity sha512-tJKC2RhOcFa/hhzn9dsBuKmIhGU4Gm6R8IBANeabgnWriXCW8pxAv+0P/Gf15w5vlm+nSqFtW8rkWEsTKl5AuQ==
+"@wundergraph/sdk@0.178.1":
+  version "0.178.1"
+  resolved "https://registry.yarnpkg.com/@wundergraph/sdk/-/sdk-0.178.1.tgz#4f223cca80a2bd7bdca2394b2ea77649bbb4f012"
+  integrity sha512-hY8iFqYYnOmo6F89sf8uhw2A5SUbEXc9DeAYPuMWjyoOh8K7ovfgFi4oyo5r+Dsdlq1clBewfcZqKG1xDh83IA==
   dependencies:
     "@fastify/formbody" "^7.3.0"
     "@fastify/multipart" "^7.7.3"
@@ -819,7 +819,7 @@
     "@wundergraph/orm" "0.3.1"
     "@wundergraph/protobuf" "^0.118.2"
     "@wundergraph/straightforward" "^4.2.5"
-    "@wundergraph/wunderctl" "^0.174.0"
+    "@wundergraph/wunderctl" "^0.175.0"
     axios "^0.26.1"
     axios-retry "^3.3.1"
     close-with-grace "^1.1.0"
@@ -868,10 +868,10 @@
     debug "^4.3.4"
     yargs "^17.7.1"
 
-"@wundergraph/wunderctl@^0.174.0":
-  version "0.174.0"
-  resolved "https://registry.yarnpkg.com/@wundergraph/wunderctl/-/wunderctl-0.174.0.tgz#b95af1cd242c28d37e18b742d66701fe516d75f4"
-  integrity sha512-RFs3YJjGxJ46fdYtGaNtXU1lAWb950ibw6ug+vorLIz1pTC7KZpfulIinGoJ8NPU8QYjJKvqhHEYFouJ+MC92A==
+"@wundergraph/wunderctl@^0.175.0":
+  version "0.175.0"
+  resolved "https://registry.yarnpkg.com/@wundergraph/wunderctl/-/wunderctl-0.175.0.tgz#ef2c11239e0a1310f7a9f813741d4ae4c3bdc3e3"
+  integrity sha512-x+Zsv0r2QueDz38kEfq+dXLeu/y7KsG+OHvFZp1l1EBxs31HMV44Cw+KmsS6WRPDJddpEwlwjehBkM5obt5eQA==
   dependencies:
     axios "^0.26.1"
     debug "^4.3.4"
