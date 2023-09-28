@@ -32,9 +32,9 @@ jobs:
           - apollo-router
           - mercurius
           - wundergraph
-          - mesh
+          # - mesh
+          # - mesh-bun
           - mesh-supergraph
-          - mesh-bun
           - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -69,9 +69,9 @@ jobs:
           - apollo-router
           - mercurius
           - wundergraph
-          - mesh
+          # - mesh
+          # - mesh-bun
           - mesh-supergraph
-          - mesh-bun
           - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -107,9 +107,9 @@ jobs:
           - apollo-router
           - mercurius
           - wundergraph
-          - mesh
+          # - mesh
+          # - mesh-bun
           - mesh-supergraph
-          - mesh-bun
           - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -145,8 +145,8 @@ jobs:
           - apollo-router
           # - mercurius
           - wundergraph
-          - mesh
-          - mesh-bun
+          # - mesh
+          # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
