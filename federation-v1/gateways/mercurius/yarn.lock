@@ -432,9 +432,9 @@ fastify-plugin@^4.0.0, fastify-plugin@^4.2.0, fastify-plugin@^4.3.0:
   integrity sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==
 
 fastify@^4.19.2:
-  version "4.23.2"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-4.23.2.tgz#7072f04b544540d2523afb4a54d4095d187f5444"
-  integrity sha512-WFSxsHES115svC7NrerNqZwwM0UOxbC/P6toT9LRHgAAFvG7o2AN5W+H4ihCtOGuYXjZf4z+2jXC89rVEoPWOA==
+  version "4.24.0"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-4.24.0.tgz#4edb911ae3ff6844764bdf7ac1afe8366d30d80f"
+  integrity sha512-6Uu2cCAV1UgexPnWKchgRt77lng9ivNmyFhPMcgUbJ4VaVBE1l6aYluiYZiVsgOBFpHrmdj7FD6n1aHswln4yQ==
   dependencies:
     "@fastify/ajv-compiler" "^3.5.0"
     "@fastify/error" "^3.2.0"
@@ -443,7 +443,7 @@ fastify@^4.19.2:
     avvio "^8.2.1"
     fast-content-type-parse "^1.0.0"
     fast-json-stringify "^5.7.0"
-    find-my-way "^7.6.0"
+    find-my-way "^7.7.0"
     light-my-request "^5.9.1"
     pino "^8.12.0"
     process-warning "^2.2.0"
@@ -468,10 +468,10 @@ fastq@^1.6.1:
   dependencies:
     reusify "^1.0.4"
 
-find-my-way@^7.6.0:
-  version "7.6.2"
-  resolved "https://registry.yarnpkg.com/find-my-way/-/find-my-way-7.6.2.tgz#4dd40200d3536aeef5c7342b10028e04cf79146c"
-  integrity sha512-0OjHn1b1nCX3eVbm9ByeEHiscPYiHLfhei1wOUU9qffQkk98wE0Lo8VrVYfSGMgnSnDh86DxedduAnBf4nwUEw==
+find-my-way@^7.7.0:
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/find-my-way/-/find-my-way-7.7.0.tgz#d7b51ca6046782bcddd5a8435e99ad057e5a8876"
+  integrity sha512-+SrHpvQ52Q6W9f3wJoJBbAQULJuNEEQwBvlvYwACDhBTLOTMiQ0HYWh4+vC3OivGP2ENcTI1oKlFA2OepJNjhQ==
   dependencies:
     fast-deep-equal "^3.1.3"
     fast-querystring "^1.0.0"
@@ -704,9 +704,9 @@ pino-std-serializers@^6.0.0:
   integrity sha512-cHjPPsE+vhj/tnhCy/wiMh3M3z3h/j15zHQX+S9GkTBgqJuTuJzYJ4gUyACLhDaJ7kk9ba9iRDmbH2tJU03OiA==
 
 pino@^8.12.0:
-  version "8.15.7"
-  resolved "https://registry.yarnpkg.com/pino/-/pino-8.15.7.tgz#5a0d07cf605263aa27b83dcc25c80715c535ed40"
-  integrity sha512-B0GTwUzUCXmGILPqL5MzeLWfq2KhdRArFNrtSKIIeZoES1zPDD72EGOgGvtdLSYyyEQZqE7fThRRNjNGx8nVZg==
+  version "8.16.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-8.16.0.tgz#2465012a1d11fa2e7a0545032f636e203990ae26"
+  integrity sha512-UUmvQ/7KTZt/vHjhRrnyS7h+J7qPBQnpG80V56xmIC+o9IqYmQOw/UIny9S9zYDfRBR0ClouCr464EkBMIT7Fw==
   dependencies:
     atomic-sleep "^1.0.0"
     fast-redact "^3.1.1"
@@ -717,7 +717,7 @@ pino@^8.12.0:
     quick-format-unescaped "^4.0.3"
     real-require "^0.2.0"
     safe-stable-stringify "^2.3.1"
-    sonic-boom "^3.1.0"
+    sonic-boom "^3.7.0"
     thread-stream "^2.0.0"
 
 process-warning@^2.0.0, process-warning@^2.2.0:
@@ -840,10 +840,10 @@ single-user-cache@^0.6.0:
   dependencies:
     safe-stable-stringify "^2.0.0"
 
-sonic-boom@^3.1.0:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-3.6.1.tgz#ce1bc5d58e83d53e42a4b3a036050e463d95c9bb"
-  integrity sha512-QV+p5nXPiUiSMxn/k5bOL+hzCpafdj1voL+hywPZhheRSYyYp7CF15rNdz1evOXCUn/tFb7R62PDX1yJmtoTgg==
+sonic-boom@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-3.7.0.tgz#b4b7b8049a912986f4a92c51d4660b721b11f2f2"
+  integrity sha512-IudtNvSqA/ObjN97tfgNmOKyDOs4dNcg4cUUsHDebqsgb8wGBBwb31LIgShNO8fye0dFI52X1+tFoKKI6Rq1Gg==
   dependencies:
     atomic-sleep "^1.0.0"
 
