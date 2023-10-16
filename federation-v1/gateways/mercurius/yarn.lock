@@ -885,9 +885,9 @@ thread-stream@^2.0.0:
     real-require "^0.2.0"
 
 tiny-lru@^11.0.0:
-  version "11.2.2"
-  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-11.2.2.tgz#212c295313f10db6c58fbdc472e77da74c96631b"
-  integrity sha512-1An82KBJOUKCfRhsk4tHe4rNblnhAUzisesWBGf/0pztaVoNYM7eJxouN+mq6WkV/qNG21AFbrsgQfvBk0X9ng==
+  version "11.2.3"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-11.2.3.tgz#9dc04c9bd48b1e196e999e11eee71bc249466145"
+  integrity sha512-mF9jPTrvN7UHk0bekOk3RlFdFwfyS4CJYVsGc7nInL3pVgUCYj5r9X6GpZBFQgLr0TKJo8Dp+F3oRvYzxU9xiA==
 
 toad-cache@^3.3.0:
   version "3.3.0"
@@ -916,9 +916,9 @@ typescript@^5.1.6:
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
 undici@^5.0.0:
-  version "5.25.4"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.25.4.tgz#7d8ef81d94f84cd384986271e5e5599b6dff4296"
-  integrity sha512-450yJxT29qKMf3aoudzFpIciqpx6Pji3hEWaXqXmanbXF58LTAGCKxcJjxMXWu3iG+Mudgo3ZUfDB6YDFd/dAw==
+  version "5.26.3"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.26.3.tgz#ab3527b3d5bb25b12f898dfd22165d472dd71b79"
+  integrity sha512-H7n2zmKEWgOllKkIUkLvFmsJQj062lSm3uA4EYApG8gLuiOM0/go9bIoC3HVaSnfg4xunowDE2i9p8drkXuvDw==
   dependencies:
     "@fastify/busboy" "^2.0.0"
 
