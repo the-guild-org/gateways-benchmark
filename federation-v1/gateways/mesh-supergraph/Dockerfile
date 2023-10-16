@@ -19,6 +19,7 @@ ENV NODE_ENV production
 
 EXPOSE 4000
 ENV NODE_ENV production
+ENV NODE_CLUSTER_SCHED_POLICY rr
 
 USER gw
 WORKDIR /home/gw
