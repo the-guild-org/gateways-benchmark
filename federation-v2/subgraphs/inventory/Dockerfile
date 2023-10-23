@@ -17,7 +17,7 @@ RUN gradle clean build --no-daemon --parallel
 
 
 # Create a new layer with the build output to run the app
-FROM openjdk:20-slim-bullseye
+FROM openjdk:21-slim-bullseye
 ENV ARTIFACT_NAME=app.jar
 
 RUN apt update && apt install -y curl
