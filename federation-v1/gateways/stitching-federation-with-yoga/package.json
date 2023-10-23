@@ -7,7 +7,7 @@
     "tsx": "3.14.0",
     "typescript": "^5.1.6",
     "graphql": "^16.7.1",
-    "graphql-yoga": "^4.0.1",
+    "graphql-yoga": "^5.0.0",
     "@graphql-tools/federation": "^1.1.8"
   },
   "devDependencies": {
