@@ -199,9 +199,9 @@
     mercurius "^13.0.0"
 
 "@mercuriusjs/gateway@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@mercuriusjs/gateway/-/gateway-2.0.0.tgz#b2a0885e0fcf17422fd2faced84db7db10b3a7d2"
-  integrity sha512-Zga1RrD21/5V5SgYyCxfMjVEo4uLbipPHFyZdtmntHu2KmRwbQuipPy06NW9FVEUTfIzwJQmrZWv9IO9LGlyTA==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@mercuriusjs/gateway/-/gateway-2.1.0.tgz#3d3a8c03fa5e310a996104e164ba4a78ace3747d"
+  integrity sha512-saQlIJAKYpfPJw32vJ5Zz69RPJ7hS8GBjjsRvrGZJVuevHKTZkJHfjRICkG1RqAAJ8hrDNDjist8ks6m4MLvfQ==
   dependencies:
     "@mercuriusjs/federation" "^2.0.0"
     "@mercuriusjs/subscription-client" "^1.0.0"
@@ -530,9 +530,9 @@ graphql-jit@^0.8.0:
     lodash.mergewith "4.6.2"
 
 graphql-ws@^5.11.2:
-  version "5.14.1"
-  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.14.1.tgz#d05dba9c2cbf1582c990a2dfec4b8f6a55d99da4"
-  integrity sha512-aqkls1espsygP1PfkAuuLIV96IbztQ6EaADse97pw8wRIMT3+AL/OYfS8V2iCRkc0gzckitoDRGCQEdnySggiA==
+  version "5.14.2"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.14.2.tgz#7db6f6138717a544d9480f0213f65f2841ed1c52"
+  integrity sha512-LycmCwhZ+Op2GlHz4BZDsUYHKRiiUz+3r9wbhBATMETNlORQJAaFlAgTFoeRh6xQoQegwYwIylVD1Qns9/DA3w==
 
 graphql@^16.6.0, graphql@^16.7.1:
   version "16.8.1"
@@ -620,9 +620,9 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 mercurius@^13.0.0:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-13.1.0.tgz#73083117ec69f84ecd566971faae6d690085a46d"
-  integrity sha512-MDCmgNLk77f6Epe4af78Z36XChQ/TeHIO3l8Aoyj3whEqzlXxODNaNHt4vEfLDHCSbuLoLJTaK6bpWN0MtomUA==
+  version "13.2.2"
+  resolved "https://registry.yarnpkg.com/mercurius/-/mercurius-13.2.2.tgz#edfad3fd05102290e21d864bbc649a8411e0f773"
+  integrity sha512-Bj5hrkJZgFOk4zo4ZcfP3k7P85Gdsxh9gGOLLQxCR+zXzHkia9o6FJuMebJjXhuWXybqFbWon3YmWx3/JaniVA==
   dependencies:
     "@fastify/error" "^3.0.0"
     "@fastify/static" "^6.0.0"
@@ -916,9 +916,9 @@ typescript@^5.1.6:
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
 undici@^5.0.0:
-  version "5.26.4"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.26.4.tgz#dc861c35fb53ae025a173a790d984aa9b2e279a1"
-  integrity sha512-OG+QOf0fTLtazL9P9X7yqWxQ+Z0395Wk6DSkyTxtaq3wQEjIroVe7Y4asCX/vcCxYpNGMnwz8F0qbRYUoaQVMw==
+  version "5.27.0"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.27.0.tgz#789f2e40ce982b5507899abc2c2ddeb2712b4554"
+  integrity sha512-l3ydWhlhOJzMVOYkymLykcRRXqbUaQriERtR70B9LzNkZ4bX52Fc8wbTDneMiwo8T+AemZXvXaTx+9o5ROxrXg==
   dependencies:
     "@fastify/busboy" "^2.0.0"
 
