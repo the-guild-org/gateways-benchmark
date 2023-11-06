@@ -24,7 +24,7 @@ services:
       - type: bind
         source: ./config.yaml
         target: /dist/config/config.yaml
-    command: ["conductor", "--config", "/dist/config/config.yaml"]
+    command: ["conductor", "/dist/config/config.yaml"]
     deploy:
       resources:
         limits:
