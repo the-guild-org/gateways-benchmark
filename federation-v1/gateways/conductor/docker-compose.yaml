@@ -19,10 +19,10 @@ services:
         condition: service_healthy
     volumes:
       - type: bind
-        source: ./supergraph.graphql
+        source: federation-v1/gateways/conductor/supergraph.graphql
         target: /dist/schema/local.graphql
       - type: bind
-        source: ./config.yaml
+        source: federation-v1/gateways/conductor/config.yaml
         target: /dist/config/config.yaml
     command: ["conductor", "/dist/config/config.yaml"]
     deploy:
