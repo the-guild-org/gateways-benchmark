@@ -1,0 +1,16 @@
+server:
+  port: 4000
+
+logger:
+  level: error
+
+sources:
+  - id: gateways-benchmark
+    type: federation-v1
+    config:
+      supergraph:
+        file: ./temp/supergraph.graphql
+
+endpoints:
+  - path: /graphql
+    from: gateways-benchmark
