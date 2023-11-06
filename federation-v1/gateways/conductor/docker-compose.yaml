@@ -23,8 +23,8 @@ services:
         target: /dist/schema/local.graphql
       - type: bind
         source: federation-v1/gateways/conductor/config.yaml
-        target: /dist/config/router.yaml
-    command: ["./router.yaml"]
+        target: /dist/config/config.yaml
+    command: ["./config/config.yaml"]
     deploy:
       resources:
         limits:
