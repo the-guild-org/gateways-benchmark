@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   gateway:
-    image: conductor
+    image: ghcr.io/the-guild-org/conductor-t2/conductor:COMMIT_ID
     container_name: gateway
     networks:
       - test
