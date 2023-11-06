@@ -9,7 +9,7 @@ sources:
     type: federation-v1
     config:
       supergraph:
-        file: ./temp/supergraph.graphql
+        file: /dist/schema/local.graphql
 
 endpoints:
   - path: /graphql
