@@ -1,4 +1,4 @@
-# GraphQL Gateways Benchmark
+# GraphQL Gateways Benchmark - change
 
 This repository is a collection is different scenarios and tests performed on different implementations of GraphQL gateways. 
 
