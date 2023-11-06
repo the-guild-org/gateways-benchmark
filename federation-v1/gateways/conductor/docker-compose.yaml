@@ -24,7 +24,7 @@ services:
       - type: bind
         source: federation-v1/gateways/conductor/config.yaml
         target: /dist/config/router.yaml
-    command: ["dist/config/router.yaml"]
+    command: ["./router.yaml"]
     deploy:
       resources:
         limits:
