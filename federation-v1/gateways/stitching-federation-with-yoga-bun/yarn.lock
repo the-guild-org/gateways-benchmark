@@ -260,9 +260,9 @@
     tslib "^2.3.0"
 
 bun-types@^1.0.0:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.9.tgz#b0c1450594910a08ef309bfa080bcf3966b1f476"
-  integrity sha512-9zWU5b/D41v4h5YgQxMW7aUvwYqMhU7WRjhPMN73XE6MNl5mvZ5vgAEWV8Lisdd4JgDSdWk2t9oY6kYqeDhQSA==
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.10.tgz#5ce7a875a03d2b4241276ddb737fa7e9cc5be0e6"
+  integrity sha512-VqMF3Hcbycz2vtPYbtYwj2gkMUgbtNwXfUuH1rjF6a2Ix31GsT72VFFaJ95ce7mP9xJTm4nzjH028XyY+ez08A==
 
 busboy@^1.6.0:
   version "1.6.0"
