@@ -39,12 +39,6 @@ export START_TIME="$(date +%s)"
 
 k6 --out=experimental-prometheus-rw --out json=$OUT_DIR/k6_metrics.json run -e SUMMARY_PATH="$OUT_DIR" benchmark.k6.js
 
-# New code to calculate RPS and overwrite k6_summary.txt
-# Ensure you have jq installed for this to work
-RPS=$(jq '.metrics.http_reqs.rate' $OUT_DIR/k6_metrics.json)
-echo "RPS = ${RPS}" > $OUT_DIR/k6_summary.txt
-
-
 sleep 2
 
 export END_TIME="$(date +%s)"
