@@ -719,9 +719,9 @@
     localforage "1.10.0"
 
 "@graphql-mesh/cli@^0.88.0":
-  version "0.88.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.88.0.tgz#e261ac93c77b8a95860503becc0060bf7a2ec329"
-  integrity sha512-u5Zq9NLNlTqzGF2o5UB/NOzv0wirQHAzrnIQRrb+xhTDAQVXtnLQtNta4GFrB83yJh9gaKERASXSCxBCTIeW1A==
+  version "0.88.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.88.1.tgz#323923322436e99f4da482a569ec0e0d2187e0c6"
+  integrity sha512-hMAVvP05mInrqtPXJCVITtiOm6TmkTh583ZVAxclCz7Gs/dyf7jzGALtIUt2wfbkCPuESavWoSM+VwtrJNj5JA==
   dependencies:
     "@graphql-codegen/core" "^4.0.0"
     "@graphql-codegen/typed-document-node" "^5.0.0"
@@ -729,10 +729,10 @@
     "@graphql-codegen/typescript-generic-sdk" "^3.1.0"
     "@graphql-codegen/typescript-operations" "^4.0.0"
     "@graphql-codegen/typescript-resolvers" "^4.0.0"
-    "@graphql-mesh/config" "^0.98.0"
+    "@graphql-mesh/config" "^0.98.1"
     "@graphql-mesh/cross-helpers" "^0.4.1"
-    "@graphql-mesh/http" "^0.97.0"
-    "@graphql-mesh/runtime" "^0.97.0"
+    "@graphql-mesh/http" "^0.97.1"
+    "@graphql-mesh/runtime" "^0.97.1"
     "@graphql-mesh/store" "^0.96.0"
     "@graphql-mesh/types" "^0.96.0"
     "@graphql-mesh/utils" "^0.96.0"
@@ -757,10 +757,10 @@
     uWebSockets.js "github:uNetworking/uWebSockets.js#semver:^20"
     yargs "^17.7.1"
 
-"@graphql-mesh/config@^0.98.0":
-  version "0.98.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/config/-/config-0.98.0.tgz#9000420ac91f49ca23111fbb07fdbdd9bd5217b1"
-  integrity sha512-SaSURx/3VoPl/LnO/idEGY8v3J0AUOQZsmtgJ6xPgKRtFZwqO5yCmzzsDbjvUUkIsQGEq0Vo9uH29qO7u2zy0Q==
+"@graphql-mesh/config@^0.98.1":
+  version "0.98.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/config/-/config-0.98.1.tgz#926ea14b2cd1dbe4649169842735f810fe5e7c0b"
+  integrity sha512-VNEQL++4Ozeh+v50pWKxch8DENKvUTI5ZtNMcfZuK99V/nGWCC4yQmdfq6mtK8djym89KmLNSmKULIfHdiJnHA==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@graphql-mesh/cache-localforage" "^0.96.0"
@@ -793,10 +793,10 @@
     "@graphql-tools/url-loader" "^8.0.0"
     lodash.get "^4.4.2"
 
-"@graphql-mesh/http@^0.97.0":
-  version "0.97.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/http/-/http-0.97.0.tgz#d37d0a5c9ac899f3d332bab1e269a305b07527d6"
-  integrity sha512-9Baf/LLGKLlahkYFD2jeywCpGbme/KHQJXcnS1dbgzfMm0HefxwOOz4LvuIuPMAXN9GlfbT6Vtn5Q0LKaqx8UQ==
+"@graphql-mesh/http@^0.97.1":
+  version "0.97.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/http/-/http-0.97.1.tgz#43bf2cb8e0c1aca0a0feb30c9e1cb925cdb0e416"
+  integrity sha512-xFxyIbinrN6wUnPZbulJa2X8p3J62eToQZbfqm5IdMN6Jaqy86dVWmNJbCtR3s9NL2hdGxRnOwqZjvSZdygLpg==
   dependencies:
     "@whatwg-node/server" "^0.9.0"
     graphql-yoga "^5.0.0"
@@ -818,10 +818,10 @@
     "@graphql-tools/schema" "^10.0.0"
     "@graphql-tools/stitch" "^9.0.0"
 
-"@graphql-mesh/runtime@^0.97.0":
-  version "0.97.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/runtime/-/runtime-0.97.0.tgz#a0df64b4293b98a52d25b4e4991b520b349dbfec"
-  integrity sha512-Gi2heECKiH/n+lluYKBjXp9NslHAbU5tD7hUUx5VVwE8teSre6LSD0ZOl+SK2zr+fyp5tTcEQWIY5vQMj0XQCw==
+"@graphql-mesh/runtime@^0.97.1":
+  version "0.97.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/runtime/-/runtime-0.97.1.tgz#d1664bfb845838ff81563db4b8eaad9aedb15d0d"
+  integrity sha512-Oa8dTTFR6MOXWAVIKWJVtCc7JaK1E1mtVrBhEkku2jQ4ywpm1w1D7kVEG8GiL7/EXLVdUJfBuHrgt9/KngLr1A==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@envelop/extended-validation" "^4.0.0"
@@ -1289,9 +1289,9 @@
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
 "@repeaterjs/repeater@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.4.tgz#a04d63f4d1bf5540a41b01a921c9a7fddc3bd1ca"
-  integrity sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@repeaterjs/repeater/-/repeater-3.0.5.tgz#b77571685410217a548a9c753aa3cdfc215bfc78"
+  integrity sha512-l3YHBLAol6d/IKnB9LhpD0cEZWAoe3eFKUyTYWmFmCO2Q/WOckxLQAUyMZWwZV2M/m3+4vgRoaolFqaII82/TA==
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -1649,9 +1649,9 @@ camelcase@^5.0.0:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001541:
-  version "1.0.30001558"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001558.tgz#d2c6e21fdbfe83817f70feab902421a19b7983ee"
-  integrity sha512-/Et7DwLqpjS47JPEcz6VnxU9PwcIdVi0ciLXRWBQdj1XFye68pSQYpV0QtPTfUKWuOaEig+/Vez2l74eDc1tPQ==
+  version "1.0.30001561"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001561.tgz#752f21f56f96f1b1a52e97aae98c57c562d5d9da"
+  integrity sha512-NTt0DNoKe958Q0BE0j0c1V9jbUzhBxHIEJy7asmGrpE0yG63KTV7PLHPnK2E1O9RsQrQ081I3NLuXGS6zht3cw==
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -1931,9 +1931,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.535:
-  version "1.4.570"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.570.tgz#5fb79061ead248a411bc8532da34d1dbf6ae23c1"
-  integrity sha512-5GxH0PLSIfXKOUMMHMCT4M0olwj1WwAxsQHzVW5Vh3kbsvGw8b4k7LHQmTLC2aRhsgFzrF57XJomca4XLc/WHA==
+  version "1.4.578"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.578.tgz#7a3510f333bcd55e87882799ebeb7518d6ab4d95"
+  integrity sha512-V0ZhSu1BQZKfG0yNEL6Dadzik8E1vAzfpVOapdSiT9F6yapEJ3Bk+4tZ4SMPdWiUchCgnM/ByYtBzp5ntzDMIA==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2000,9 +2000,9 @@ fast-deep-equal@^3.1.1:
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
 fast-glob@^3.2.9:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.1.tgz#784b4e897340f3dbbef17413b3f11acf03c874c4"
-  integrity sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.2.tgz#a904501e57cfdd2ffcded45e99a54fef55e46129"
+  integrity sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
     "@nodelib/fs.walk" "^1.2.3"
