@@ -7,7 +7,7 @@ COPY config.json ./
 
 ENV ROUTER_VERSION=0.31.0
 
-RUN curl -L https://github.com/wundergraph/cosmo/releases/download/router%40${ROUTER_VERSION}/router-router@${ROUTER_VERSION}-linux-$(uname -m | sed s:aarch:arm:).tar.gz | gunzip -dc | tar x && mv router /usr/local/bin
+RUN curl -L https://github.com/wundergraph/cosmo/releases/download/router%40${ROUTER_VERSION}/router-router@${ROUTER_VERSION}-linux-$(uname -m | sed s:aarch:arm:| sed s:x86_:amd:).tar.gz | gunzip -dc | tar x && mv router /usr/local/bin
 
 ENV LOG_LEVEL=fatal
 ENV FEDERATED_GRAPH_NAME=federation
