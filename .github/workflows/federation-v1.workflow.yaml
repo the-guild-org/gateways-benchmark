@@ -29,6 +29,7 @@ jobs:
         directory:
           - conductor-hyper
           - conductor-actix-web
+          - conductor-actix-web-optimize
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -60,6 +61,7 @@ jobs:
         directory:
           - conductor-hyper
           - conductor-actix-web
+          - conductor-actix-web-optimize
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -92,6 +94,7 @@ jobs:
         directory:
           - conductor-hyper
           - conductor-actix-web
+          - conductor-actix-web-optimize
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -124,6 +127,7 @@ jobs:
         directory:
           - conductor-hyper
           - conductor-actix-web
+          - conductor-actix-web-optimize
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
