@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: ghcr.io/the-guild-org/conductor-t2/conductor:f9fca9f97699a38bfb830eec63125faa75ec01cb 
+    container_name: gateway
+    networks:
+      - test
+    ports:
+      - "0.0.0.0:4000:4000"
+    depends_on:
+      accounts: 
+        condition: service_healthy
+      inventory:
+        condition: service_healthy
+      products:
+        condition: service_healthy
+      reviews:
+        condition: service_healthy
+    volumes:
+      - type: bind
+        source: federation-v1/gateways/conductor/supergraph.graphql
+        target: /dist/schema/local.graphql
+      - type: bind
+        source: federation-v1/gateways/conductor/config.yaml
+        target: /dist/config/config.yaml
+    command: ["conductor", "/dist/config/config.yaml"]
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPU_LIMIT:-1}
+          memory: ${MEM_LIMIT:-1gb}
+networks:
+  test:
+    name: test 

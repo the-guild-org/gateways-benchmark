@@ -26,16 +26,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: 
-          - conductor
-          - apollo-server
-          - apollo-server-node16
-          - apollo-router
-          - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          - mesh-supergraph
+        directory:
+          - conductor-hyper
+          - conductor-actix-web
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -64,15 +57,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: 
-          - conductor
-          - apollo-server
-          - apollo-router
-          - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          - mesh-supergraph
+        directory:
+          - conductor-hyper
+          - conductor-actix-web
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -103,14 +90,8 @@ jobs:
       fail-fast: false
       matrix:
         directory:
-          - conductor
-          - apollo-server
-          - apollo-router
-          - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          - mesh-supergraph
+          - conductor-hyper
+          - conductor-actix-web
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -141,14 +122,8 @@ jobs:
       fail-fast: false
       matrix:
         directory:
-          - conductor
-          - apollo-server
-          - apollo-router
-          # - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          - mesh-supergraph
+          - conductor-hyper
+          - conductor-actix-web
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
