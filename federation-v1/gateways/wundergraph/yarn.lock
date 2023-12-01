@@ -766,10 +766,10 @@
     protobufjs "^7.2.4"
     ts-proto "^1.156.1"
 
-"@wundergraph/sdk@0.181.2":
-  version "0.181.2"
-  resolved "https://registry.yarnpkg.com/@wundergraph/sdk/-/sdk-0.181.2.tgz#fac122c4833a9b8aa0fffd6279164fc8b456d7ea"
-  integrity sha512-2qTKChKzBl4FOMi+hIIQxROBX6J/vA2GZCAqfYTwjud/VN4ZgS5wCSAnrwqFt2hGAu8D4mtrQmUaz8no8X/u9g==
+"@wundergraph/sdk@0.181.3":
+  version "0.181.3"
+  resolved "https://registry.yarnpkg.com/@wundergraph/sdk/-/sdk-0.181.3.tgz#61698396e5c68fab5f338b0c2dd4d8ccdc5d22b1"
+  integrity sha512-E7t4ulWWeoyI7/GTI5lSOwrbdRR1sQR7P6ZHoFrIBGPf6KvwrshYesISzVtLhPHhsCAuUwApCYlR/ncRhTDMhQ==
   dependencies:
     "@fastify/formbody" "^7.3.0"
     "@fastify/multipart" "^7.7.3"
