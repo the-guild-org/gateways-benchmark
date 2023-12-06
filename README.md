@@ -28,7 +28,7 @@ This goals of this repo:
 
 3. **Various scenarios**
 
-    ➡️ We are trying to create real-life scenarios based on [our experience and our customers](the-guild.dev). 
+    ➡️ We are trying to create real-life scenarios based on [our experience and our customers](https://the-guild.dev). 
 
     ➡️ Each scenario has differnt setup and measure different stats.
 
