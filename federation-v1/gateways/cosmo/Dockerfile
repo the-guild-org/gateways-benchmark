@@ -11,7 +11,7 @@ RUN curl -L https://github.com/wundergraph/cosmo/releases/download/router%40${RO
 
 ENV LOG_LEVEL=fatal
 ENV FEDERATED_GRAPH_NAME=federation
-ENV GRAPH_API_TOKEN=token
+ENV GRAPH_API_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZmVkZXJhdGVkX2dyYXBoX2lkIjoiSm9obiBEb2UiLCJvcmdhbml6YXRpb25faWQiOiJKb2huIERvZSJ9.l1h9MQUKZuVZ6KklemIfIh7AqCk8Pjed94c6VHk5VOU
 ENV LISTEN_ADDR=0.0.0.0:4000
 ENV TRACING_ENABLED=false
 ENV METRICS_ENABLED=false
