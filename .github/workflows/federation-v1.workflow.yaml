@@ -30,6 +30,7 @@ jobs:
           - apollo-server
           - apollo-server-node16
           - apollo-router
+          - cosmo
           - mercurius
           - wundergraph
           # - mesh
@@ -67,6 +68,7 @@ jobs:
         directory: 
           - apollo-server
           - apollo-router
+          - cosmo
           - mercurius
           - wundergraph
           # - mesh
@@ -105,6 +107,7 @@ jobs:
         directory: 
           - apollo-server
           - apollo-router
+          - cosmo
           - mercurius
           - wundergraph
           # - mesh
@@ -143,6 +146,7 @@ jobs:
         directory: 
           - apollo-server
           - apollo-router
+          - cosmo
           # - mercurius
           - wundergraph
           # - mesh
