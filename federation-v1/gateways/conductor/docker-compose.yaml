@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   gateway:
-    image: ghcr.io/the-guild-org/conductor-t2/conductor:7e3675bc09cca2a8f0fa413faf904949df37fae1 
+    image: ghcr.io/the-guild-org/conductor-t2/conductor:f65472a47e4454b21869341db9e4143b9e7d4e1a
     container_name: gateway
     networks:
       - test
