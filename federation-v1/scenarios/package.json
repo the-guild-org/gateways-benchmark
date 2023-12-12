@@ -1,16 +1,15 @@
 {
-    "name": "federation-v1-scenarios",
-    "scripts": {
-      "compose-supergraph": "tsx compose-supergraph.ts"
-    },
-    "dependencies": {
-      "tsx": "3.14.0",
-      "typescript": "^5.1.6",
-      "graphql": "^16.7.1",
-      "@apollo/composition": "2.5.5"
-    },
-    "devDependencies": {
-        "@types/node": "^20.4.1"
-    }
+  "name": "federation-v1-scenarios",
+  "scripts": {
+    "compose-supergraph": "tsx compose-supergraph.ts"
+  },
+  "dependencies": {
+    "tsx": "3.12.7",
+    "typescript": "^5.1.6",
+    "graphql": "^16.7.1",
+    "@apollo/composition": "2.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1"
   }
-  
+}
