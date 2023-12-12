@@ -7,7 +7,7 @@ logger:
 
 sources:
   - id: gateways-benchmark
-    type: federation-v1
+    type: federation
     config:
       supergraph:
         file: /dist/schema/local.graphql
