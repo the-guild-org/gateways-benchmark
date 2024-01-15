@@ -27,6 +27,8 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
+          - mesh-supergraph-bun
+          - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-server-node16
@@ -65,6 +67,8 @@ jobs:
       fail-fast: false
       matrix:
         directory: 
+          - mesh-supergraph-bun
+          - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-router
@@ -103,6 +107,8 @@ jobs:
       fail-fast: false
       matrix:
         directory:
+          - mesh-supergraph-bun
+          - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-router
@@ -141,6 +147,8 @@ jobs:
       fail-fast: false
       matrix:
         directory:
+          - mesh-supergraph-bun
+          - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-router
