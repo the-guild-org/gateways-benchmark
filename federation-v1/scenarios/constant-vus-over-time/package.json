@@ -1,21 +1,20 @@
 {
-    "name": "fed-v1-constant-vus-over-time",
-    "description": "This scenario runs 4 subgraphs and a GraphQL gateway with Federation v1 spec, and runs a heavy query. It's being executed with a constant amount of VUs over a fixed amount of time. It measure things like memory usage, CPU usage, average RPS. It also includes a summary of the entire execution, and metrics information about HTTP execution times.",
-    "scripts": {
-      "compose-supergraph": "tsx compose-supergraph.ts",
-      "generate-report": "tsx generate-report.ts"
-    },
-    "dependencies": {
-      "vega": "5.26.1",
-      "vega-lite": "5.16.3",
-      "tablemark": "3.0.0",
-      "tsx": "3.14.0",
-      "typescript": "^5.1.6",
-      "graphql": "^16.7.1",
-      "@apollo/composition": "2.5.6"
-    },
-    "devDependencies": {
-        "@types/node": "^20.4.1"
-    }
+  "name": "fed-v1-constant-vus-over-time",
+  "description": "This scenario runs 4 subgraphs and a GraphQL gateway with Federation v1 spec, and runs a heavy query. It's being executed with a constant amount of VUs over a fixed amount of time. It measure things like memory usage, CPU usage, average RPS. It also includes a summary of the entire execution, and metrics information about HTTP execution times.",
+  "scripts": {
+    "compose-supergraph": "tsx --import compose-supergraph.ts",
+    "generate-report": "tsx --import generate-report.ts"
+  },
+  "dependencies": {
+    "vega": "5.26.1",
+    "vega-lite": "5.16.3",
+    "tablemark": "3.0.0",
+    "tsx": "3.14.0",
+    "typescript": "^5.1.6",
+    "graphql": "^16.7.1",
+    "@apollo/composition": "2.5.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1"
   }
-  
+}
