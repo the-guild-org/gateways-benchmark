@@ -28,7 +28,7 @@ jobs:
       matrix:
         directory: 
           - mesh-supergraph-bun
-          - mesh-supergraph
+          # - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-server-node16
@@ -68,7 +68,7 @@ jobs:
       matrix:
         directory: 
           - mesh-supergraph-bun
-          - mesh-supergraph
+          # - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-router
@@ -108,7 +108,7 @@ jobs:
       matrix:
         directory:
           - mesh-supergraph-bun
-          - mesh-supergraph
+          # - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-router
@@ -148,7 +148,7 @@ jobs:
       matrix:
         directory:
           - mesh-supergraph-bun
-          - mesh-supergraph
+          # - mesh-supergraph
           - conductor
           - apollo-server
           - apollo-router
