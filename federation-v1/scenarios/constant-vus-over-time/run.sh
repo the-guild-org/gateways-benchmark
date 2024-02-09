@@ -27,7 +27,7 @@ on_error(){
  
 trap 'on_error' ERR
 
-docker compose $COMPOSE_FLAGS up -d --wait --force-recreate
+docker compose $COMPOSE_FLAGS up -d --wait --force-recreate --build
 
 if [[ -z "${CI}" ]]; then
     trap "docker compose $COMPOSE_FLAGS down && exit 0" INT
@@ -37,7 +37,7 @@ export K6_PROMETHEUS_RW_SERVER_URL=http://localhost:9090/api/v1/write
 export K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true
 export START_TIME="$(date +%s)"
 
-k6 --out=experimental-prometheus-rw --out json=$OUT_DIR/k6_metrics.json run -e SUMMARY_PATH="$OUT_DIR" benchmark.k6.js
+k6 --out=experimental-prometheus-rw --summary-trend-stats="avg,min,med,p(90),p(99),p(99.9),p(99.99),max" --out json=$OUT_DIR/k6_metrics.json run -e SUMMARY_PATH="$OUT_DIR" benchmark.k6.js
 
 sleep 2
 
