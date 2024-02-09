@@ -4,3 +4,6 @@ supergraph:
 traffic_shaping:
   all:
     deduplicate_query: true
+health_check:
+  listen: 0.0.0.0:8088
+  enabled: true
