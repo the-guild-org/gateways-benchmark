@@ -9,7 +9,7 @@
     "build": "npm run build:wundergraph"
   },
   "dependencies": {
-    "@wundergraph/sdk": "0.181.3",
+    "@wundergraph/sdk": "0.182.1",
     "graphql": "^16.7.1"
   },
   "devDependencies": {
