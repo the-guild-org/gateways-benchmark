@@ -4,3 +4,7 @@ supergraph:
 traffic_shaping:
   all:
     deduplicate_query: true
+health_check:
+  listen: 127.0.0.1:8088
+  enabled: true
+  path: /health
