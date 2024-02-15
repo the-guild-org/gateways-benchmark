@@ -742,7 +742,7 @@
     tsconfig-paths "^4.2.0"
     tslib "^2.4.0"
     typescript "^5.0.4"
-    uWebSockets.js "uNetworking/uWebSockets.js#semver:^20"
+    uWebSockets.js "github:uNetworking/uWebSockets.js#semver:^20"
     yargs "^17.7.1"
   optionalDependencies:
     node-libcurl "^4.0.0"
@@ -3472,6 +3472,7 @@ typescript@^5.0.4:
 
 "uWebSockets.js@github:uNetworking/uWebSockets.js#semver:^20":
   version "20.41.0"
+  uid "105d9ec47126cb82e4a6f3a08aa2ac78b4bb14f1"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/105d9ec47126cb82e4a6f3a08aa2ac78b4bb14f1"
 
 ua-parser-js@^1.0.35:
