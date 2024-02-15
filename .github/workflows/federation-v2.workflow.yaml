@@ -1,6 +1,6 @@
 name: federation-v2
 on:
-  pull_request: {}
+  # pull_request: {}
   workflow_dispatch: {}
 
 concurrency:
@@ -8,10 +8,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  subgraphs: 
+  subgraphs:
     uses: ./.github/workflows/docker-bake.template.yaml
     with:
-      dir: federation-v2/subgraphs 
+      dir: federation-v2/subgraphs
       hcl: docker.hcl
       target: subgraphs
 
@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: 
+        directory:
           - apollo-server
           - apollo-router
           - mesh-supergraph
@@ -40,9 +40,9 @@ jobs:
       scenarioDir: v2-constant-vus-over-time
       scenarioName: v2-constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: '1'
-      memoryLimit: '1gb'
-  
+      cpuLimit: "1"
+      memoryLimit: "1gb"
+
   v2-constant-vus-over-time-report:
     needs: v2-constant-vus-over-time
     uses: ./.github/workflows/report.template.yaml
