@@ -28,14 +28,14 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-      
+          node-version: 21
+
       - name: install dependencies
         run: yarn install
         working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}
 
       - name: generate report
-        run: yarn generate-report ${{ steps.download.outputs.download-path }} 
+        run: yarn generate-report ${{ steps.download.outputs.download-path }}
         working-directory: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}
         env:
           SCENARIO_ARTIFACTS_PREFIX: ${{ inputs.baseDir }}_${{ inputs.scenarioName }}_
@@ -65,12 +65,12 @@ jobs:
         if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
         with:
           add: ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioName }}/README.md
-          message: 'Update results for scenario: ${{ inputs.scenarioName }}'
-          pull: '--rebase --autostash'
+          message: "Update results for scenario: ${{ inputs.scenarioName }}"
+          pull: "--rebase --autostash"
 
       - uses: actions/upload-artifact@v3
         if: always()
-        with: 
+        with:
           name: ${{ inputs.baseDir }}-${{ inputs.scenarioName }}-report
           path: |
             ${{ inputs.baseDir }}/scenarios/${{ inputs.scenarioDir }}/result.md

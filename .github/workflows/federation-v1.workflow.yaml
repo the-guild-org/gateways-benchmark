@@ -8,7 +8,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  subgraphs: 
+  subgraphs:
     uses: ./.github/workflows/docker-bake.template.yaml
     with:
       dir: federation-v1/subgraphs
@@ -26,15 +26,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: 
+        directory:
           - apollo-server
-          - apollo-server-node16
           - apollo-router
           - cosmo
           - mercurius
           - wundergraph
-          # - mesh
-          # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
     uses: ./.github/workflows/benchmark.template.yaml
@@ -48,7 +45,7 @@ jobs:
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
       memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '4gb' }}
-  
+
   constant-vus-over-time-report:
     needs: constant-vus-over-time
     uses: ./.github/workflows/report.template.yaml
@@ -65,7 +62,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: 
+        directory:
           - apollo-server
           - apollo-router
           - cosmo
@@ -87,7 +84,7 @@ jobs:
       cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
       memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '4gb' }}
       subgraphDelayRange: "40~150"
-  
+
   constant-vus-subgraphs-delay-report:
     needs: constant-vus-subgraphs-delay
     uses: ./.github/workflows/report.template.yaml
@@ -104,7 +101,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        directory: 
+        directory:
           - apollo-server
           - apollo-router
           - cosmo
@@ -140,10 +137,10 @@ jobs:
     needs:
       - decide-runner
       - subgraphs
-    strategy: 
+    strategy:
       fail-fast: false
       matrix:
-        directory: 
+        directory:
           - apollo-server
           - apollo-router
           - cosmo
@@ -164,7 +161,7 @@ jobs:
       runner: ${{ needs.decide-runner.outputs.runner }}
       cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '4' }}
       memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '8gb' }}
-  
+
   ramping-vus-report:
     needs: ramping-vus
     uses: ./.github/workflows/report.template.yaml
