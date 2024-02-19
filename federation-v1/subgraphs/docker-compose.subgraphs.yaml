@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   accounts:
-    image: '${DOCKER_REGISTRY}subgraph-accounts${DOCKER_TAG}'
+    image: "${DOCKER_REGISTRY}subgraph-accounts${DOCKER_TAG}"
     container_name: accounts
     networks:
       - test
@@ -12,12 +12,19 @@ services:
       PORT: 4001
       SUBGRAPH_DELAY_MS: ${ACCOUNTS_SUBGRAPH_DELAY_MS}
     healthcheck:
-        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4001/graphql", "temp"]
-        interval: 3s
-        timeout: 5s
-        retries: 10
+      test:
+        [
+          "CMD",
+          "/usr/lib/apt/apt-helper",
+          "download-file",
+          "http://0.0.0.0:4001/graphql",
+          "/tmp/health",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
   inventory:
-    image: '${DOCKER_REGISTRY}subgraph-inventory${DOCKER_TAG}'
+    image: "${DOCKER_REGISTRY}subgraph-inventory${DOCKER_TAG}"
     container_name: inventory
     networks:
       - test
@@ -27,12 +34,19 @@ services:
       PORT: 4002
       SUBGRAPH_DELAY_MS: ${INVENTORY_SUBGRAPH_DELAY_MS}
     healthcheck:
-        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4002/graphql", "temp"]
-        interval: 3s
-        timeout: 5s
-        retries: 10
+      test:
+        [
+          "CMD",
+          "/usr/lib/apt/apt-helper",
+          "download-file",
+          "http://0.0.0.0:4002/graphql",
+          "/tmp/health",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
   products:
-    image: '${DOCKER_REGISTRY}subgraph-products${DOCKER_TAG}'
+    image: "${DOCKER_REGISTRY}subgraph-products${DOCKER_TAG}"
     container_name: products
     networks:
       - test
@@ -42,12 +56,19 @@ services:
       PORT: 4003
       SUBGRAPH_DELAY_MS: ${PRODUCTS_SUBGRAPH_DELAY_MS}
     healthcheck:
-      test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4003/graphql", "temp"]
+      test:
+        [
+          "CMD",
+          "/usr/lib/apt/apt-helper",
+          "download-file",
+          "http://0.0.0.0:4003/graphql",
+          "/tmp/health",
+        ]
       interval: 3s
       timeout: 5s
       retries: 10
   reviews:
-    image: '${DOCKER_REGISTRY}subgraph-reviews${DOCKER_TAG}'
+    image: "${DOCKER_REGISTRY}subgraph-reviews${DOCKER_TAG}"
     container_name: reviews
     networks:
       - test
@@ -57,11 +78,18 @@ services:
       PORT: 4004
       SUBGRAPH_DELAY_MS: ${REVIEWS_SUBGRAPH_DELAY_MS}
     healthcheck:
-        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://0.0.0.0:4004/graphql", "temp"]
-        interval: 3s
-        timeout: 5s
-        retries: 10
-        
+      test:
+        [
+          "CMD",
+          "/usr/lib/apt/apt-helper",
+          "download-file",
+          "http://0.0.0.0:4004/graphql",
+          "/tmp/health",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
 networks:
   test:
     name: test

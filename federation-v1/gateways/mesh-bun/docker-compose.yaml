@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   gateway:
@@ -14,7 +14,7 @@ services:
       context: ${BASE_DIR:-.}/../../gateways/mesh-bun
       dockerfile: ./Dockerfile
     depends_on:
-      accounts: 
+      accounts:
         condition: service_healthy
       inventory:
         condition: service_healthy
@@ -23,10 +23,17 @@ services:
       reviews:
         condition: service_healthy
     healthcheck:
-        test: ["CMD", "/usr/lib/apt/apt-helper", "download-file", "http://localhost:4000/graphql", "temp"]
-        interval: 3s
-        timeout: 5s
-        retries: 10
+      test:
+        [
+          "CMD",
+          "/usr/lib/apt/apt-helper",
+          "download-file",
+          "http://localhost:4000/graphql",
+          "/tmp/health",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
     deploy:
       resources:
         limits:
