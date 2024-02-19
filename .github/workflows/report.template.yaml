@@ -21,7 +21,7 @@ jobs:
 
       - name: download artifacts
         id: download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
@@ -68,7 +68,7 @@ jobs:
           message: "Update results for scenario: ${{ inputs.scenarioName }}"
           pull: "--rebase --autostash"
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ inputs.baseDir }}-${{ inputs.scenarioName }}-report
