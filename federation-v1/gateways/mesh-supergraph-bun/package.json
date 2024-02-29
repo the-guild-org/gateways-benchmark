@@ -8,7 +8,7 @@
     "@graphql-mesh/utils": "^0.96.0",
     "@graphql-mesh/cross-helpers": "^0.4.0",
     "@graphql-mesh/cache-localforage": "^0.97.0",
-    "@graphql-mesh/merger-bare": "^0.96.0",
+    "@graphql-mesh/merger-bare": "^0.97.0",
     "@graphql-mesh/http": "^0.98.0",
     "@graphql-mesh/store": "^0.96.0",
     "@graphql-mesh/types": "^0.96.0",
