@@ -779,10 +779,10 @@
   dependencies:
     path-browserify "1.0.1"
 
-"@graphql-mesh/graphql@^0.96.0":
-  version "0.96.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.96.6.tgz#8a4abca3282d7ce253ae66251eb0505868eadcf6"
-  integrity sha512-9CwRmqwiPQkrSr0LUQX4VA3YzRsXv7h7F9KMPQuapHRMSzRWlmXXUGXzhoFZxWW5lXeLWfC+sryDSuQntZjVcQ==
+"@graphql-mesh/graphql@^0.97.0":
+  version "0.97.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.97.0.tgz#b6e11c27ec41490aad1495225fc905ff4ff71b02"
+  integrity sha512-q18NSmejLS6e0xBfDt8fFByWeE2oIyCDW+xEb+YBdSxBaxhyUYwEl7KTNpyf1FC5FcL5UmVY1dASj0FOSOncCQ==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.3"
     "@graphql-tools/delegate" "^10.0.0"
