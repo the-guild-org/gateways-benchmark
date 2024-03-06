@@ -5,7 +5,7 @@
     "generate-report": "tsx generate-report.ts"
   },
   "dependencies": {
-    "vega": "5.27.0",
+    "vega": "5.28.0",
     "vega-lite": "5.16.3",
     "tablemark": "3.0.0",
     "tsx": "4.7.1",
