@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "tsx": "4.7.1",
-    "typescript": "5.3.3",
+    "typescript": "5.4.2",
     "graphql": "16.8.1",
     "fastify": "4.26.2",
     "@mercuriusjs/gateway": "2.2.0"
