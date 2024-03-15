@@ -121,20 +121,10 @@ impl Query {
 }
 
 async fn delay_middleware<B>(req: Request<B>, next: Next<B>) -> Result<Response, StatusCode> {
-    let delay_range = var("SUBGRAPH_DELAY_MS").ok().and_then(|range| {
-        let mut parts = range.split("~");
-        let min: Option<i32> = parts.next().and_then(|s| s.parse().ok());
-        let max: Option<i32> = parts.next().and_then(|s| s.parse().ok());
+    let delay_ms: Option<u64> = std::env::var("SUBGRAPH_DELAY_MS").ok().and_then(|s| s.parse().ok()).filter(|d| *d != 0);;
 
-        match (min, max) {
-            (Some(m1), Some(m2)) => Some((m1, m2)),
-            _ => None,
-        }
-    });
-
-    if let Some(range) = delay_range {
-        let delay = rand::thread_rng().gen_range(range.0..range.1);
-        tokio::time::sleep(tokio::time::Duration::from_millis(delay as u64)).await;
+    if let Some(delay_ms) = delay_ms {
+        tokio::time::sleep(tokio::time::Duration::from_millis(delay_ms)).await;
     }
 
     Ok(next.run(req).await)
