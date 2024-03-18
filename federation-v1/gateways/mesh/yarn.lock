@@ -780,9 +780,9 @@
     path-browserify "1.0.1"
 
 "@graphql-mesh/graphql@^0.97.0":
-  version "0.97.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.97.3.tgz#3fd5d9a704eac9ffac19ef3bb81a328b0a1e20ed"
-  integrity sha512-atmmfIfopWvQayM5ISVshzsleiybscJ1SVg9JYz1iCH+qtHXmEROKojsZyytf3oIiifo6YrrpaWoiHtIFohe+A==
+  version "0.97.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.97.4.tgz#3a5c0c3689b8caccab99a04b4a73090daaff28f6"
+  integrity sha512-ahtWE1cwkPoxm/UP1p234NsUFKVT/DTZRbxsFDa9kajKszvtWCZ7zfwLD0csec0ZHswn13zAId1fG8xPfEg8Ew==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.3"
     "@graphql-tools/delegate" "^10.0.0"
@@ -1318,9 +1318,9 @@
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
 "@types/node@*":
-  version "20.11.27"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.27.tgz#debe5cfc8a507dd60fe2a3b4875b1604f215c2ac"
-  integrity sha512-qyUZfMnCg1KEz57r7pzFtSGt49f6RPkPBis3Vo4PbS7roQEDn22hiHzl/Lo1q4i4hDEgBJmBF/NTNg2XR0HbFg==
+  version "20.11.28"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.28.tgz#4fd5b2daff2e580c12316e457473d68f15ee6f66"
+  integrity sha512-M/GPWVS2wLkSkNHVeLkrF2fD5Lx5UC4PxA0uZcKc6QqbIQUJyW1jVjueJYi1z8n0I5PxYrtpnPnWglE+y9A0KA==
   dependencies:
     undici-types "~5.26.4"
 
