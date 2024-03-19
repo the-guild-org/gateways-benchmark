@@ -8,6 +8,6 @@
     "typescript": "5.4.2",
     "graphql": "16.8.1",
     "fastify": "4.26.2",
-    "@mercuriusjs/gateway": "2.2.0"
+    "@mercuriusjs/gateway": "3.0.0"
   }
 }
