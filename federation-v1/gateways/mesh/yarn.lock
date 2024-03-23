@@ -11,9 +11,9 @@
     "@jridgewell/trace-mapping" "^0.3.24"
 
 "@apollo/client@~3.2.5 || ~3.3.0 || ~3.4.0 || ~3.5.0 || ~3.6.0 || ~3.7.0 || ~3.8.0 || ~3.9.0":
-  version "3.9.7"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.9.7.tgz#e2b6f2d0240a6420753fb658a021dfd0637f2a56"
-  integrity sha512-OEEwt55bkFhqihCT5d75KUxZt50JZ9MuIYwG7VZlyPPIAb9K+qzVWlXWlf3tB5DaV43yXkUSLQfNpdIBFOB55Q==
+  version "3.9.9"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.9.9.tgz#38f983a1ad24e2687abfced0a9c1c3bef8d32616"
+  integrity sha512-/sMecU/M0WK9knrguts1lSLV8xFKzIgOMVb4mi6MOxgJXjliDB8PvOtmXhTqh2cVMMR4TzXgOnb+af/690zlQw==
   dependencies:
     "@graphql-typed-document-node/core" "^3.1.1"
     "@wry/caches" "^1.0.0"
@@ -788,9 +788,9 @@
     path-browserify "1.0.1"
 
 "@graphql-mesh/graphql@^0.97.0":
-  version "0.97.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.97.4.tgz#3a5c0c3689b8caccab99a04b4a73090daaff28f6"
-  integrity sha512-ahtWE1cwkPoxm/UP1p234NsUFKVT/DTZRbxsFDa9kajKszvtWCZ7zfwLD0csec0ZHswn13zAId1fG8xPfEg8Ew==
+  version "0.97.5"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.97.5.tgz#c70cb8de196ff5c6f8d46f21a1e1d4cbca4bfaf8"
+  integrity sha512-R/WOwWajhuoTEnfy4f7T7lBi7b13azifJKmiueIhOv1ZLeCrURGMpZFSZCVLse9xknHG19HQolEWyZyUDXkOlg==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.3"
     "@graphql-tools/delegate" "^10.0.0"
@@ -970,9 +970,9 @@
     value-or-promise "^1.0.12"
 
 "@graphql-tools/federation@^1.1.12":
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-1.1.23.tgz#fbfa36d614be739db78c50c0cb5240354b84d9a5"
-  integrity sha512-GyYxOXad4RosHgxGOWBjj43zkK8gwkq6OlUa6sTC7jUlIymSWyUQKfEjrRQgZxbn+f6kVeReyLKDosomIgclbQ==
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-1.1.25.tgz#9d02a1bfe3f688728340d0d2dc3b4128014dbae3"
+  integrity sha512-ztbO5T3hAkVrQp/J1w59QmaiD90TKiMaROJf9jYawn2e19LH0mALJMX99eQmIhyFkDD33rA7OawEV7OyovKTYg==
   dependencies:
     "@graphql-tools/delegate" "^10.0.4"
     "@graphql-tools/executor-http" "^1.0.9"
@@ -1326,9 +1326,9 @@
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
 "@types/node@*":
-  version "20.11.28"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.28.tgz#4fd5b2daff2e580c12316e457473d68f15ee6f66"
-  integrity sha512-M/GPWVS2wLkSkNHVeLkrF2fD5Lx5UC4PxA0uZcKc6QqbIQUJyW1jVjueJYi1z8n0I5PxYrtpnPnWglE+y9A0KA==
+  version "20.11.30"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.30.tgz#9c33467fc23167a347e73834f788f4b9f399d66f"
+  integrity sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==
   dependencies:
     undici-types "~5.26.4"
 
