@@ -1,20 +1,18 @@
-version: "3.8"
+version: '3.8'
 
 services:
   gateway:
-    image: gateway/mesh-bun
+    image: gateway/grafbase
     container_name: gateway
+    build:
+      context: ${BASE_DIR:-.}/../../gateways/grafbase
+      dockerfile: ./Dockerfile
     networks:
       - test
     ports:
-      - 4000:4000
-    environment:
-      PORT: 4000
-    build:
-      context: ${BASE_DIR:-.}/../../gateways/mesh-bun
-      dockerfile: ./Dockerfile
+      - "0.0.0.0:4000:4000"
     depends_on:
-      accounts:
+      accounts: 
         condition: service_healthy
       inventory:
         condition: service_healthy
@@ -23,17 +21,10 @@ services:
       reviews:
         condition: service_healthy
     healthcheck:
-      test:
-        [
-          "CMD",
-          "/usr/lib/apt/apt-helper",
-          "download-file",
-          "http://localhost:4000/graphql",
-          "/tmp/health",
-        ]
-      interval: 3s
-      timeout: 5s
-      retries: 10
+        test: ["CMD", "curl", "-f", "http://127.0.0.1:4000/graphql"]
+        interval: 3s
+        timeout: 5s
+        retries: 10
     deploy:
       resources:
         limits:

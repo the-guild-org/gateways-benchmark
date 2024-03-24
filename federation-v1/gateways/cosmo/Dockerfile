@@ -5,7 +5,7 @@ RUN apk --no-cache add curl
 WORKDIR /home/gw
 COPY config.json ./
 
-ENV ROUTER_VERSION=0.43.3
+ENV ROUTER_VERSION=0.57.0
 
 RUN curl -L https://github.com/wundergraph/cosmo/releases/download/router%40${ROUTER_VERSION}/router-router@${ROUTER_VERSION}-linux-$(uname -m | sed s:aarch:arm:| sed s:x86_:amd:).tar.gz | gunzip -dc | tar x && mv router /usr/local/bin
 
