@@ -515,9 +515,9 @@ fast-querystring@^1.0.0:
     fast-decode-uri-component "^1.0.1"
 
 fast-redact@^3.1.1:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/fast-redact/-/fast-redact-3.4.0.tgz#24e45adcbfa045375f93012bc10c34976d59352e"
-  integrity sha512-2gwPvyna0zwBdxKnng1suu/dTL5s8XEy2ZqH8mwDUwJdDkV8w5kp+JV26mupdK68HmPMbm6yjW9m7/Ys/BHEHg==
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/fast-redact/-/fast-redact-3.5.0.tgz#e9ea02f7e57d0cd8438180083e93077e496285e4"
+  integrity sha512-dwsoQlS7h9hMeYUq1W++23NDcBLV4KqONnITDV9DjfS3q1SgDGVrBdvvTLUotWtPSD7asWDV9/CmsZPy8Hf70A==
 
 fast-uri@^2.0.0, fast-uri@^2.1.0:
   version "2.3.0"
