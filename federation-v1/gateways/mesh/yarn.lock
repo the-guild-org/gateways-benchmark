@@ -959,9 +959,9 @@
     ws "^8.15.0"
 
 "@graphql-tools/executor@^1.2.0", "@graphql-tools/executor@^1.2.1", "@graphql-tools/executor@^1.2.2":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/executor/-/executor-1.2.3.tgz#55426aa13ccb3ec213129ff793b356d881d6e0ff"
-  integrity sha512-aAS+TGjSq8BJuDq1RV/A/8E53Iu3KvaWpD8DPio0Qe/0YF26tdpK6EcmNSGrrjiZOwVIZ80wclZrFstHzCPm8A==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/executor/-/executor-1.2.4.tgz#678aab0da9571589f533998c0eec52120f374e76"
+  integrity sha512-aCO/5LEAwyTWObAAfpLlwAjaOjTxRX6YNXcGW62mglQhPBy+j0fTc4desci/4nJ49l8FWETaTG0MZ1G/PqQslg==
   dependencies:
     "@graphql-tools/utils" "^10.1.1"
     "@graphql-typed-document-node/core" "3.2.0"
@@ -1306,9 +1306,9 @@
   integrity sha512-l3YHBLAol6d/IKnB9LhpD0cEZWAoe3eFKUyTYWmFmCO2Q/WOckxLQAUyMZWwZV2M/m3+4vgRoaolFqaII82/TA==
 
 "@tsconfig/node10@^1.0.7":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"
-  integrity sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.10.tgz#b7ebd3adfa7750628d100594f6726b054d2c33b2"
+  integrity sha512-PiaIWIoPvO6qm6t114ropMCagj6YAF24j9OkCA2mJDXFnlionEwhsBCJ8yek4aib575BI3OkART/90WsgHgLWw==
 
 "@tsconfig/node12@^1.0.7":
   version "1.0.11"
