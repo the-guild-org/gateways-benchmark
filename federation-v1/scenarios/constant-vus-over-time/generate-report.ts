@@ -215,7 +215,7 @@ async function generateReport(artifactsRootPath: string) {
           notes.push(`${graphqlErrors.fails} unexpected GraphQL errors`);
         }
 
-        if (responseStructure.fails > 0) {
+        if ((responseStructure?.fails || 0) > 0) {
           notes.push(
             `non-compatible response structure (${responseStructure.fails})`
           );
