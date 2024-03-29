@@ -1,4 +1,4 @@
-FROM alpine:20240315
+FROM alpine:20240329
 
 RUN apk --no-cache add curl
 
