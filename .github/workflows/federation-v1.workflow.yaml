@@ -34,6 +34,7 @@ jobs:
           - wundergraph
           - mesh-supergraph
           - mesh-supergraph-bun
+          - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -72,6 +73,7 @@ jobs:
           # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
+          - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -111,6 +113,7 @@ jobs:
           # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
+          - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -150,6 +153,7 @@ jobs:
           # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
+          - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
