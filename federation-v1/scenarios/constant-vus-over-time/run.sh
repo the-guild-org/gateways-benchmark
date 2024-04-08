@@ -27,7 +27,7 @@ on_error(){
  
 trap 'on_error' ERR
 
-docker compose $COMPOSE_FLAGS up -d --wait --force-recreate
+docker compose $COMPOSE_FLAGS up -d --wait --force-recreate --build
 
 if [[ -z "${CI}" ]]; then
     trap "docker compose $COMPOSE_FLAGS down && exit 0" INT
