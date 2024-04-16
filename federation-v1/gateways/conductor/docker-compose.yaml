@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   gateway:
-    image: ghcr.io/the-guild-org/conductor/conductor:v0.0.6-alpha.0
+    image: ghcr.io/the-guild-org/conductor/conductor:f354281fa81d1d3a07f89e6729a4575dd2d7ea09 
     container_name: gateway
     networks:
       - test
