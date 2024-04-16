@@ -27,6 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         directory:
+          - conductor
           - apollo-server
           - apollo-router
           - cosmo
@@ -64,13 +65,12 @@ jobs:
       fail-fast: false
       matrix:
         directory:
+          - conductor
           - apollo-server
           - apollo-router
           - cosmo
           - mercurius
           - wundergraph
-          # - mesh
-          # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
           - grafbase
@@ -104,13 +104,12 @@ jobs:
       fail-fast: false
       matrix:
         directory:
+          - conductor
           - apollo-server
           - apollo-router
           - cosmo
           - mercurius
           - wundergraph
-          # - mesh
-          # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
           - grafbase
@@ -144,13 +143,12 @@ jobs:
       fail-fast: false
       matrix:
         directory:
+          - conductor
           - apollo-server
           - apollo-router
           - cosmo
           # - mercurius
           - wundergraph
-          # - mesh
-          # - mesh-bun
           - mesh-supergraph
           - mesh-supergraph-bun
           - grafbase
