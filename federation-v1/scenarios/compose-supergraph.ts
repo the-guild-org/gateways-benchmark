@@ -65,6 +65,7 @@ async function main() {
     } else {
         console.log("Got SDL:\n", supergraphSdl);
         writeFileSync(__dirname + '/../gateways/apollo-router/supergraph.graphql', supergraphSdl!);
+        writeFileSync(__dirname + '/../gateways/hive-gateway/supergraph.graphql', supergraphSdl!);
         writeFileSync(__dirname + '/../gateways/grafbase/supergraph.graphql', supergraphSdl!);
         writeFileSync(__dirname + '/../gateways/apollo-server/supergraph.graphql', supergraphSdl!);
         writeFileSync(__dirname + '/../gateways/apollo-server-node16/supergraph.graphql', supergraphSdl!);
