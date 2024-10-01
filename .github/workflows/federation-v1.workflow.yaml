@@ -29,6 +29,7 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           - mercurius
           - wundergraph
@@ -66,6 +67,7 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           - mercurius
           - wundergraph
@@ -106,6 +108,7 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           - mercurius
           - wundergraph
@@ -146,6 +149,7 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           # - mercurius
           - wundergraph
