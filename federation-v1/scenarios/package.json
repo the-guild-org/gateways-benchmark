@@ -4,7 +4,7 @@
     "compose-supergraph": "tsx compose-supergraph.ts"
   },
   "dependencies": {
-    "tsx": "4.7.1",
+    "tsx": "4.19.1",
     "typescript": "5.4.3",
     "graphql": "16.8.1",
     "@apollo/composition": "2.9.2"
