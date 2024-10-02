@@ -8,7 +8,7 @@ variable "COMMIT_SHA" {
 
 function "image_tag" {
   params = [name, tag]
-  result = notequal("", tag) ? "${DOCKER_REGISTRY}${name}:${tag}" : ""
+  result = notequal("", tag) ? "${DOCKER_REGISTRY}${name}:${tag}" : name
 }
 
 target "accounts" {
