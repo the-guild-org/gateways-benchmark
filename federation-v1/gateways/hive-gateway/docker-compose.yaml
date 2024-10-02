@@ -27,7 +27,7 @@ services:
           "CMD",
           "/usr/lib/apt/apt-helper",
           "download-file",
-          "http://127.0.0.1:4000/healthcheck",
+          "http://127.0.0.1:4000/readiness",
           "/tmp/health",
         ]
       interval: 3s
