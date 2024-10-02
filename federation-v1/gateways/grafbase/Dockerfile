@@ -1,9 +1,7 @@
-FROM ghcr.io/grafbase/grafbase:0.59.0
+FROM ghcr.io/grafbase/gateway:0.14.0
 
-COPY package.json package-lock.json grafbase.config.ts supergraph.graphql ./
-
-RUN npm ci
+COPY supergraph.graphql ./
 
 EXPOSE 4000
 
-CMD ["start", "--federated-graph-schema", "supergraph.graphql", "--port", "4000"]
+CMD ["--schema", "supergraph.graphql", "--listen-address", "127.0.0.1:4000"]
