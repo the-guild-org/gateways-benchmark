@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM node:21-alpine
 
 RUN apk --no-cache add curl
 RUN apk add --no-cache libc6-compat
