@@ -485,10 +485,10 @@ strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   dependencies:
     ansi-regex "^5.0.1"
 
-tablemark@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/tablemark/-/tablemark-3.0.0.tgz#65708e4d8fb08a826b0e7e60fcab9b77f3a964d8"
-  integrity sha512-7N05gRK7t6B4g8AtedUsKoKtPjplmUjOPr/V4kVB+7U3yGiB3WvKqMTTQzVCZyhfZUXgQFp9YyN9ZgC52uCPKw==
+tablemark@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/tablemark/-/tablemark-3.1.0.tgz#b1a06208bb5fe94608e4e653e45787a172266a1b"
+  integrity sha512-IwO6f0SEzp1Z+zqz/7ANUmeEac4gaNlknWyj/S9aSg11wZmWYnLeyI/xXvEOU88BYUIf8y30y0wxB58xIKrVlQ==
   dependencies:
     sentence-case "^3.0.4"
     split-text-to-chunks "^1.0.0"
