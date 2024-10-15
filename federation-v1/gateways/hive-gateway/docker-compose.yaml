@@ -1,6 +1,6 @@
 services:
   gateway:
-    image: ghcr.io/ardatan/hive-gateway:1.0.8-alpha-20241002155615-b1c23de00a8fcb02b9ed445d85d4fdfdaf0e6118
+    image: ghcr.io/ardatan/hive-gateway:1.1.0-alpha-20241015104251-f08b142470890f701b0439e3109eb4b71041aa65
     container_name: gateway
     networks:
       - test
@@ -8,6 +8,7 @@ services:
       - "0.0.0.0:4000:4000"
     environment:
       - NODE_ENV=production
+      - JIT=1
     depends_on:
       accounts:
         condition: service_healthy
