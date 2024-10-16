@@ -99,7 +99,7 @@ export function handleBenchmarkSummary(data, additionalContext = {}) {
   return out;
 }
 
-export function makeGraphQLRequest() {
+export function sendGraphQLRequest() {
   const res = http.post(
     __ENV.GATEWAY_ENDPOINT || "http://localhost:4000/graphql",
     graphqlRequest.payload,
@@ -110,6 +110,11 @@ export function makeGraphQLRequest() {
     console.log(`‼️ Failed to run HTTP request:`, res);
   }
 
+  return res;
+}
+
+export function makeGraphQLRequest() {
+  const res = sendGraphQLRequest();
   check(res, {
     "response code was 200": (res) => res.status == 200,
     "no graphql errors": (resp) => {
