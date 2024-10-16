@@ -8,6 +8,10 @@ export const options = {
   duration: time,
 };
 
+export function setup() {
+  makeGraphQLRequest();
+}
+
 export default function() {
   makeGraphQLRequest()
 }
