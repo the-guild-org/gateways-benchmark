@@ -21,7 +21,9 @@ export const options = {
 };
 
 export function setup() {
-  sendGraphQLRequest()
+  for (let i = 0; i < vus; i++) {
+    sendGraphQLRequest();
+  }
 }
 
 export default function() {
