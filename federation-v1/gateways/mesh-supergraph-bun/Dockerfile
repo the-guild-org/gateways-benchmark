@@ -1,9 +1,8 @@
-FROM oven/bun:latest
+FROM oven/bun:1.1.30
 
 COPY package.json ./
 COPY .meshrc.yaml ./
 COPY .mesh ./.mesh
-COPY supergraph.graphql ./
 COPY index.ts ./
 
 ENV PORT 4000
