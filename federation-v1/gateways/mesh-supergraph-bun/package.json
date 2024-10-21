@@ -13,6 +13,7 @@
     "@graphql-mesh/store": "^0.102.0",
     "@graphql-mesh/types": "^0.102.0",
     "@graphql-hive/gateway": "1.3.0-alpha-20241021113825-68afe0a0364f9599b9937b5094a6f564ac40b14d",
+    "@graphql-mesh/plugin-jit": "0.0.1-alpha-20241021113825-68afe0a0364f9599b9937b5094a6f564ac40b14d",
     "bun-types": "^1.0.0"
   }
 }
