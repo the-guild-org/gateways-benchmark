@@ -13,7 +13,7 @@ export const options = {
 };
 
 export function setup() {
-  for (let i = 0; i < vus; i++) {
+  for (let i = 0; i < 20; i++) {
     sendGraphQLRequest();
   }
 }

@@ -5,4 +5,4 @@ sources:
         source: ./supergraph.graphql
 
 serve:
-  fork: 2
+  fork: false
