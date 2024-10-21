@@ -9,7 +9,6 @@ services:
     environment:
       - NODE_ENV=production
       - JIT=1
-      - FORK=${CPU_LIMIT:true}
     depends_on:
       accounts:
         condition: service_healthy
