@@ -40,7 +40,7 @@ jobs:
     with:
       gateway: ${{ matrix.directory }}
       vu: 300
-      time: ${{ github.event_name == 'pull_request' && '30s' || '240s' }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '90s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-over-time
@@ -80,7 +80,7 @@ jobs:
     with:
       gateway: ${{ matrix.directory }}
       vu: 300
-      time: ${{ github.event_name == 'pull_request' && '30s' || '240s' }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '90s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay
@@ -121,7 +121,7 @@ jobs:
     with:
       gateway: ${{ matrix.directory }}
       vu: 500
-      time: ${{ github.event_name == 'pull_request' && '30s' || '240s' }}
+      time: ${{ github.event_name == 'pull_request' && '30s' || '90s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay-resources
@@ -162,7 +162,7 @@ jobs:
     with:
       gateway: ${{ matrix.directory }}
       vu: 2000
-      time: ${{ github.event_name == 'pull_request' && '60s' || '240s' }}
+      time: ${{ github.event_name == 'pull_request' && '60s' || '90s' }}
       baseDir: federation-v1
       scenarioDir: ramping-vus
       scenarioName: ramping-vus
