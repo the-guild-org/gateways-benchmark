@@ -33,8 +33,8 @@ jobs:
           - cosmo
           - mercurius
           - wundergraph
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -73,8 +73,8 @@ jobs:
           - wundergraph
           # - mesh
           # - mesh-bun
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -114,8 +114,8 @@ jobs:
           - wundergraph
           # - mesh
           # - mesh-bun
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -155,8 +155,8 @@ jobs:
           - wundergraph
           # - mesh
           # - mesh-bun
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
