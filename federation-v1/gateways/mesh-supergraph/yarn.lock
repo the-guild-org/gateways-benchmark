@@ -817,15 +817,15 @@
     json-pointer "0.6.2"
     lodash.get "4.4.2"
 
-"@graphql-mesh/supergraph@0.8.6":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/supergraph/-/supergraph-0.8.6.tgz#9bdc30f2073fe0da9a89789f7b6508e9a58d240e"
-  integrity sha512-Nst7J48X+XysJjmyggg7LH5m683ozuKDAe5hfW1PeGidNOZU1zuP/2UYoetl+iu76QKF3LY/DDjC0Wt1GWsKlg==
+"@graphql-mesh/supergraph@0.8.9":
+  version "0.8.9"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/supergraph/-/supergraph-0.8.9.tgz#1bf8e7823dd091dadce127965d2d913394a13f30"
+  integrity sha512-ZxHV3pt2XcIiEcvTjGqiko5Uku6G+I5PlpOqGRyd6VFVJNtsHm/63AF2uy8iM6gs6UKI083sPj4dPmqUzMqTEw==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.6"
-    "@graphql-tools/federation" "^2.2.10"
-    "@graphql-tools/url-loader" "^8.0.2"
-    "@graphql-tools/utils" "^10.2.2"
+    "@graphql-tools/federation" "^2.2.16"
+    "@graphql-tools/url-loader" "^8.0.7"
+    "@graphql-tools/utils" "^10.5.5"
     lodash.get "^4.4.2"
 
 "@graphql-mesh/types@^0.102.8":
@@ -944,7 +944,7 @@
     tslib "^2.4.0"
     value-or-promise "^1.0.12"
 
-"@graphql-tools/federation@^2.2.10":
+"@graphql-tools/federation@^2.2.16":
   version "2.2.16"
   resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-2.2.16.tgz#baf5e73d780ffa3cd615d2c09cc6e7a2428a5ce0"
   integrity sha512-BvUw4tiGb8ESK75HDVbAeeZkqpFVE1IK4rXjq22yhPXrlYp9vXjecM1T9ky6Esu9xMwJ1FnYCj95gpeJHcXx5w==
@@ -1070,7 +1070,7 @@
     tslib "^2.4.0"
     value-or-promise "^1.0.11"
 
-"@graphql-tools/url-loader@^8.0.2":
+"@graphql-tools/url-loader@^8.0.7":
   version "8.0.7"
   resolved "https://registry.yarnpkg.com/@graphql-tools/url-loader/-/url-loader-8.0.7.tgz#6daa2da79bfeecba11a124f033187a7fc498ee69"
   integrity sha512-f1mq1wb1ivn8qFDVm8GWO5Co6Y/NZVXHgEG+3rjntr7aXjnw+DXyDQ+7QJRWJRDJcP0YWLJgfrBcWo1CqI4Qow==
@@ -1089,7 +1089,7 @@
     value-or-promise "^1.0.11"
     ws "^8.17.1"
 
-"@graphql-tools/utils@^10.0.0", "@graphql-tools/utils@^10.2.2", "@graphql-tools/utils@^10.3.2", "@graphql-tools/utils@^10.5.5":
+"@graphql-tools/utils@^10.0.0", "@graphql-tools/utils@^10.3.2", "@graphql-tools/utils@^10.5.5":
   version "10.5.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.5.5.tgz#1c299ec0bd99528961b296ca4313810768c23f27"
   integrity sha512-LF/UDWmMT0mnobL2UZETwYghV7HYBzNaGj0SAkCYOMy/C3+6sQdbcTksnoFaKR9XIVD78jNXEGfivbB8Zd+cwA==
