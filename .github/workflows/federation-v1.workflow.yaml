@@ -31,8 +31,8 @@ jobs:
           - apollo-router
           - hive-gateway
           - cosmo
-          - grafbase
           - mercurius
+          # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -66,8 +66,8 @@ jobs:
           - apollo-router
           - hive-gateway
           - cosmo
-          - grafbase
           - mercurius
+          # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -102,8 +102,8 @@ jobs:
           - apollo-router
           - hive-gateway
           - cosmo
-          - grafbase
           - mercurius
+          # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
@@ -138,8 +138,8 @@ jobs:
           - apollo-router
           - hive-gateway
           - cosmo
-          - grafbase
           - mercurius
+          # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
