@@ -21,7 +21,7 @@ services:
       reviews:
         condition: service_healthy
     healthcheck:
-        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://localhost:4000/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
+        test: ["CMD", "curl", "-f", "-X", "POST", "-H" ,"Content-type: application/json", "http://127.0.0.1:4000/graphql", "--data-raw", "{\"query\": \"query { __typename }\"}"]
         interval: 3s
         timeout: 5s
         retries: 10
