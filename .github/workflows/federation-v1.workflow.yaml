@@ -29,23 +29,24 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           - mercurius
           - wundergraph
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 100 || 300 }}
+      vu: 300
       time: ${{ github.event_name == 'pull_request' && '30s' || '600s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-over-time
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '4gb' }}
+      cpuLimit: 2
+      memoryLimit: 4gb
 
   constant-vus-over-time-report:
     needs: constant-vus-over-time
@@ -66,25 +67,26 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           - mercurius
           - wundergraph
           # - mesh
           # - mesh-bun
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 100 || 300 }}
+      vu: 300
       time: ${{ github.event_name == 'pull_request' && '30s' || '600s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '1' || '2' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '4gb' }}
+      cpuLimit: 2
+      memoryLimit: 4gb
       subgraphDelayRange: "40~150"
 
   constant-vus-subgraphs-delay-report:
@@ -106,25 +108,26 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           - mercurius
           - wundergraph
           # - mesh
           # - mesh-bun
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 100 || 500 }}
+      vu: 500
       time: ${{ github.event_name == 'pull_request' && '30s' || '600s' }}
       baseDir: federation-v1
       scenarioDir: constant-vus-over-time
       scenarioName: constant-vus-subgraphs-delay-resources
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '4' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '8gb' }}
+      cpuLimit: 4
+      memoryLimit: 8gb
       subgraphDelayRange: "40~150"
 
   constant-vus-subgraphs-delay-resources-report:
@@ -146,25 +149,26 @@ jobs:
         directory:
           - apollo-server
           - apollo-router
+          - hive-gateway
           - cosmo
           # - mercurius
           - wundergraph
           # - mesh
           # - mesh-bun
-          - mesh-supergraph
-          - mesh-supergraph-bun
+          # - mesh-supergraph
+          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
       gateway: ${{ matrix.directory }}
-      vu: ${{ github.event_name == 'pull_request' && 500 || 2000 }}
+      vu: 2000
       time: ${{ github.event_name == 'pull_request' && '60s' || '600s' }}
       baseDir: federation-v1
       scenarioDir: ramping-vus
       scenarioName: ramping-vus
       runner: ${{ needs.decide-runner.outputs.runner }}
-      cpuLimit: ${{ github.event_name == 'pull_request' && '2' || '4' }}
-      memoryLimit: ${{ github.event_name == 'pull_request' && '2gb' || '8gb' }}
+      cpuLimit: 4
+      memoryLimit: 8gb
 
   ramping-vus-report:
     needs: ramping-vus

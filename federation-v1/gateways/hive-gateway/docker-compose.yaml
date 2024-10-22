@@ -1,0 +1,45 @@
+services:
+  gateway:
+    image: ghcr.io/ardatan/hive-gateway:1.3.0
+    container_name: gateway
+    networks:
+      - test
+    ports:
+      - "0.0.0.0:4000:4000"
+    environment:
+      - NODE_ENV=production
+      - JIT=1
+    depends_on:
+      accounts:
+        condition: service_healthy
+      inventory:
+        condition: service_healthy
+      products:
+        condition: service_healthy
+      reviews:
+        condition: service_healthy
+    volumes:
+      - type: bind
+        source: federation-v1/gateways/hive-gateway/supergraph.graphql
+        target: /serve/supergraph.graphql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "/usr/lib/apt/apt-helper",
+          "download-file",
+          "http://127.0.0.1:4000/readiness",
+          "/tmp/health",
+        ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+    command: ["supergraph"]
+    deploy:
+      resources:
+        limits:
+          cpus: ${CPU_LIMIT:-1}
+          memory: ${MEM_LIMIT:-1gb}
+networks:
+  test:
+    name: test
