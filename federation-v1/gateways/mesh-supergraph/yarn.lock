@@ -817,13 +817,13 @@
     json-pointer "0.6.2"
     lodash.get "4.4.2"
 
-"@graphql-mesh/supergraph@0.8.9":
-  version "0.8.9"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/supergraph/-/supergraph-0.8.9.tgz#1bf8e7823dd091dadce127965d2d913394a13f30"
-  integrity sha512-ZxHV3pt2XcIiEcvTjGqiko5Uku6G+I5PlpOqGRyd6VFVJNtsHm/63AF2uy8iM6gs6UKI083sPj4dPmqUzMqTEw==
+"@graphql-mesh/supergraph@0.8.10":
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/supergraph/-/supergraph-0.8.10.tgz#59435ace84114fdad4226a91f850eecf31acc110"
+  integrity sha512-j9eX5Rr3ExRZiQUI6Cg+my1NDZPRDcI/Uwpt7JM2hngZdjVd3uTR6xw5phIvrdpk4rr5f6O++1bKSxQMjwyfPQ==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.6"
-    "@graphql-tools/federation" "^2.2.16"
+    "@graphql-tools/federation" "^2.2.17"
     "@graphql-tools/url-loader" "^8.0.7"
     "@graphql-tools/utils" "^10.5.5"
     lodash.get "^4.4.2"
@@ -944,10 +944,10 @@
     tslib "^2.4.0"
     value-or-promise "^1.0.12"
 
-"@graphql-tools/federation@^2.2.16":
-  version "2.2.16"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-2.2.16.tgz#baf5e73d780ffa3cd615d2c09cc6e7a2428a5ce0"
-  integrity sha512-BvUw4tiGb8ESK75HDVbAeeZkqpFVE1IK4rXjq22yhPXrlYp9vXjecM1T9ky6Esu9xMwJ1FnYCj95gpeJHcXx5w==
+"@graphql-tools/federation@^2.2.17":
+  version "2.2.17"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-2.2.17.tgz#0f857cac11998f3d8e0b255f02860c7360840bc1"
+  integrity sha512-PCyXWKYRNJFAN+hu//wUg/iOtLHqa0hX5kn0CVfMuB0Kj//nue2nQRmY8gknlopkz+xuuG0aVLIo5bkYGGPxgw==
   dependencies:
     "@graphql-tools/delegate" "^10.0.26"
     "@graphql-tools/executor-http" "^1.1.7"
