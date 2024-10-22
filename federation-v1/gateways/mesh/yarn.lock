@@ -751,13 +751,13 @@
     path-browserify "1.0.1"
 
 "@graphql-mesh/graphql@^0.102.0":
-  version "0.102.9"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.102.9.tgz#19766de8b4c4521903eb8c90d224b1dc1f6f1f1b"
-  integrity sha512-M1Um8WOvkF0TzTKVy0qVNdglzWZCwYxaXJbn8S3HJfDKnDFOBTsuUhv6R7sDsagcIZXuZcLpqdCRanx4UG1stQ==
+  version "0.102.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.102.10.tgz#c21c8539ba6ecd92b0869531845a702bc1aee31b"
+  integrity sha512-1wqBM+TFeJpdMGG7pmsC2dAnVbZ/qB5jmuFevuqCH0Yh4YeSr/PdmE0CnBiK8zr7f+Lt0O3Opg1YdVcMFolP4A==
   dependencies:
     "@graphql-mesh/string-interpolation" "^0.5.6"
     "@graphql-tools/delegate" "^10.0.26"
-    "@graphql-tools/federation" "^2.2.16"
+    "@graphql-tools/federation" "^2.2.17"
     "@graphql-tools/url-loader" "^8.0.7"
     lodash.get "^4.4.2"
 
@@ -944,10 +944,10 @@
     tslib "^2.4.0"
     value-or-promise "^1.0.12"
 
-"@graphql-tools/federation@^2.2.16":
-  version "2.2.16"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-2.2.16.tgz#baf5e73d780ffa3cd615d2c09cc6e7a2428a5ce0"
-  integrity sha512-BvUw4tiGb8ESK75HDVbAeeZkqpFVE1IK4rXjq22yhPXrlYp9vXjecM1T9ky6Esu9xMwJ1FnYCj95gpeJHcXx5w==
+"@graphql-tools/federation@^2.2.17":
+  version "2.2.17"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/federation/-/federation-2.2.17.tgz#0f857cac11998f3d8e0b255f02860c7360840bc1"
+  integrity sha512-PCyXWKYRNJFAN+hu//wUg/iOtLHqa0hX5kn0CVfMuB0Kj//nue2nQRmY8gknlopkz+xuuG0aVLIo5bkYGGPxgw==
   dependencies:
     "@graphql-tools/delegate" "^10.0.26"
     "@graphql-tools/executor-http" "^1.1.7"
@@ -1207,7 +1207,7 @@
 "@kamilkisiela/fast-url-parser@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@kamilkisiela/fast-url-parser/-/fast-url-parser-1.1.4.tgz#9d68877a489107411b953c54ea65d0658b515809"
-  integrity sha512-gbkePEBupNydxCelHCESvFSFM8XPh1Zs/OAVRW/rKpEqPAl5PbOM60si8mv9bvnR53uPD2s/FiRxdvSejpRJew==
+  integrity sha512-gbkePEBupNydxCelHCESvFSFM8XPh1Zs/OAVRW/rKpEqPAl5PbOM90Si8mv9bvnR53uPD2s/FiRxdvSejpRJew==
 
 "@mapbox/node-pre-gyp@^1.0.11":
   version "1.0.11"
