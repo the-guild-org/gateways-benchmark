@@ -1,4 +1,4 @@
-FROM ghcr.io/grafbase/gateway:0.14.0
+FROM ghcr.io/grafbase/gateway:0.15.0
 
 COPY supergraph.graphql ./
 

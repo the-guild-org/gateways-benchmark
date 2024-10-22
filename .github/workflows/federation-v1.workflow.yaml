@@ -32,9 +32,6 @@ jobs:
           - hive-gateway
           - cosmo
           - mercurius
-          - wundergraph
-          # - mesh-supergraph
-          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -70,11 +67,6 @@ jobs:
           - hive-gateway
           - cosmo
           - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          # - mesh-supergraph
-          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -111,11 +103,6 @@ jobs:
           - hive-gateway
           - cosmo
           - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          # - mesh-supergraph
-          # - mesh-supergraph-bun
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
@@ -151,12 +138,7 @@ jobs:
           - apollo-router
           - hive-gateway
           - cosmo
-          # - mercurius
-          - wundergraph
-          # - mesh
-          # - mesh-bun
-          # - mesh-supergraph
-          # - mesh-supergraph-bun
+          - mercurius
           # - grafbase
     uses: ./.github/workflows/benchmark.template.yaml
     with:
