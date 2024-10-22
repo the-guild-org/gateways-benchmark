@@ -79,6 +79,7 @@ const graphqlRequest = {
       "Content-Type": "application/json",
     },
   },
+  timeout: '240s',
 };
 
 export function handleBenchmarkSummary(data, additionalContext = {}) {
