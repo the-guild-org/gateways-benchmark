@@ -1,6 +1,6 @@
 services:
   gateway:
-    image: ghcr.io/ardatan/hive-gateway:1.3.2
+    image: ghcr.io/ardatan/hive-gateway:1.3.4-alpha-20241023142857-e75697682f66dc2632f52d9206beb4b29c4700f6
     container_name: gateway
     networks:
       - test
