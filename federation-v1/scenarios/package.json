@@ -10,6 +10,6 @@
     "@apollo/composition": "2.9.3"
   },
   "devDependencies": {
-    "@types/node": "20.16.15"
+    "@types/node": "20.17.0"
   }
 }
