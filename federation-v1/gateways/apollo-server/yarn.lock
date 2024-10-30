@@ -99,10 +99,10 @@
     "@apollo/utils.keyvaluecache" "^2.1.0"
     "@apollo/utils.logger" "^2.0.0"
 
-"@apollo/server@4.11.0":
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.11.0.tgz#21c0f10ad805192a5485e58ed5c5b3dbe2243174"
-  integrity sha512-SWDvbbs0wl2zYhKG6aGLxwTJ72xpqp0awb2lotNpfezd9VcAvzaUizzKQqocephin2uMoaA8MguoyBmgtPzNWw==
+"@apollo/server@4.11.2":
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.11.2.tgz#7e4a5c76456aded36f45f2d87cddd3d8d7960c27"
+  integrity sha512-WUTHY7DDek8xAMn4Woa9Bl8duQUDzRYQkosX/d1DtCsBWESZyApR7ndnI5d6+W4KSTtqBHhJFkusEI7CWuIJXg==
   dependencies:
     "@apollo/cache-control-types" "^1.0.3"
     "@apollo/server-gateway-interface" "^1.1.1"
@@ -120,7 +120,7 @@
     "@types/node-fetch" "^2.6.1"
     async-retry "^1.2.1"
     cors "^2.8.5"
-    express "^4.17.1"
+    express "^4.21.1"
     loglevel "^1.6.8"
     lru-cache "^7.10.1"
     negotiator "^0.6.3"
@@ -972,7 +972,7 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
-express@^4.17.1:
+express@^4.21.1:
   version "4.21.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.21.1.tgz#9dae5dda832f16b4eec941a4e44aa89ec481b281"
   integrity sha512-YSFlK1Ee0/GC8QaO91tHcDxJiE/X4FbpAyQWkxAvG6AXCuR65YzK8ua6D9hvi/TzUfZMpc+BwuM1IPw8fmQBiQ==
