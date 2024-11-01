@@ -6,6 +6,7 @@ const gateway = Fastify();
 
 gateway.register(mercuriusWithGateway, {
   graphiql: true,
+  jit: 1,
   path: "/graphql",
   gateway: {
     services: [
@@ -30,7 +31,6 @@ gateway.register(mercuriusWithGateway, {
         mandatory: true,
       },
     ],
-    pollingInterval: 5000,
   },
 });
 
