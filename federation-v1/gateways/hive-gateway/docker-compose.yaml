@@ -8,7 +8,6 @@ services:
       - "0.0.0.0:4000:4000"
     environment:
       - NODE_ENV=production
-      - JIT=1
     depends_on:
       accounts:
         condition: service_healthy
@@ -23,18 +22,11 @@ services:
         source: federation-v1/gateways/hive-gateway/supergraph.graphql
         target: /serve/supergraph.graphql
     healthcheck:
-      test:
-        [
-          "CMD",
-          "/usr/lib/apt/apt-helper",
-          "download-file",
-          "http://127.0.0.1:4000/readiness",
-          "/tmp/health",
-        ]
+      test: [ "CMD", "/usr/lib/apt/apt-helper", "download-file", "http://127.0.0.1:4000/graphql?query=%7B+users+%7B+reviews+%7B+product+%7B+reviews+%7B+author+%7B+reviews+%7B+product+%7B+name+%7D+%7D+%7D+%7D+%7D+%7D+%7D+%7D", "/tmp/health" ]
       interval: 3s
       timeout: 5s
       retries: 10
-    command: ["supergraph"]
+    command: [ "supergraph", "--jit" ]
     deploy:
       resources:
         limits:
