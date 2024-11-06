@@ -9,5 +9,9 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "ignoreDeps": [
+    "axum",
+    "async-graphql"
+  ]
 }
