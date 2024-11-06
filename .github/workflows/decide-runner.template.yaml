@@ -18,6 +18,6 @@ jobs:
             echo "using GitHub Actions default runner"
             echo "runner=ubuntu-latest" >> $GITHUB_OUTPUT
           else
-            echo "using stable runner: 'benchmark-runner'"
-            echo 'runner=benchmark-runner' >> $GITHUB_OUTPUT
+            echo "using stable runner: 'benchmark-runner-1'"
+            echo 'runner=benchmark-runner-1' >> $GITHUB_OUTPUT
           fi
