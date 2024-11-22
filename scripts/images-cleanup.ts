@@ -93,7 +93,9 @@ async function listImages(
   );
 
   if (!res.ok) {
-    throw new Error(`Failed to list images from Cloudflare: ${res.statusText}`);
+    throw new Error(
+      `Failed to list images from Cloudflare: ${res.status} ${res.statusText}`
+    );
   }
 
   return res.json();
@@ -109,10 +111,19 @@ async function deleteImages(image_id: string) {
   });
 
   if (!res.ok) {
+    // If we're rate limited, stop
+    if (res.status === 429) {
+      throw new Error(
+        `Rate limited while deleting image from Cloudflare: ${res.status} ${res.statusText}`
+      );
+    }
+
     // We don't want to throw an error here,
     // because we want to continue deleting other images.
     // The image will be deleted eventually, in the next run.
-    console.error(`Failed to delete image from Cloudflare: ${res.statusText}`);
+    console.error(
+      `Failed to delete image from Cloudflare: ${res.status} ${res.statusText}`
+    );
   }
 }
 
