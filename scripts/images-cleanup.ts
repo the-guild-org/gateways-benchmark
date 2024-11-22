@@ -41,7 +41,9 @@ async function main() {
       const uploaded = new Date(image.uploaded);
 
       if (isOlderThanThreshold(uploaded)) {
-        stack.push(image.id);
+        if (isBenchmarkImage(image.filename)) {
+          stack.push(image.id);
+        }
       } else {
         // The images are sorted by uploaded date in ascending order
         // so we can break the loop when we find an image that is newer
@@ -98,7 +100,7 @@ async function listImages(
 }
 
 async function deleteImages(image_id: string) {
-  const res = await fetch(deleteEndpoint, {
+  const res = await fetch(deleteEndpoint + "/" + image_id, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${CF_IMAGES_TOKEN}`,
@@ -118,6 +120,14 @@ function isOlderThanThreshold(date: Date) {
   return date.getTime() < thresholdDate.getTime();
 }
 
+function isBenchmarkImage(filename: string) {
+  return (
+    filename.endsWith("-http.png") ||
+    filename.endsWith("-overview.png") ||
+    filename.endsWith("-report.svg")
+  );
+}
+
 interface ListImageResult {
   errors: unknown[];
   messages: string[];
@@ -125,6 +135,7 @@ interface ListImageResult {
     continuation_token: string;
     images: Array<{
       id: string;
+      filename: string;
       /**
        * Datetime in ISO format
        * @example "2014-01-02T02:20:00.123Z"
