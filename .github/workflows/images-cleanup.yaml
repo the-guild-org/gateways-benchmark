@@ -17,13 +17,13 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 22.6
 
       # run script with 30m timeout
       - name: cleanup images
         env:
           CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
           CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
-        run: npx tsx@4.19.2 scripts/cleanup-images.ts
+        run: node --experimental-strip-types ./scripts/images-cleanup.ts
         timeout-minutes: 30
 
