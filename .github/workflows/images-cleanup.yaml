@@ -1,0 +1,27 @@
+on:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_call: {}
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    name: report
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+
+      # run script with 30m timeout
+      - name: cleanup images
+        env:
+          CF_IMAGES_LINK: ${{ secrets.CF_IMAGES_LINK }}
+          CF_IMAGES_TOKEN: ${{ secrets.CF_IMAGES_TOKEN }}
+        run: npx tsx@4.19.2 scripts/cleanup-images.ts
+        timeout-minutes: 30
+
