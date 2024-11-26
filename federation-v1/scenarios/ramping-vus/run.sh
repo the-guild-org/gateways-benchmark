@@ -46,13 +46,13 @@ export END_TIME="$(date +%s)"
 docker logs gateway > $OUT_DIR/gateway_log.txt
 
 rm -rf $OUT_DIR/overview.png || echo ""
-npx --quiet capture-website-cli "http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output $OUT_DIR/overview.png --width 1200
+npx --quiet capture-website-cli "http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output $OUT_DIR/overview.png --width 1200 --height 800
 
 rm -rf $OUT_DIR/http.png || echo ""
-npx --quiet capture-website-cli "http://localhost:3000/d-solo/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&panelId=41" --output $OUT_DIR/http.png --width 1200
+npx --quiet capture-website-cli "http://localhost:3000/d-solo/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&panelId=41" --output $OUT_DIR/http.png --width 1200 --height 800
 
 rm -rf $OUT_DIR/containers.png || echo ""
-npx --quiet capture-website-cli "http://localhost:3000/d/pMEd7m0Mz/cadvisor-exporter?orgId=1&var-host=All&var-container=accounts&var-container=inventory&var-container=products&var-container=reviews&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output $OUT_DIR/containers.png --width 1200
+npx --quiet capture-website-cli "http://localhost:3000/d/pMEd7m0Mz/cadvisor-exporter?orgId=1&var-host=All&var-container=accounts&var-container=inventory&var-container=products&var-container=reviews&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output $OUT_DIR/containers.png --width 1200 --height 800
 
 if [[ -z "${CI}" ]]; then
     echo "Done, you can find some stats in Grafana: http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000"
