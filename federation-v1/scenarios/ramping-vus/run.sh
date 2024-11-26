@@ -46,7 +46,7 @@ export END_TIME="$(date +%s)"
 docker logs gateway > $OUT_DIR/gateway_log.txt
 
 rm -rf $OUT_DIR/overview.png || echo ""
-npx --quiet capture-website-cli "http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output $OUT_DIR/overview.png --width 1200 --height 740
+npx --quiet capture-website-cli "http://localhost:3000/d/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&kiosk" --output $OUT_DIR/overview.png --width 1200
 
 rm -rf $OUT_DIR/http.png || echo ""
 npx --quiet capture-website-cli "http://localhost:3000/d-solo/01npcT44k/k6?orgId=1&from=${START_TIME}000&to=${END_TIME}000&panelId=41" --output $OUT_DIR/http.png --width 1200
