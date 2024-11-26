@@ -13,6 +13,6 @@
     "graphql": "16.9.0"
   },
   "devDependencies": {
-    "@types/node": "22.9.4"
+    "@types/node": "22.10.0"
   }
 }
