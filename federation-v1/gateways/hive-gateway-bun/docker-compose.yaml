@@ -33,7 +33,7 @@ services:
       interval: 3s
       timeout: 5s
       retries: 10
-    command: ["supergraph"] # TODO: add "--jit"
+    command: ["supergraph", "--jit"]
     deploy:
       resources:
         limits:
