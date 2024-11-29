@@ -21,6 +21,9 @@ services:
       - type: bind
         source: federation-v1/gateways/hive-gateway/supergraph.graphql
         target: /serve/supergraph.graphql
+      - type: bind
+        source: federation-v1/gateways/hive-gateway/gateway.config.mjs
+        target: /serve/gateway.config.mjs
     healthcheck:
       test: [ "CMD", "/usr/lib/apt/apt-helper", "download-file", "http://127.0.0.1:4000/graphql?query=%7B+users+%7B+reviews+%7B+product+%7B+reviews+%7B+author+%7B+reviews+%7B+product+%7B+name+%7D+%7D+%7D+%7D+%7D+%7D+%7D+%7D", "/tmp/health" ]
       interval: 3s
