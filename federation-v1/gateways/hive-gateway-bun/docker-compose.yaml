@@ -21,6 +21,9 @@ services:
       - type: bind
         source: federation-v1/gateways/hive-gateway-bun/supergraph.graphql
         target: /serve/supergraph.graphql
+      - type: bind
+        source: federation-v1/gateways/hive-gateway-bun/gateway.config.mjs
+        target: /serve/gateway.config.mjs
     healthcheck:
       test:
         [
