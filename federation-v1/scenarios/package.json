@@ -6,7 +6,7 @@
   "dependencies": {
     "tsx": "4.19.2",
     "typescript": "5.7.2",
-    "graphql": "16.9.0",
+    "graphql": "16.10.0",
     "@apollo/composition": "2.9.3"
   },
   "devDependencies": {
